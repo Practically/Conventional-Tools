@@ -1,0 +1,44 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+        "git": {
+            "type": "object",
+            "properties": {
+                "tagPrefix": {
+                    "type": "string",
+                    "default": "v",
+                    "description": "The prefix that will be put in front of your version number"
+                }
+            }
+        },
+        "commit": {
+            "type": "object",
+            "properties": {
+                "scopes": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": [
+                        {
+                            "type": "string"
+                        }
+                    ]
+                }
+            }
+        },
+        "hooks": {
+            "type": "object",
+            "properties": {
+                "commit-msg": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": [
+                        {
+                            "type": "string"
+                        }
+                    ]
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,68 @@
+{
+    "name": "conventional-tools",
+    "description": "CLI tool for a conventional workflow",
+    "version": "0.0.0",
+    "author": "Ade Attwood @AdeAttwood",
+    "bin": {
+        "conventional-tools": "./bin/run",
+        "ct": "./bin/run"
+    },
+    "bugs": "https://github.com/AdeAttwood/conventional-tools/issues",
+    "dependencies": {
+        "@commitlint/config-conventional": "^8.3.4",
+        "@commitlint/format": "^8.3.4",
+        "@commitlint/lint": "^8.3.5",
+        "@commitlint/load": "^8.3.5",
+        "@oclif/command": "^1",
+        "@oclif/config": "^1",
+        "@oclif/plugin-help": "^2",
+        "conventional-changelog": "^3.1.18",
+        "conventional-recommended-bump": "^6.0.5",
+        "cosmiconfig": "^6.0.0",
+        "execa": "^4.0.0",
+        "form-data": "^3.0.0",
+        "got": "^10.7.0",
+        "listr": "^0.14.3",
+        "tempfile": "^3.0.0",
+        "tslib": "^1"
+    },
+    "devDependencies": {
+        "@oclif/dev-cli": "^1",
+        "@oclif/test": "^1",
+        "@types/chai": "^4",
+        "@types/conventional-changelog": "^3.1.0",
+        "@types/conventional-recommended-bump": "^6.0.0",
+        "@types/git-semver-tags": "^3.0.0",
+        "@types/listr": "^0.14.2",
+        "@types/mocha": "^5",
+        "@types/node": "^10",
+        "@types/semver": "^7.1.0",
+        "chai": "^4",
+        "globby": "^10",
+        "mocha": "^5",
+        "nyc": "^14",
+        "ts-node": "^8",
+        "typescript": "^3.3"
+    },
+    "engines": {
+        "node": ">=8.0.0"
+    },
+    "files": ["/bin", "/lib", "/npm-shrinkwrap.json", "/oclif.manifest.json"],
+    "homepage": "https://github.com/AdeAttwood/conventional-tools",
+    "keywords": ["oclif"],
+    "license": "MIT",
+    "main": "lib/index.js",
+    "oclif": {
+        "commands": "./lib/commands",
+        "bin": "conventional-tools",
+        "plugins": ["@oclif/plugin-help"]
+    },
+    "repository": "AdeAttwood/conventional-tools",
+    "scripts": {
+        "postpack": "rm -f oclif.manifest.json",
+        "prepack": "rm -rf lib && tsc -b && oclif-dev manifest",
+        "test": "nyc --extension .ts mocha --forbid-only \"test/**/*.test.ts\"",
+        "version": "oclif-dev readme && git add README.md"
+    },
+    "types": "lib/index.d.ts"
+}
