@@ -5,8 +5,11 @@ const buildHook = ({hook}: {hook: string}) => `#!/bin/sh
 #
 # This hook was installed by conventional-tools
 #
+# You can uninstall all hook by running "conventional-tools git-hook:uninstall"
+#
 
 conventional-tools git-hook ${hook};
+exit $?;
 `;
 
 const hooks = [

@@ -5,10 +5,11 @@ const buildHook = ({hook}: {hook: string}) => `#!/bin/sh
 #
 # This hook was un installed by conventional-tools
 #
-# To reinstall you can run "ct git-hook:install"
+# To reinstall you can run "conventional-tools git-hook:install"
 #
 
 #conventional-tools git-hook ${hook};
+#exit $?;
 `;
 
 const hooks = [
