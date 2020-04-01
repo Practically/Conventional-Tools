@@ -29,6 +29,7 @@ const CONFIG: any = {
         'subject-full-stop': [TYPE_ERROR, 'never', '.'],
         'type-case': [TYPE_ERROR, 'always', 'lower-case'],
         'type-empty': [TYPE_ERROR, 'never'],
+        'references-empty': [TYPE_WARNING, 'never'],
         'type-enum': [
             TYPE_ERROR,
             'always',
@@ -70,35 +71,45 @@ export default class CommitLint extends Command {
             description: 'Error level to display',
             default: 2,
         }),
+        from: flags.string({
+            char: 'f',
+            description: 'The commit ref you want to lint from',
+            default: '',
+        }),
     };
 
     async run() {
         const {flags} = this.parse(CommitLint);
 
         const scopes = await configGet('commit.scopes', []);
-        CONFIG.rules['references-empty'] = [TYPE_WARNING, 'never'];
         if (scopes.length > 0) {
             CONFIG.rules['scope-enum'] = [TYPE_ERROR, 'always', scopes];
         }
 
         let exitCode = 0;
+        let commitCount = 0;
+        let finalCommitCount = -1;
+        let processedCount = 0;
         gitRawCommits({
-            from: 'ORIG_HEAD',
-            //path: '.',
+            from: flags.from,
+            path: 'HEAD',
         })
             .on('data', (data: any) => {
+                commitCount++;
                 lint(
                     data.toString(),
                     CONFIG.rules,
                     CONFIG.parserPreset.parserOpts,
                 ).then((report: any) => {
+                    processedCount++;
                     if (!report.errors.length && !report.warnings.length) {
+                        if (finalCommitCount === processedCount) {
+                            process.exit(exitCode);
+                        }
                         return;
                     }
-
                     let errors = '';
                     let warnings = '';
-
                     if (flags.level > 0 && report.errors.length) {
                         errors = report.errors
                             .map(
@@ -121,12 +132,22 @@ export default class CommitLint extends Command {
                         process.stdout.write(
                             `${report.input}\n\n${errors}${warnings}\n`,
                         );
+                    }
+
+                    if (report.errors.length) {
                         exitCode = 1;
+                    }
+
+                    if (finalCommitCount === processedCount) {
+                        process.exit(exitCode);
                     }
                 });
             })
-            .on('close', () => {
-                process.exit(exitCode);
+            .on('end', () => {
+                finalCommitCount = commitCount;
+                if (finalCommitCount === processedCount) {
+                    process.exit(exitCode);
+                }
             });
     }
 }
