@@ -41,7 +41,10 @@ export default class GitHook extends Command {
             try {
                 await execa.command(hook);
             } catch (e) {
-                console.log(e.exitCode);
+                process.stderr.write(e.stdout || e.stderr || e.shortMessage);
+                process.stderr.write(
+                    `\n\nGit Hook: "${hook}" failded with the above errors\n`,
+                );
 
                 process.exit(1);
             }
