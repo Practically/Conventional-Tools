@@ -4,6 +4,8 @@ const lint = require('@commitlint/lint');
 const gitRawCommits = require('git-raw-commits');
 import chalk from 'chalk';
 import configGet from '../lib/config';
+import * as fs from 'fs';
+import * as execa from 'execa';
 
 /**
  * Type constants
@@ -90,17 +92,11 @@ export default class CommitLint extends Command {
         let commitCount = 0;
         let finalCommitCount = -1;
         let processedCount = 0;
-        gitRawCommits({
-            from: flags.from,
-            path: 'HEAD',
-        })
-            .on('data', (data: any) => {
-                commitCount++;
-                lint(
-                    data.toString(),
-                    CONFIG.rules,
-                    CONFIG.parserPreset.parserOpts,
-                ).then((report: any) => {
+
+        const processCommit = (commit: string) => {
+            commitCount++;
+            lint(commit, CONFIG.rules, CONFIG.parserPreset.parserOpts).then(
+                (report: any) => {
                     processedCount++;
                     if (!report.errors.length && !report.warnings.length) {
                         if (finalCommitCount === processedCount) {
@@ -114,7 +110,7 @@ export default class CommitLint extends Command {
                         errors = report.errors
                             .map(
                                 (item: any) =>
-                                    `${chalk.red('✖ ' + item.message)}\n`,
+                                    `${chalk.red('✖ ' + item.message)}`,
                             )
                             .join('\n');
                     }
@@ -123,14 +119,14 @@ export default class CommitLint extends Command {
                         warnings = report.warnings
                             .map(
                                 (item: any) =>
-                                    `${chalk.yellow('⚠ ' + item.message)}\n`,
+                                    `${chalk.yellow('⚠ ' + item.message)}`,
                             )
                             .join('\n');
                     }
 
                     if (errors.length || warnings.length) {
                         process.stdout.write(
-                            `${report.input}\n\n${errors}${warnings}\n`,
+                            `${report.input}\n${errors}\n${warnings}\n\n`,
                         );
                     }
 
@@ -141,7 +137,44 @@ export default class CommitLint extends Command {
                     if (finalCommitCount === processedCount) {
                         process.exit(exitCode);
                     }
-                });
+                },
+            );
+        };
+
+        let editMsg = '';
+        const root = await execa.command('git rev-parse --show-toplevel');
+        if (fs.existsSync(`${root.stdout}/.git/COMMIT_EDITMSG`)) {
+            const b = fs
+                .readFileSync(`${root.stdout}/.git/COMMIT_EDITMSG`)
+                .toString();
+
+            const end =
+                b.indexOf(
+                    '------------------------ >8 ------------------------',
+                ) || b.length;
+
+            editMsg = b
+                .substring(0, end)
+                .replace(/^#.*$/gm, '')
+                .trim();
+
+            processCommit(editMsg);
+        }
+
+        gitRawCommits({
+            from: flags.from,
+            to: 'HEAD',
+        })
+            .on('data', (rawCommit: any) => {
+                const commit = rawCommit.toString();
+                if (
+                    commit.trim() === 'Initial commit' ||
+                    commit.trim() === editMsg
+                ) {
+                    return;
+                }
+
+                processCommit(commit);
             })
             .on('end', () => {
                 finalCommitCount = commitCount;
