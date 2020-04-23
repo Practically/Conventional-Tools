@@ -85,7 +85,11 @@ export default class CommitLint extends Command {
 
         const scopes = await configGet('commit.scopes', []);
         if (scopes.length > 0) {
-            CONFIG.rules['scope-enum'] = [TYPE_ERROR, 'always', scopes];
+            CONFIG.rules['scope-enum'] = [
+                TYPE_ERROR,
+                'always',
+                [...scopes, 'release'],
+            ];
         }
 
         let exitCode = 0;
@@ -95,8 +99,8 @@ export default class CommitLint extends Command {
 
         const processCommit = (commit: string) => {
             commitCount++;
-            lint(commit, CONFIG.rules, CONFIG.parserPreset.parserOpts).then(
-                (report: any) => {
+            lint(commit, CONFIG.rules, CONFIG.parserPreset.parserOpts)
+                .then((report: any) => {
                     processedCount++;
                     if (!report.errors.length && !report.warnings.length) {
                         if (finalCommitCount === processedCount) {
@@ -137,8 +141,8 @@ export default class CommitLint extends Command {
                     if (finalCommitCount === processedCount) {
                         process.exit(exitCode);
                     }
-                },
-            );
+                })
+                .catch(() => {});
         };
 
         let editMsg = '';
@@ -177,7 +181,7 @@ export default class CommitLint extends Command {
                 processCommit(commit);
             })
             .on('end', () => {
-                finalCommitCount = commitCount;
+                finalCommitCount = commitCount - 1;
                 if (finalCommitCount === processedCount) {
                     process.exit(exitCode);
                 }
