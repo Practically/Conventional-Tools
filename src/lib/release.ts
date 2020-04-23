@@ -3,11 +3,20 @@ import * as fs from 'fs';
 import * as conventionalChangelog from 'conventional-changelog';
 const tempfile = require('tempfile');
 
-export const getTag = ({tagPrefix}: {tagPrefix: string}) =>
+export interface changeLogProps {
+    tagPrefix: string;
+    newVersion?: string;
+    packageName?: string;
+    lernaTags?: boolean;
+}
+
+export const getTag = ({tagPrefix, lernaTags, packageName}: changeLogProps) =>
     new Promise((res, rej) => {
         gitSemverTags(
             {
                 tagPrefix: tagPrefix,
+                lernaTags: lernaTags,
+                package: packageName,
             },
             (err: any, tags: string[]) =>
                 err
@@ -16,12 +25,11 @@ export const getTag = ({tagPrefix}: {tagPrefix: string}) =>
         );
     });
 
-export interface changeLogProps {
-    tagPrefix: string;
-    newVersion: string;
-}
-
-export const changeLog = ({tagPrefix, newVersion}: changeLogProps) =>
+export const changeLog = ({
+    tagPrefix,
+    newVersion,
+    packageName,
+}: changeLogProps) =>
     new Promise(res => {
         const tmp = tempfile();
         fs.createReadStream('CHANGELOG.md')
@@ -30,6 +38,7 @@ export const changeLog = ({tagPrefix, newVersion}: changeLogProps) =>
                 conventionalChangelog(
                     {
                         preset: 'angular',
+                        lernaPackage: packageName,
                     },
                     {
                         version: tagPrefix + newVersion,
@@ -51,12 +60,14 @@ export const changeLog = ({tagPrefix, newVersion}: changeLogProps) =>
 export const releaseNotes = ({
     tagPrefix,
     newVersion,
+    packageName,
 }: changeLogProps): Promise<string> =>
     new Promise(resolve => {
         let notes = '';
         conventionalChangelog(
             {
                 preset: 'angular',
+                lernaPackage: packageName,
             },
             {
                 version: tagPrefix + newVersion,
