@@ -1,13 +1,11 @@
 {
     "name": "conventional-tools",
     "description": "CLI tool for a conventional workflow",
-    "version": "0.0.0",
     "author": "Ade Attwood @AdeAttwood",
     "bin": {
-        "conventional-tools": "./bin/run",
-        "ct": "./bin/run"
+        "conventional-tools": "./bin/run"
     },
-    "bugs": "https://github.com/AdeAttwood/conventional-tools/issues",
+    "bugs": "https://git.baln.co.uk/general/conventional-tools/issues",
     "dependencies": {
         "@commitlint/config-conventional": "^8.3.4",
         "@commitlint/format": "^8.3.4",
@@ -57,8 +55,9 @@
         "bin": "conventional-tools",
         "plugins": ["@oclif/plugin-help"]
     },
-    "repository": "AdeAttwood/conventional-tools",
+    "repository": "https://git.baln.co.uk/general/conventional-tools",
     "scripts": {
+        "build": "oclif-dev pack",
         "postpack": "rm -f oclif.manifest.json",
         "prepack": "rm -rf lib && tsc -b && oclif-dev manifest",
         "test": "nyc --extension .ts mocha --forbid-only \"test/**/*.test.ts\"",
