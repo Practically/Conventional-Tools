@@ -33,6 +33,8 @@ build:
 release:
   stage: release
   script:
+    - git config --global user.email "gitbot@baln.co.uk"
+    - git config --global user.name "Gitbot"
     - ./bin/run release-semver
   only:
     - master
