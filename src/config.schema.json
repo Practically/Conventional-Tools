@@ -9,6 +9,16 @@
                     "type": "string",
                     "default": "v",
                     "description": "The prefix that will be put in front of your version number"
+                },
+                "releaseScopes": {
+                    "type": "array",
+                    "description": "The tag scopes that calver commits will create a Gitlab release. This is commonly used when your tag prefix is \"@\" to achieve lerna versions",
+                    "minItems": 1,
+                    "item": [
+                        {
+                            "type": "string"
+                        }
+                    ]
                 }
             }
         },
@@ -28,8 +38,90 @@
         },
         "hooks": {
             "type": "object",
+            "description": "Git hooks definitions. For more information on each of the hooks you can visit https://git-scm.com/docs/githooks",
             "properties": {
+                "applypatch-msg": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": [
+                        {
+                            "type": "string"
+                        }
+                    ]
+                },
                 "commit-msg": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": [
+                        {
+                            "type": "string"
+                        }
+                    ]
+                },
+                "post-update": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": [
+                        {
+                            "type": "string"
+                        }
+                    ]
+                },
+                "pre-applypatch": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": [
+                        {
+                            "type": "string"
+                        }
+                    ]
+                },
+                "pre-commit": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": [
+                        {
+                            "type": "string"
+                        }
+                    ]
+                },
+                "pre-push": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": [
+                        {
+                            "type": "string"
+                        }
+                    ]
+                },
+                "pre-rebase": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": [
+                        {
+                            "type": "string"
+                        }
+                    ]
+                },
+                "pre-receive": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": [
+                        {
+                            "type": "string"
+                        }
+                    ]
+                },
+                "prepare-commit-msg": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": [
+                        {
+                            "type": "string"
+                        }
+                    ]
+                },
+                "update": {
                     "type": "array",
                     "minItems": 1,
                     "items": [
