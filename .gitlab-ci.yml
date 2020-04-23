@@ -1,0 +1,47 @@
+image: node:10
+
+stages:
+  - lint
+  - build
+  - release
+  - deploy
+
+cache:
+  paths:
+    - node_moduels/
+
+before_script:
+  - yarn install
+
+lint:commits:
+  stage: lint
+  script:
+    - ./bin/run commitlint
+
+build:
+  stage: build
+  script:
+    - yarn build
+  artifacts:
+    paths:
+      - dist
+  only:
+    - master
+
+release:
+  stage: release
+  script:
+    - ./bin/run release-semver
+  only:
+    - master
+
+pages:
+  stage: deploy
+  script:
+    - npm install -g docpress
+    - docpress build
+  artifacts:
+    paths:
+      - public
+  only:
+    - master

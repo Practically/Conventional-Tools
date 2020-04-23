@@ -1,0 +1,13 @@
+hooks:
+  commit-msg:
+    - ./bin/run commitlint -f HEAD~2
+  pre-push:
+    - ./bin/run commitlint -l1
+commit:
+  scopes:
+    - core
+    - commitlint
+    - relese
+    - release-semver
+    - release-calver
+    - git-hooks
