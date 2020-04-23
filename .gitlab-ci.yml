@@ -21,7 +21,9 @@ lint:commits:
 build:
   stage: build
   script:
-    - yarn build
+    - apt update && apt install -y p7zip-full
+    - yarn build -t linux-x64
+    - rm dist/**/*linux-x64.tar.gz
   artifacts:
     paths:
       - dist
