@@ -1,6 +1,7 @@
 {
     "name": "conventional-tools",
     "description": "CLI tool for a conventional workflow",
+    "version": "0.0.1",
     "author": "Ade Attwood @AdeAttwood",
     "bin": {
         "conventional-tools": "./bin/run"

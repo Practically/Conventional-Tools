@@ -45,7 +45,7 @@ export default class ReleaseCalver extends Command {
         if (latestTag === date) {
             nextTag = latestTag + '-1';
         } else if (latestTag.match(new RegExp(`^${date}`))) {
-            nextTag = latestTag.replace(/(\d+)$/, match => ++match);
+            nextTag = latestTag.replace(/(\d+)$/, match => match + 1);
         } else {
             nextTag = date;
         }
