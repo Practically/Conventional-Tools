@@ -22,7 +22,7 @@ const getRecommendedBump = ({tagPrefix}: {tagPrefix: string}) =>
 
 const getCurrentBranch = async (): Promise<string> => {
     const {stdout} = await execa('git', ['rev-parse', '--abbrev-ref', 'HEAD']);
-    return stdout || 'master';
+    return process.env.CI_COMMIT_BRANCH || stdout || 'master';
 };
 
 export default class ReleaseSemver extends Command {
@@ -86,17 +86,18 @@ export default class ReleaseSemver extends Command {
             {
                 title: 'Push to remote',
                 task: async () => {
-                    const branch = await getCurrentBranch();
+                    //const branch = await getCurrentBranch();
                     const origin = process.env.CI_PROJECT_URL?.replace(
                         /(http[s]:\/\/)(.*)/,
-                        `$1gitlab-ci-token:${process.env.CT_TOKEN}@$2.git`,
+                        `$1oauth2:${process.env.CT_TOKEN}@$2.git`,
                     );
-                    await execa('git', ['push', origin || 'origin', branch]);
-                    await execa('git', [
-                        'push',
-                        origin || 'origin',
-                        tagPrefix + nextTag,
-                    ]);
+
+                    await execa('git', ['push', origin || 'origin', '--tags']);
+                    //await execa('git', [
+                    //'push',
+                    //origin || 'origin',
+                    //tagPrefix + nextTag,
+                    //]);
                 },
             },
             {

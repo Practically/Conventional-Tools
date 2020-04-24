@@ -8,7 +8,7 @@ import {gitlabRelease} from '../lib/gitlab-release';
 
 const getCurrentBranch = async (): Promise<string> => {
     const {stdout} = await execa('git', ['rev-parse', '--abbrev-ref', 'HEAD']);
-    return stdout || 'master';
+    return process.env.CI_COMMIT_BRANCH || stdout || 'master';
 };
 
 export default class ReleaseCalver extends Command {
