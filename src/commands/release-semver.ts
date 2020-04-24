@@ -93,8 +93,8 @@ export default class ReleaseSemver extends Command {
 
                     await execa('git', [
                         'push',
-                        origin || 'origin',
                         '-o ci.skip',
+                        origin || 'origin',
                     ]);
                     await execa('git', ['push', origin || 'origin', '--tags']);
                 },

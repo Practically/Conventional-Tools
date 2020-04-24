@@ -94,9 +94,17 @@ export default class ReleaseCalver extends Command {
             {
                 title: 'Push to remote',
                 task: async () => {
-                    const branch = await getCurrentBranch();
-                    await execa('git', ['push', 'origin', branch]);
-                    await execa('git', ['push', 'origin', tagPrefix + nextTag]);
+                    const origin = process.env.CI_PROJECT_URL?.replace(
+                        /(http[s]:\/\/)(.*)/,
+                        `$1oauth2:${process.env.CT_TOKEN}@$2.git`,
+                    );
+
+                    await execa('git', [
+                        'push',
+                        '-o ci.skip',
+                        origin || 'origin',
+                    ]);
+                    await execa('git', ['push', origin || 'origin', '--tags']);
                 },
             },
             {
