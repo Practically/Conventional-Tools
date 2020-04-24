@@ -1,3 +1,12 @@
+## [v0.1.1](https://git.baln.co.uk/general/conventional-tools/compare/v0.1.0...v0.1.1) (2020-04-24)
+
+
+### Bug Fixes
+
+* **release-calver:** change release push logic ([d02427b](https://git.baln.co.uk/general/conventional-tools/commits/d02427b6e9f13bc5b69ace9d066714562a06a6b2))
+
+
+
 # v0.1.0 (2020-04-24)
 
 
