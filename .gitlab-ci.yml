@@ -32,9 +32,13 @@ build:
 
 release:
   stage: release
+  variables:
+    GIT_EMAIL: gitbot@baln.co.uk
+    GIT_USER: Gitbot
+    GIT_STRATEGY: clone
   script:
-    - git config --global user.email "gitbot@baln.co.uk"
-    - git config --global user.name "Gitbot"
+    - git config --global user.email "$GIT_EMAIL"
+    - git config --global user.name "$GIT_USER"
     - ./bin/run release-semver
   only:
     - master
