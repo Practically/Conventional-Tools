@@ -14,7 +14,7 @@ export const gitlabRelease = async (props: gitlabReleaseProps) => {
     const apiBaseUrl = process.env.CI_API_V4_URL;
     const apiProjectId = process.env.CI_PROJECT_ID;
     const projectUrl = process.env.CI_PROJECT_URL;
-    const gitlabToken = process.env.CI_JOB_TOKEN;
+    const gitlabToken = process.env.CT_TOKEN;
     const apiOptions = {headers: {'PRIVATE-TOKEN': gitlabToken}};
     const encodedTag = encodeURIComponent(props.tag);
 
@@ -28,10 +28,7 @@ export const gitlabRelease = async (props: gitlabReleaseProps) => {
                 const file = resolve(asset);
                 const form = new FormData() as any;
                 form.append('file', createReadStream(file));
-                const {
-                    alt,
-                    url,
-                } = await got
+                const {alt, url} = await got
                     .post(`${apiBaseUrl}/projects/${apiProjectId}/uploads`, {
                         ...apiOptions,
                         body: form,

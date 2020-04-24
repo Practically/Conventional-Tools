@@ -87,8 +87,16 @@ export default class ReleaseSemver extends Command {
                 title: 'Push to remote',
                 task: async () => {
                     const branch = await getCurrentBranch();
-                    await execa('git', ['push', 'origin', branch]);
-                    await execa('git', ['push', 'origin', tagPrefix + nextTag]);
+                    const origin = process.env.CI_PROJECT_URL?.replace(
+                        /(http[s]:\/\/)(.*)/,
+                        `$1gitlab-ci-token:${process.env.CT_TOKEN}@$2.git`,
+                    );
+                    await execa('git', ['push', origin || 'origin', branch]);
+                    await execa('git', [
+                        'push',
+                        origin || 'origin',
+                        tagPrefix + nextTag,
+                    ]);
                 },
             },
             {
