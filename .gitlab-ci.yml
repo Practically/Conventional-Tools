@@ -39,6 +39,7 @@ release:
   script:
     - git config --global user.email "$GIT_EMAIL"
     - git config --global user.name "$GIT_USER"
+    - git checkout $CI_COMMIT_BRANCH
     - ./bin/run release-semver
   only:
     - master
