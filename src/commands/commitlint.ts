@@ -2,7 +2,7 @@ import {Command, flags} from '@oclif/command';
 
 const lint = require('@commitlint/lint');
 const gitRawCommits = require('git-raw-commits');
-import chalk from 'chalk';
+const chalk = require('chalk');
 import configGet from '../lib/config';
 import * as fs from 'fs';
 import * as execa from 'execa';
@@ -181,7 +181,7 @@ export default class CommitLint extends Command {
                 processCommit(commit);
             })
             .on('end', () => {
-                finalCommitCount = commitCount - 1;
+                finalCommitCount = commitCount;
                 if (finalCommitCount === processedCount) {
                     process.exit(exitCode);
                 }
