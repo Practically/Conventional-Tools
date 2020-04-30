@@ -3,6 +3,7 @@ image: node:10
 stages:
   - lint
   - build
+  - package
   - release
   - deploy
 
@@ -29,6 +30,7 @@ build:
       - dist
   only:
     - master
+    - tags
 
 release:
   stage: release
@@ -43,6 +45,21 @@ release:
     - ./bin/run release-semver
   only:
     - master
+
+docker-image:
+  stage: package
+  image: docker
+  dependencies:
+    - build
+  before_script:
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+  script:
+    - docker pull $CI_REGISTRY_IMAGE:latest || true
+    - docker build --pull --tag $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA --tag $CI_REGISTRY_IMAGE:latest .
+    - docker push $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA
+    - docker push $CI_REGISTRY_IMAGE:latest
+  only:
+    - tags
 
 pages:
   stage: deploy
