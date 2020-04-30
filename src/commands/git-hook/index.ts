@@ -2,6 +2,9 @@ import {Command} from '@oclif/command';
 
 import {cosmiconfigSync} from 'cosmiconfig';
 import * as execa from 'execa';
+import * as Listr from 'listr';
+
+const chalk = require('chalk');
 
 const getObjectItem = (obj: any, item: any, defaultValue: any = undefined) => {
     const arr = typeof item === 'string' ? item.split('.') : item;
@@ -33,21 +36,41 @@ export default class GitHook extends Command {
 
         const hooks = await configGet(`hooks.${args.hook}`, []);
         argv.shift();
+
+        const taskList = [];
+
         for (let hook of hooks) {
             for (const i in argv) {
                 hook = hook.replace(`$\{${i}\}`, argv[i]);
             }
 
-            try {
-                await execa.command(hook);
-            } catch (e) {
-                process.stderr.write(e.stdout || e.stderr || e.shortMessage);
-                process.stderr.write(
-                    `\n\nGit Hook: "${hook}" failded with the above errors\n`,
-                );
-
-                process.exit(1);
-            }
+            taskList.push({
+                title: hook,
+                task: async () => {
+                    try {
+                        await execa.command(hook);
+                    } catch (e) {
+                        throw new Error(e.message);
+                    }
+                },
+            });
         }
+
+        console.log(chalk.blue('\n ➔ Running Hooks\n'));
+        const tasks = new Listr(taskList);
+        tasks
+            .run()
+            .then(() =>
+                console.log(
+                    chalk.green('\n ✔ All hooks have completed successfuly\n'),
+                ),
+            )
+            .catch((err: any) => {
+                console.log(
+                    chalk.red('\n ✖ Hooks failed with the message\n\n') +
+                        err.message,
+                );
+                process.exit(1);
+            });
     }
 }

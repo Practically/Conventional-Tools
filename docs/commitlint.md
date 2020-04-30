@@ -66,7 +66,7 @@ commit:
     - ios
 ```
 
-## Examples
+## Example Commits
 
 ```
 fix(core): this is some fix
@@ -84,4 +84,27 @@ style: phpcs
 feat(web): add something cool
 
 This add that cool thing that all of our user wanted
+```
+
+## Gitlab CI
+
+You can run commitlint in your CI pipelines with the bellow example config.
+
+```yaml
+lint:commits:
+  stage: lint
+  image: registry.baln.co.uk/general/conventional-tools:latest
+  script:
+    - conventional-tools commitlint
+```
+
+## Git Hooks
+
+You can use commitlint in the conventional tools built in git hooks. Below is an
+example config you can put in you `.ctrc.yml`
+
+```yml
+hooks:
+  commit-msg:
+    - conventional-tools commitlint -f HEAD~2
 ```
