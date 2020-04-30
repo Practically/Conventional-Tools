@@ -48,7 +48,7 @@ export default class GitHook extends Command {
                 title: hook,
                 task: async () => {
                     try {
-                        await execa.command(hook);
+                        await execa.command(hook, {shell: true});
                     } catch (e) {
                         throw new Error(e.message);
                     }
