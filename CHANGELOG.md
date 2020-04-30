@@ -1,3 +1,13 @@
+# [v0.2.0](https://git.baln.co.uk/general/conventional-tools/compare/v0.1.1...v0.2.0) (2020-04-30)
+
+
+### Features
+
+* **core:** add docker build ([2970da5](https://git.baln.co.uk/general/conventional-tools/commits/2970da586bbc08e1d69b844a4b6db112c2852737))
+* **git-hooks:** improve output ([4c964fe](https://git.baln.co.uk/general/conventional-tools/commits/4c964fedbb3a9b08c36b664e4c60da0ec63d7ab4))
+
+
+
 ## [v0.1.1](https://git.baln.co.uk/general/conventional-tools/compare/v0.1.0...v0.1.1) (2020-04-24)
 
 
