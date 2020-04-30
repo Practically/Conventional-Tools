@@ -35,8 +35,6 @@ export default class GitHook extends Command {
         const {args, argv} = this.parse(GitHook);
 
         const hooks = await configGet(`hooks.${args.hook}`, []);
-        argv.shift();
-
         const taskList = [];
 
         for (let hook of hooks) {
@@ -65,7 +63,7 @@ export default class GitHook extends Command {
             process.exit(0);
         }
 
-        console.log(chalk.blue('\n ➔ Running Hooks\n'));
+        console.log(chalk.blue(`\n ➔ Running hooks for ${args.hook} \n`));
         const tasks = new Listr(taskList);
         tasks
             .run()
