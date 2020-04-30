@@ -25,6 +25,7 @@ new release with every push to the master branch
 ```yaml
 release:
   stage: release
+  image: registry.baln.co.uk/general/conventional-tools:latest
   variables:
     GIT_EMAIL: gitbot@baln.co.uk
     GIT_USER: Gitbot
@@ -33,7 +34,7 @@ release:
     - git config --global user.email "$GIT_EMAIL"
     - git config --global user.name "$GIT_USER"
     - git checkout $CI_COMMIT_BRANCH
-    - ./bin/run release-semver
+    - conventional-tools release-semver
   only:
     - master
 ```
