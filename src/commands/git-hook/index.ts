@@ -56,6 +56,10 @@ export default class GitHook extends Command {
             });
         }
 
+        if (taskList.length === 0) {
+            process.exit(0);
+        }
+
         console.log(chalk.blue('\n ➔ Running Hooks\n'));
         const tasks = new Listr(taskList);
         tasks
