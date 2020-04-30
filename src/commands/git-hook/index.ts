@@ -44,8 +44,13 @@ export default class GitHook extends Command {
                 hook = hook.replace(`$\{${i}\}`, argv[i]);
             }
 
+            let title = hook;
+            if (hook.includes('\n')) {
+                title = hook.split('\n')[0].replace(/^#\s+(.*)/, '$1');
+            }
+
             taskList.push({
-                title: hook,
+                title: title,
                 task: async () => {
                     try {
                         await execa.command(hook, {shell: true});
