@@ -1,7 +1,7 @@
 # Git Hooks
 
 Git hooks can be configured pre project in in your config file. If you are not
-familular with git hooks your can read more about them
+familiar with git hooks your can read more about them
 [here](https://git-scm.com/docs/githooks). To install all of the hook scripts
 you will need to run the below command.
 
