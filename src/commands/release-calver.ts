@@ -5,6 +5,7 @@ import * as Listr from 'listr';
 import configGet from '../lib/config';
 import {getTag, changeLog, releaseNotes} from '../lib/release';
 import {gitlabRelease} from '../lib/gitlab-release';
+import * as glob from 'glob';
 
 const getCurrentBranch = async (): Promise<string> => {
     const {stdout} = await execa('git', ['rev-parse', '--abbrev-ref', 'HEAD']);
@@ -122,9 +123,15 @@ export default class ReleaseCalver extends Command {
                     return false;
                 },
                 task: async () => {
+                    let assets: string[] = [];
+                    for (const expresion of await configGet('assets', [])) {
+                        const files = glob.sync(expresion, {nodir: true});
+                        assets = assets.concat(files);
+                    }
+
                     await gitlabRelease({
                         tag: tagPrefix + nextTag,
-                        assets: [],
+                        assets: assets,
                         notes: notes,
                     });
                 },

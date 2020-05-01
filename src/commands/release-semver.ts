@@ -7,6 +7,7 @@ import * as Listr from 'listr';
 import configGet from '../lib/config';
 import {getTag, changeLog, releaseNotes} from '../lib/release';
 import {gitlabRelease} from '../lib/gitlab-release';
+import * as glob from 'glob';
 
 const getRecommendedBump = ({tagPrefix}: {tagPrefix: string}) =>
     new Promise((res, rej) => {
@@ -102,9 +103,15 @@ export default class ReleaseSemver extends Command {
             {
                 title: 'Create Gitlab release',
                 task: async () => {
+                    let assets: string[] = [];
+                    for (const expresion of await configGet('assets', [])) {
+                        const files = glob.sync(expresion, {nodir: true});
+                        assets = assets.concat(files);
+                    }
+
                     await gitlabRelease({
                         tag: tagPrefix + nextTag,
-                        assets: [],
+                        assets: assets,
                         notes: notes,
                     });
                 },
