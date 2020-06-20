@@ -8,10 +8,11 @@ the last release and work out if it should be a major minor or patch.
 The release process is:
 
 1. Create and populate your `CHANGELOG.md`
-2. Create a release commit
-3. Create a release tag
-4. Push to the remote
-5. Create a Gitlab release
+2. Update package files
+3. Create a release commit
+4. Create a release tag
+5. Push to the remote
+6. Create a Gitlab release
 
 ## Configuration
 
@@ -84,3 +85,11 @@ conventional-tools release-semver alpha
 - **alpha**: v1.2.4-alpha.0
 - **beta**: v1.2.4-beta.0
 - **rc**: v1.2.4-rc.0
+
+## Package Files
+
+When releasing with semver the release command will automatically update common
+config files. The supported config files are listed below.
+
+- package.json
+- composer.json

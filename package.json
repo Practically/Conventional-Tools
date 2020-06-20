@@ -1,8 +1,12 @@
 {
-    "name": "conventional-tools",
+    "name": "@baln/conventional-tools",
     "description": "CLI tool for a conventional workflow",
-    "version": "0.0.1",
-    "author": "Ade Attwood @AdeAttwood",
+    "version": "0.0.2",
+    "author": {
+        "name": "Ade Attwood ",
+        "email": "code@adeattwood.co.uk",
+        "url": "http://adeattwood.co.uk"
+    },
     "bin": {
         "conventional-tools": "./bin/run"
     },
@@ -47,24 +51,15 @@
     "engines": {
         "node": ">=8.0.0"
     },
-    "files": [
-        "/bin",
-        "/lib",
-        "/npm-shrinkwrap.json",
-        "/oclif.manifest.json"
-    ],
+    "files": ["/bin", "/lib", "/npm-shrinkwrap.json", "/oclif.manifest.json"],
     "homepage": "https://github.com/AdeAttwood/conventional-tools",
-    "keywords": [
-        "oclif"
-    ],
+    "keywords": ["oclif"],
     "license": "MIT",
     "main": "lib/index.js",
     "oclif": {
         "commands": "./lib/commands",
         "bin": "conventional-tools",
-        "plugins": [
-            "@oclif/plugin-help"
-        ]
+        "plugins": ["@oclif/plugin-help"]
     },
     "repository": "https://git.baln.co.uk/general/conventional-tools",
     "scripts": {

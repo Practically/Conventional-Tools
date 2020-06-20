@@ -4,9 +4,11 @@ import * as conventionalRecommendedBump from 'conventional-recommended-bump';
 import * as semver from 'semver';
 import * as execa from 'execa';
 import * as Listr from 'listr';
+import * as fs from 'fs';
 import configGet from '../lib/config';
 import {getTag, changeLog, releaseNotes} from '../lib/release';
 import {gitlabRelease} from '../lib/gitlab-release';
+import * as glob from 'glob';
 
 const getRecommendedBump = ({tagPrefix}: {tagPrefix: string}) =>
     new Promise((res, rej) => {
@@ -68,6 +70,44 @@ export default class ReleaseSemver extends Command {
                     await changeLog({tagPrefix, newVersion: nextTag as string}),
             },
             {
+                title: 'Update package.json',
+                skip: () => {
+                    if (
+                        fs.existsSync(process.cwd() + '/package.json') !== true
+                    ) {
+                        return 'Sipping no package.json file found';
+                    }
+                },
+                task: async () => {
+                    const packageFile = require(process.cwd() +
+                        '/package.json');
+                    packageFile.version = nextTag;
+                    fs.writeFileSync(
+                        'package.json',
+                        JSON.stringify(packageFile, null, 4),
+                    );
+                },
+            },
+            {
+                title: 'Update composer.json',
+                skip: () => {
+                    if (
+                        fs.existsSync(process.cwd() + '/composer.json') !== true
+                    ) {
+                        return 'Sipping no composer.json file found';
+                    }
+                },
+                task: async () => {
+                    const composerFile = require(process.cwd() +
+                        '/composer.json');
+                    composerFile.version = nextTag;
+                    fs.writeFileSync(
+                        'composer.json',
+                        JSON.stringify(composerFile, null, 4),
+                    );
+                },
+            },
+            {
                 title: 'Create release comment',
                 task: async () => {
                     await execa('git', ['add', '.']);
@@ -102,9 +142,15 @@ export default class ReleaseSemver extends Command {
             {
                 title: 'Create Gitlab release',
                 task: async () => {
+                    let assets: string[] = [];
+                    for (const expresion of await configGet('assets', [])) {
+                        const files = glob.sync(expresion, {nodir: true});
+                        assets = assets.concat(files);
+                    }
+
                     await gitlabRelease({
                         tag: tagPrefix + nextTag,
-                        assets: [],
+                        assets: assets,
                         notes: notes,
                     });
                 },

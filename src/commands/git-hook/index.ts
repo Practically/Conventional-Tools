@@ -35,8 +35,6 @@ export default class GitHook extends Command {
         const {args, argv} = this.parse(GitHook);
 
         const hooks = await configGet(`hooks.${args.hook}`, []);
-        argv.shift();
-
         const taskList = [];
 
         for (let hook of hooks) {
@@ -44,11 +42,16 @@ export default class GitHook extends Command {
                 hook = hook.replace(`$\{${i}\}`, argv[i]);
             }
 
+            let title = hook;
+            if (hook.includes('\n')) {
+                title = hook.split('\n')[0].replace(/^#\s+(.*)/, '$1');
+            }
+
             taskList.push({
-                title: hook,
+                title: title,
                 task: async () => {
                     try {
-                        await execa.command(hook);
+                        await execa.command(hook, {shell: true});
                     } catch (e) {
                         throw new Error(e.message);
                     }
@@ -56,7 +59,11 @@ export default class GitHook extends Command {
             });
         }
 
-        console.log(chalk.blue('\n ➔ Running Hooks\n'));
+        if (taskList.length === 0) {
+            process.exit(0);
+        }
+
+        console.log(chalk.blue(`\n ➔ Running hooks for ${args.hook} \n`));
         const tasks = new Listr(taskList);
         tasks
             .run()

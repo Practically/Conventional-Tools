@@ -36,6 +36,14 @@
                 }
             }
         },
+        "assets": {
+            "type": "array",
+            "description": "A list of glob paths to release assets that will be added to your release",
+            "minItems": 1,
+            "items": {
+                "type": "string"
+            }
+        },
         "hooks": {
             "type": "object",
             "description": "Git hooks definitions. For more information on each of the hooks you can visit https://git-scm.com/docs/githooks",

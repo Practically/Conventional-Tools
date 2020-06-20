@@ -47,7 +47,7 @@ export const gitlabRelease = async (props: gitlabReleaseProps) => {
             json: {
                 name: `Release: ${props.tag}`,
                 tag_name: props.tag,
-                description: props.notes,
+                description: props.notes || 'No release notes.',
             },
         },
     );

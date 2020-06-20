@@ -17,7 +17,7 @@ commit:
   scopes:
     - core
     - commitlint
-    - relese
+    - release
     - release-semver
     - release-calver
     - git-hooks
