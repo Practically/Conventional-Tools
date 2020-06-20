@@ -1,3 +1,20 @@
+# [v0.3.0](https://git.baln.co.uk/general/conventional-tools/compare/v0.2.0...v0.3.0) (2020-06-20)
+
+
+### Bug Fixes
+
+* **git-hooks:** prevent output when no hooks are configured ([136b60d](https://git.baln.co.uk/general/conventional-tools/commits/136b60dcc5d74222975caa7559e40baae7f3f3aa)), closes [#5](https://git.baln.co.uk/general/conventional-tools/issues/5)
+
+
+### Features
+
+* **git-hooks:** allow pipes in commands ([076b208](https://git.baln.co.uk/general/conventional-tools/commits/076b208c2bf474b7b0d80e79ad834b73947fa2da)), closes [#6](https://git.baln.co.uk/general/conventional-tools/issues/6)
+* **git-hooks:** better support for multi line commands ([1c95131](https://git.baln.co.uk/general/conventional-tools/commits/1c95131d2eb81970bf4837215c51af2eaf2ff8a2)), closes [#7](https://git.baln.co.uk/general/conventional-tools/issues/7)
+* **release:** add assets to Gitlab releases ([9209102](https://git.baln.co.uk/general/conventional-tools/commits/92091023681a4110c086f6d9568ba212d2159905)), closes [#4](https://git.baln.co.uk/general/conventional-tools/issues/4)
+* **release-semver:** update version in package files ([e7a49ff](https://git.baln.co.uk/general/conventional-tools/commits/e7a49ff477cfb86b2270a2519feab03b9a51e8b7)), closes [#3](https://git.baln.co.uk/general/conventional-tools/issues/3)
+
+
+
 # [v0.2.0](https://git.baln.co.uk/general/conventional-tools/compare/v0.1.1...v0.2.0) (2020-04-30)
 
 
