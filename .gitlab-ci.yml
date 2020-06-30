@@ -80,7 +80,7 @@ publish:npm:
   stage: package
   script:
     - cp "$NPM_RC" ~/.npmrc
-    - npm publish --tag $CI_COMMIT_REF_NAME
+    - npm publish
   only:
     - tags
 
