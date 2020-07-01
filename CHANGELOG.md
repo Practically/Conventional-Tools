@@ -1,3 +1,12 @@
+## [v0.3.1](https://git.baln.co.uk/general/conventional-tools/compare/v0.3.0...v0.3.1) (2020-07-01)
+
+
+### Bug Fixes
+
+* **core:** remove tag from npm publish ([0ccdff2](https://git.baln.co.uk/general/conventional-tools/commits/0ccdff28bb020be7c159668c2cb7203fd4152674))
+
+
+
 # [v0.3.0](https://git.baln.co.uk/general/conventional-tools/compare/v0.2.0...v0.3.0) (2020-06-20)
 
 
