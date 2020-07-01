@@ -80,6 +80,7 @@ publish:npm:
   stage: package
   script:
     - cp "$NPM_RC" ~/.npmrc
+    - yarn prepack
     - npm publish --access=public
   only:
     - tags
