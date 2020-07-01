@@ -49,6 +49,8 @@ docker-image-next:
 
 release:
   stage: release
+  dependencies:
+    - build
   variables:
     GIT_EMAIL: gitbot@baln.co.uk
     GIT_USER: Gitbot
