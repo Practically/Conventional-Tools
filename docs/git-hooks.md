@@ -6,14 +6,14 @@ familiar with git hooks your can read more about them
 you will need to run the below command.
 
 ```sh
-conventional-tools git-hooks:install
+conventional-tools git-hook:install
 ```
 
 This will install all of the script files. To uninstall the hooks you can run
 the install command
 
 ```sh
-conventional-tools git-hooks:uninstall
+conventional-tools git-hook:uninstall
 ```
 
 ## Example
