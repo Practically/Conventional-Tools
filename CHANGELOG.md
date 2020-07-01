@@ -1,3 +1,12 @@
+## [v0.3.2](https://git.baln.co.uk/general/conventional-tools/compare/v0.3.1...v0.3.2) (2020-07-01)
+
+
+### Bug Fixes
+
+* **core:** make npm package public ([651733f](https://git.baln.co.uk/general/conventional-tools/commits/651733fa18bd06274fbc1e36e64cf206efbe8998))
+
+
+
 ## [v0.3.1](https://git.baln.co.uk/general/conventional-tools/compare/v0.3.0...v0.3.1) (2020-07-01)
 
 
