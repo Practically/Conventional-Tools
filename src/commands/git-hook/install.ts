@@ -8,7 +8,7 @@ const buildHook = ({hook}: {hook: string}) => `#!/bin/sh
 # You can uninstall all hook by running "conventional-tools git-hook:uninstall"
 #
 
-conventional-tools git-hook ${hook};
+conventional-tools git-hook ${hook} "$@";
 exit $?;
 `;
 

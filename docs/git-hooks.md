@@ -9,6 +9,13 @@ you will need to run the below command.
 conventional-tools git-hook:install
 ```
 
+<div class="message is--info">
+
+**NOTE:** If you are upgrading from `v0.3.2` There was a bugfix that requires you to
+reinstall you hooks. You can do this by running the above command.
+
+</div>
+
 This will install all of the script files. To uninstall the hooks you can run
 the install command
 
