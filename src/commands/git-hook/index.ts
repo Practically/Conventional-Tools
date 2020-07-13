@@ -39,8 +39,10 @@ export default class GitHook extends Command {
 
         for (let hook of hooks) {
             for (const i in argv) {
-                hook = hook.replace(`$\{${i}\}`, argv[i]);
+                hook = hook.replace(new RegExp(`\\$\\{${i}\\}`, 'g'), argv[i]);
             }
+
+            hook = hook.replace(/\$\{\d+\}/g, '');
 
             let title = hook;
             if (hook.includes('\n')) {
