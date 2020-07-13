@@ -65,7 +65,7 @@ const CONFIG: any = {
 };
 
 export default class CommitLint extends Command {
-    static description = 'describe the command here';
+    static description = 'Lint your commits against conventional commits';
 
     static flags = {
         level: flags.integer({

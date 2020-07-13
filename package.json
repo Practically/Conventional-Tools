@@ -18,6 +18,7 @@
         "@commitlint/load": "^8.3.5",
         "@oclif/command": "^1",
         "@oclif/config": "^1",
+        "@oclif/plugin-autocomplete": "^0.2.0",
         "@oclif/plugin-help": "^2",
         "chalk": "^4.0.0",
         "conventional-changelog": "^3.1.18",
@@ -51,15 +52,25 @@
     "engines": {
         "node": ">=8.0.0"
     },
-    "files": ["/bin", "/lib", "/npm-shrinkwrap.json", "/oclif.manifest.json"],
+    "files": [
+        "/bin",
+        "/lib",
+        "/npm-shrinkwrap.json",
+        "/oclif.manifest.json"
+    ],
     "homepage": "https://github.com/AdeAttwood/conventional-tools",
-    "keywords": ["oclif"],
+    "keywords": [
+        "oclif"
+    ],
     "license": "MIT",
     "main": "lib/index.js",
     "oclif": {
         "commands": "./lib/commands",
         "bin": "conventional-tools",
-        "plugins": ["@oclif/plugin-help"]
+        "plugins": [
+            "@oclif/plugin-help",
+            "@oclif/plugin-autocomplete"
+        ]
     },
     "repository": "https://git.baln.co.uk/general/conventional-tools",
     "scripts": {

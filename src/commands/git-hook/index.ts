@@ -27,7 +27,7 @@ const configGet = async (item: any, defaultValue: any) => {
 };
 
 export default class GitHook extends Command {
-    static description = 'describe the command here';
+    static description = 'Manage git hooks under version control';
 
     static strict = false;
     static args = [{name: 'hook'}];
