@@ -61,7 +61,7 @@ hooks:
 
 The output from this hooks is.
 
-```txt
+```plaintext
  ➔ Running Hooks
 
   ✔ Run prettier on staged files

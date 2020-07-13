@@ -68,7 +68,7 @@ commit:
 
 ## Example Commits
 
-```
+```plaintext
 fix(core): this is some fix
 
 Some more into about the fix that can go into more detail
@@ -76,11 +76,11 @@ Some more into about the fix that can go into more detail
 ref #123
 ```
 
-```
+```plaintext
 style: phpcs
 ```
 
-```
+```plaintext
 feat(web): add something cool
 
 This add that cool thing that all of our user wanted

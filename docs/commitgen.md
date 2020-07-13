@@ -40,7 +40,7 @@ hooks:
 
 ## Example commits
 
-``` txt
+``` plaintext
 feat(edit): edit
 
 Ref: #222
@@ -63,7 +63,7 @@ Ref: #222
 #	modified:   README.md
 ```
 
-``` txt
+``` plaintext
 fix(edit): edit
 
 Fixes Issue: #223
@@ -90,7 +90,7 @@ If you are on a branch that dose not conform to this naming convention then you
 will just get the comment with your commit types and scopes so you don't have to
 look them up in your `.ctrc.yml`.
 
-``` text
+``` plaintext
 
 
 # Generated commit message by conventional tools. If you do not want this
