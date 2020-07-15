@@ -142,10 +142,7 @@ export default class CommitLint extends Command {
                     '------------------------ >8 ------------------------',
                 ) || b.length;
 
-            const editMsg = b
-                .substring(0, end)
-                .replace(/^#.*$/gm, '')
-                .trim();
+            const editMsg = b.substring(0, end).replace(/^#.*$/gm, '').trim();
 
             if (editMsg.length) {
                 const report = await lint(

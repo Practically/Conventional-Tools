@@ -28,7 +28,7 @@ If you have Conventional Tools git hooks installed you can add this to your
 `.ctrc.yml` this will run the above command and add it to the top of the
 `COMMIT_EDITMSG` file so its ready to edit when you commit.
 
-``` yaml
+```yaml
 hooks:
   prepare-commit-msg:
     - |
@@ -40,7 +40,7 @@ hooks:
 
 ## Example commits
 
-``` plaintext
+```plaintext
 feat(edit): edit
 
 Ref: #222
@@ -63,7 +63,7 @@ Ref: #222
 #	modified:   README.md
 ```
 
-``` plaintext
+```plaintext
 fix(edit): edit
 
 Fixes Issue: #223
@@ -90,7 +90,7 @@ If you are on a branch that dose not conform to this naming convention then you
 will just get the comment with your commit types and scopes so you don't have to
 look them up in your `.ctrc.yml`.
 
-``` plaintext
+```plaintext
 
 
 # Generated commit message by conventional tools. If you do not want this

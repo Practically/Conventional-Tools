@@ -45,7 +45,7 @@ export const changeLog = ({
                     } /** for when we implement sub packages, { path } */,
                 )
                     .pipe(fs.createWriteStream('CHANGELOG.md'))
-                    .on('finish', function() {
+                    .on('finish', function () {
                         fs.createReadStream(tmp)
                             .pipe(
                                 fs.createWriteStream('CHANGELOG.md', {

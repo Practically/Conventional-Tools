@@ -13,7 +13,8 @@ const getCurrentBranch = async (): Promise<string> => {
 };
 
 export default class ReleaseCalver extends Command {
-    static description = 'Create change logs and Gitlab releases in calendar versioning format';
+    static description =
+        'Create change logs and Gitlab releases in calendar versioning format';
 
     static flags = {
         scope: flags.string({

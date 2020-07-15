@@ -26,7 +26,8 @@ const hooks = [
 ];
 
 export default class HookInstall extends Command {
-    static description = 'Install the conventional-tools script into your .git/hooks directory';
+    static description =
+        'Install the conventional-tools script into your .git/hooks directory';
 
     async run() {
         for (const hook of hooks) {

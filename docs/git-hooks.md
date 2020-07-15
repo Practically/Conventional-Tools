@@ -11,8 +11,8 @@ conventional-tools git-hook:install
 
 <div class="message is--info">
 
-**NOTE:** If you are upgrading from `v0.3.2` There was a bugfix that requires you to
-reinstall you hooks. You can do this by running the above command.
+**NOTE:** If you are upgrading from `v0.3.2` There was a bugfix that requires
+you to reinstall you hooks. You can do this by running the above command.
 
 </div>
 
@@ -75,10 +75,10 @@ If you look at the git hooks docs some hooks get passed params to use in your
 scripts. For example the `prepare-commit-msg` hook get the commit message file
 passed through as the first argument. These can be used in the hooks defined in
 your `.ctrc.yml` by using `${n}` in your command where `n` is the number of the
-parameter you would like to replace. The below example will run `cat
-".git/COMMIT_MSG"`
+parameter you would like to replace. The below example will run
+`cat ".git/COMMIT_MSG"`
 
-``` yaml
+```yaml
 hooks:
   prepare-commit-msg:
     - cat "${1}"
@@ -88,7 +88,7 @@ If the parameter at the index dose not exist then it will be replaced by an
 empty string. This will allow to test if the parameter is empty with the bash
 `-z` syntax.
 
-``` yaml
+```yaml
 hooks:
   pre-commit:
     - |

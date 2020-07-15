@@ -28,7 +28,8 @@ const getCurrentBranch = async (): Promise<string> => {
 };
 
 export default class ReleaseSemver extends Command {
-    static description = 'Create change logs and Gitlab releases in semantic versioning format';
+    static description =
+        'Create change logs and Gitlab releases in semantic versioning format';
     static args = [{name: 'release'}];
 
     async run() {

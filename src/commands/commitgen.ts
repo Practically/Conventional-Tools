@@ -23,9 +23,9 @@ const types = [
     'test',
 ];
 
-const footerMessages: {[key:string]: string} = {
-    'fix': 'Fixes Issue',
-}
+const footerMessages: {[key: string]: string} = {
+    fix: 'Fixes Issue',
+};
 
 export default class Commitgen extends Command {
     static description = 'Commit message generator';
@@ -47,14 +47,16 @@ export default class Commitgen extends Command {
 # Valid scopes for this project are:
 #   ${scopes.join(', ').replace(/(.{62,72})(\s+\r?|\r)/g, '$1\n#   ')}
 #
-`
+`;
         if (!m || !m[1] || !m[2]) {
             this.log(`\n\n${message}`);
             return;
         }
 
         const t = types.includes(m[1]) ? m[1] : 'edit';
-        const footer = m[2].match(/\d+/) ? `${footerMessages[t] || 'Ref'}: #${m[2]}` : '';
+        const footer = m[2].match(/\d+/)
+            ? `${footerMessages[t] || 'Ref'}: #${m[2]}`
+            : '';
         this.log(`${t}(edit): edit
 
 ${footer}

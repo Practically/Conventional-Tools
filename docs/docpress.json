@@ -1,7 +1,5 @@
 {
     "docs": "docs",
     "dist": "public",
-    "css": [
-        "docs/extra.css"
-    ]
+    "css": ["docs/extra.css"]
 }

@@ -1,10 +1,9 @@
-
 .message {
     color: inherit;
     border: 0;
     padding: 14px 20px 1px 20px;
     border-radius: 0;
-    opacity: .9;
+    opacity: 0.9;
     margin-bottom: 16px;
 }
 
@@ -12,4 +11,3 @@
     background-color: #c6e4ff;
     border-left: 4px solid #2a82d1;
 }
-
