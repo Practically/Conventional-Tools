@@ -27,7 +27,7 @@ test:
     - git config --global user.email "test@test.com"
     - git config --global user.name "Tester"
     - yarn prepack
-    - yarn test
+    - TEST_OUTPUT=1 yarn test
 
 lint:code:
   stage: lint
