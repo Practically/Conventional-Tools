@@ -1,4 +1,4 @@
-image: node:10
+image: node:12
 
 stages:
   - lint
@@ -15,13 +15,40 @@ cache:
 before_script:
   - yarn install
 
+bump:composer:
+  allow_failure: true
+  variables:
+    GIT_EMAIL: gitbot@baln.co.uk
+    GIT_USER: Gitbot
+    GIT_STRATEGY: clone
+  services:
+    - mysql:5.7
+  rules:
+    - if: '$CRON == "true" && $TASK == "bump"'
+  script:
+    - apt update && apt install -y git
+    - cp .env.test .env
+    - git config --global user.email "$GIT_EMAIL"
+    - git config --global user.name "$GIT_USER"
+    - git reset --hard HEAD
+    - git checkout -b bump/yarn || git checkout bump/yarn
+    - yarn upgrade
+    - |
+      git add yarn.lock
+      git commit -m "chore: update yarn dependencies"
+      git push https://gitlab-ci-token:${CT_TOKEN}@git.baln.co.uk/general/conventional-tools.git bump/yarn -o merge_request.create -o merge_request.target=next -o merge_request.merge_when_pipeline_succeeds -o merge_request.remove_source_branch
+
 lint:commits:
   stage: lint
+  rules:
+    - if: '$CRON != "true"'
   script:
     - ./bin/run commitlint
 
 test:
   stage: test
+  rules:
+    - if: '$CRON != "true"'
   script:
     - ln -s $(pwd)/bin/run /usr/local/bin/conventional-tools
     - git config --global user.email "test@test.com"
@@ -31,6 +58,8 @@ test:
 
 lint:code:
   stage: lint
+  rules:
+    - if: '$CRON != "true"'
   script:
     - ./node_modules/.bin/prettier -c src/**/* docs/**/*
 
