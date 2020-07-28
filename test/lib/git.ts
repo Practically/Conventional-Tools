@@ -20,3 +20,7 @@ export function commit(message: string) {
 export function branch(name: string) {
     return execa('git', ['checkout', '-b', name]);
 }
+
+export async function getBranch(): Promise<string> {
+    return (await execa('git', ['rev-parse', '--abbrev-ref', 'HEAD'])).stdout;
+}

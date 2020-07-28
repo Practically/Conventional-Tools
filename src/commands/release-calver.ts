@@ -103,9 +103,11 @@ export default class ReleaseCalver extends Command {
 
                     await execa('git', [
                         'push',
-                        '-o ci.skip',
                         origin || 'origin',
+                        '-o',
+                        'ci.skip',
                     ]);
+
                     await execa('git', ['push', origin || 'origin', '--tags']);
                 },
             },
