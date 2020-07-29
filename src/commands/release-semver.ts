@@ -115,7 +115,7 @@ export default class ReleaseSemver extends Command {
                     await execa('git', [
                         'commit',
                         '-m',
-                        `chore(release): ${tagPrefix + nextTag}`,
+                        `chore(release): ${tagPrefix + nextTag} [skip ci]`,
                     ]);
                 },
             },
