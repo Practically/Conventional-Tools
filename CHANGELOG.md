@@ -1,3 +1,23 @@
+# [v0.4.0](https://git.baln.co.uk/general/conventional-tools/compare/v0.3.2...v0.4.0) (2020-09-01)
+
+
+### Bug Fixes
+
+* **git-hooks:** param replacement ([cd16901](https://git.baln.co.uk/general/conventional-tools/commits/cd16901e06a3150a3f63fc4ee961d2d37dbf384b)), closes [#9](https://git.baln.co.uk/general/conventional-tools/issues/9)
+* **git-hooks:** pass git hook variable to the `git-hook` command ([6915aa1](https://git.baln.co.uk/general/conventional-tools/commits/6915aa1468b7d5b08e7731b359e007e92331b602)), closes [#10](https://git.baln.co.uk/general/conventional-tools/issues/10)
+* **release:** add skip-ci to the release commit message ([5a7a94d](https://git.baln.co.uk/general/conventional-tools/commits/5a7a94d39e020d4ab55a28b1df07d71b0b67d86d))
+* **release:** ensure the `ci.skip` flag is passed when pushing ([a9910bd](https://git.baln.co.uk/general/conventional-tools/commits/a9910bd43153e0e139dbbf319d0cfe4930d34070))
+* **release:** run prepack before push to npm ([391129e](https://git.baln.co.uk/general/conventional-tools/commits/391129e95de9a8d181b7748e96ee6e1a655b8da9))
+
+
+### Features
+
+* **commitgen:** add the commitgen command ([a47bd02](https://git.baln.co.uk/general/conventional-tools/commits/a47bd0240103e37a14bf7a670f55c940ca793d10))
+* **core:** add shell autocomplete ([f44675c](https://git.baln.co.uk/general/conventional-tools/commits/f44675ccf70557e1023f6926c9e514f4f5576755)), closes [#8](https://git.baln.co.uk/general/conventional-tools/issues/8)
+* **release:** add build to Gitlab release ([4801ff3](https://git.baln.co.uk/general/conventional-tools/commits/4801ff3948aa69b477c9decc3fe4edc8d2d6a5e9)), closes [#4](https://git.baln.co.uk/general/conventional-tools/issues/4)
+
+
+
 ## [v0.3.2](https://git.baln.co.uk/general/conventional-tools/compare/v0.3.1...v0.3.2) (2020-07-01)
 
 
