@@ -13,7 +13,8 @@ const getCurrentBranch = async (): Promise<string> => {
 };
 
 export default class ReleaseCalver extends Command {
-    static description = 'describe the command here';
+    static description =
+        'Create change logs and Gitlab releases in calendar versioning format';
 
     static flags = {
         scope: flags.string({
@@ -83,7 +84,7 @@ export default class ReleaseCalver extends Command {
                     await execa('git', [
                         'commit',
                         '-m',
-                        `chore(release): ${tagPrefix + nextTag}`,
+                        `chore(release): ${tagPrefix + nextTag} [skip ci]`,
                     ]);
                 },
             },
@@ -102,9 +103,11 @@ export default class ReleaseCalver extends Command {
 
                     await execa('git', [
                         'push',
-                        '-o ci.skip',
                         origin || 'origin',
+                        '-o',
+                        'ci.skip',
                     ]);
+
                     await execa('git', ['push', origin || 'origin', '--tags']);
                 },
             },

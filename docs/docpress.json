@@ -1,4 +1,5 @@
 {
     "docs": "docs",
-    "dist": "public"
+    "dist": "public",
+    "css": ["docs/extra.css"]
 }

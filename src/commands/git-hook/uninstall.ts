@@ -26,7 +26,8 @@ const hooks = [
 ];
 
 export default class HookUninstall extends Command {
-    static description = 'describe the command here';
+    static description =
+        'Uninstall the conventional-tools script in your .git/hooks directory';
 
     async run() {
         for (const hook of hooks) {

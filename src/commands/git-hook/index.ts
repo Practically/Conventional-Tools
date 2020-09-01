@@ -27,7 +27,7 @@ const configGet = async (item: any, defaultValue: any) => {
 };
 
 export default class GitHook extends Command {
-    static description = 'describe the command here';
+    static description = 'Manage git hooks under version control';
 
     static strict = false;
     static args = [{name: 'hook'}];
@@ -39,8 +39,10 @@ export default class GitHook extends Command {
 
         for (let hook of hooks) {
             for (const i in argv) {
-                hook = hook.replace(`$\{${i}\}`, argv[i]);
+                hook = hook.replace(new RegExp(`\\$\\{${i}\\}`, 'g'), argv[i]);
             }
+
+            hook = hook.replace(/\$\{\d+\}/g, '');
 
             let title = hook;
             if (hook.includes('\n')) {

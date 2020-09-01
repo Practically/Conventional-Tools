@@ -3,10 +3,17 @@ hooks:
     - ./bin/run commitlint -f HEAD~2
   pre-push:
     - ./bin/run commitlint -l1
+  prepare-commit-msg:
+    - |
+      # Commitgen
+      if [ -z "${2}" ]; then
+        echo "$(conventional-tools commitgen)$(cat ${1})" > ${1};
+      fi
 commit:
   scopes:
     - core
     - commitlint
+    - commitgen
     - release
     - release-semver
     - release-calver

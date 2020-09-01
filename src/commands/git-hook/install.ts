@@ -8,7 +8,7 @@ const buildHook = ({hook}: {hook: string}) => `#!/bin/sh
 # You can uninstall all hook by running "conventional-tools git-hook:uninstall"
 #
 
-conventional-tools git-hook ${hook};
+conventional-tools git-hook ${hook} "$@";
 exit $?;
 `;
 
@@ -26,7 +26,8 @@ const hooks = [
 ];
 
 export default class HookInstall extends Command {
-    static description = 'describe the command here';
+    static description =
+        'Install the conventional-tools script into your .git/hooks directory';
 
     async run() {
         for (const hook of hooks) {

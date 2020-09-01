@@ -18,6 +18,7 @@
         "@commitlint/load": "^8.3.5",
         "@oclif/command": "^1",
         "@oclif/config": "^1",
+        "@oclif/plugin-autocomplete": "^0.2.0",
         "@oclif/plugin-help": "^2",
         "chalk": "^4.0.0",
         "conventional-changelog": "^3.1.18",
@@ -45,6 +46,7 @@
         "globby": "^10",
         "mocha": "^5",
         "nyc": "^14",
+        "prettier": "^2.0.5",
         "ts-node": "^8",
         "typescript": "^3.3"
     },
@@ -67,7 +69,8 @@
         "commands": "./lib/commands",
         "bin": "conventional-tools",
         "plugins": [
-            "@oclif/plugin-help"
+            "@oclif/plugin-help",
+            "@oclif/plugin-autocomplete"
         ]
     },
     "repository": "https://git.baln.co.uk/general/conventional-tools",
@@ -76,7 +79,8 @@
         "postpack": "rm -f oclif.manifest.json",
         "prepack": "rm -rf lib && tsc -b && oclif-dev manifest",
         "test": "nyc --extension .ts mocha --forbid-only \"test/**/*.test.ts\"",
-        "version": "oclif-dev readme && git add README.md"
+        "version": "oclif-dev readme && git add README.md",
+        "lint": "prettier --write ./src/**/* ./docs/**/**"
     },
     "types": "lib/index.d.ts"
 }
