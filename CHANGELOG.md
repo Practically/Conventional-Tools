@@ -1,3 +1,12 @@
+## [v0.4.1](https://git.baln.co.uk/general/conventional-tools/compare/v0.4.0...v0.4.1) (2020-09-01)
+
+
+### Bug Fixes
+
+* **core:** change build to master not tags now its skipped ([f2c6f91](https://git.baln.co.uk/general/conventional-tools/commits/f2c6f9132e0d5d04df4e68a62bbff39ae0b5239a))
+
+
+
 # [v0.4.0](https://git.baln.co.uk/general/conventional-tools/compare/v0.3.2...v0.4.0) (2020-09-01)
 
 

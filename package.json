@@ -1,7 +1,7 @@
 {
     "name": "@baln/conventional-tools",
     "description": "CLI tool for a conventional workflow",
-    "version": "0.4.0",
+    "version": "0.4.1",
     "author": {
         "name": "Ade Attwood ",
         "email": "code@adeattwood.co.uk",
