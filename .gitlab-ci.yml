@@ -75,7 +75,6 @@ build:
   only:
     - master
     - next
-    - tags
 
 docker-image-next:
   stage: package
@@ -120,7 +119,7 @@ docker-image:
     - docker push $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_NAME
     - docker push $CI_REGISTRY_IMAGE:latest
   only:
-    - tags
+    - master
 
 publish:npm:
   stage: package
@@ -129,7 +128,7 @@ publish:npm:
     - yarn prepack
     - npm publish --access=public
   only:
-    - tags
+    - master
 
 pages:
   stage: deploy
@@ -140,4 +139,4 @@ pages:
     paths:
       - public
   only:
-    - tags
+    - master
