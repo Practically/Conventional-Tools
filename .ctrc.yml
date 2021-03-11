@@ -12,8 +12,9 @@ hooks:
 commit:
   scopes:
     - core
-    - commitlint
+    - changelog
     - commitgen
+    - commitlint
     - release
     - release-semver
     - release-calver
