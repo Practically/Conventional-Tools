@@ -40,9 +40,8 @@ export const changeLog = ({
                         preset: 'angular',
                         lernaPackage: packageName,
                     },
-                    {
-                        version: tagPrefix + newVersion,
-                    } /** for when we implement sub packages, { path } */,
+                    {version: tagPrefix + newVersion},
+                    {path: process.cwd()}
                 )
                     .pipe(fs.createWriteStream('CHANGELOG.md'))
                     .on('finish', function () {
@@ -69,9 +68,8 @@ export const releaseNotes = ({
                 preset: 'angular',
                 lernaPackage: packageName,
             },
-            {
-                version: tagPrefix + newVersion,
-            } /** for when we implement sub packages, { path } */,
+            {version: tagPrefix + newVersion},
+            {path: process.cwd()}
         )
             .on('data', (data: any) => (notes += data.toString()))
             .on('end', () => resolve(notes.replace(/^#.*/, '').trim()));
