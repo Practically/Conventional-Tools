@@ -15,6 +15,13 @@ export function commit(message: string) {
 }
 
 /**
+ * Adds all of the files in the current working directory
+ */
+export function add() {
+    return execa('git', ['add', '.']);
+}
+
+/**
  * Create and checkout a new branch
  */
 export function branch(name: string) {
