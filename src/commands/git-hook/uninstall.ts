@@ -31,13 +31,12 @@ export default class HookUninstall extends Command {
 
     async run() {
         for (const hook of hooks) {
-            fs.writeFile(
+            fs.writeFileSync(
                 `.git/hooks/${hook}`,
                 buildHook({hook}),
                 {
                     mode: '775',
-                },
-                () => {},
+                }
             );
         }
     }

@@ -30,7 +30,7 @@ export const changeLog = ({
     newVersion,
     packageName,
 }: changeLogProps) =>
-    new Promise(res => {
+    new Promise<void>(res => {
         const tmp = tempfile();
         fs.createReadStream('CHANGELOG.md')
             .pipe(fs.createWriteStream(tmp))
