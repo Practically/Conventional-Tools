@@ -12,7 +12,8 @@ export default class Changelog extends Command {
     static flags = {
         scope: flags.string({
             char: 's',
-            description: 'The tag scope this can be used to scope your changelog',
+            description:
+                'The tag scope this can be used to scope your changelog',
             default: '',
         }),
     };
@@ -30,6 +31,6 @@ export default class Changelog extends Command {
         }
 
         await execa('git', ['fetch', '--tags']);
-        await changeLog({...props, newVersion: args.tag as string})
+        await changeLog({...props, newVersion: args.tag as string});
     }
 }

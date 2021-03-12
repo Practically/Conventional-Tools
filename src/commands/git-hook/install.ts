@@ -31,13 +31,9 @@ export default class HookInstall extends Command {
 
     async run() {
         for (const hook of hooks) {
-            fs.writeFileSync(
-                `.git/hooks/${hook}`,
-                buildHook({hook}),
-                {
-                    mode: '775',
-                }
-            );
+            fs.writeFileSync(`.git/hooks/${hook}`, buildHook({hook}), {
+                mode: '775',
+            });
         }
     }
 }

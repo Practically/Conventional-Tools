@@ -41,7 +41,7 @@ export const changeLog = ({
                         lernaPackage: packageName,
                     },
                     {version: tagPrefix + newVersion},
-                    {path: process.cwd()}
+                    {path: process.cwd()},
                 )
                     .pipe(fs.createWriteStream('CHANGELOG.md'))
                     .on('finish', function () {
@@ -69,7 +69,7 @@ export const releaseNotes = ({
                 lernaPackage: packageName,
             },
             {version: tagPrefix + newVersion},
-            {path: process.cwd()}
+            {path: process.cwd()},
         )
             .on('data', (data: any) => (notes += data.toString()))
             .on('end', () => resolve(notes.replace(/^#.*/, '').trim()));

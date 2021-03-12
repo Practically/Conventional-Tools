@@ -1,9 +1,9 @@
 # Changelog
 
 The changelog command populate a `CHANGELOG.md` file with the changes from the
-git history biased on the [conventional commit
-standard](https://www.conventionalcommits.org/en/v1.0.0-beta.2/). For more
-infomation on commits in conventional tools you can see the
+git history biased on the
+[conventional commit standard](https://www.conventionalcommits.org/en/v1.0.0-beta.2/).
+For more infomation on commits in conventional tools you can see the
 [commitlint](/docs/commitlint.md) page.
 
 To generate a changelog you can run the command with the new version. The tag
