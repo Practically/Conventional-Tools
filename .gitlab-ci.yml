@@ -15,29 +15,6 @@ cache:
 before_script:
   - yarn install
 
-bump:composer:
-  allow_failure: true
-  variables:
-    GIT_EMAIL: gitbot@baln.co.uk
-    GIT_USER: Gitbot
-    GIT_STRATEGY: clone
-  services:
-    - mysql:5.7
-  rules:
-    - if: '$CRON == "true" && $TASK == "bump"'
-  script:
-    - apt update && apt install -y git
-    - cp .env.test .env
-    - git config --global user.email "$GIT_EMAIL"
-    - git config --global user.name "$GIT_USER"
-    - git reset --hard HEAD
-    - git checkout -b bump/yarn || git checkout bump/yarn
-    - yarn upgrade
-    - |
-      git add yarn.lock
-      git commit -m "chore: update yarn dependencies"
-      git push https://gitlab-ci-token:${CT_TOKEN}@git.baln.co.uk/general/conventional-tools.git bump/yarn -o merge_request.create -o merge_request.target=next -o merge_request.merge_when_pipeline_succeeds -o merge_request.remove_source_branch
-
 lint:commits:
   stage: lint
   rules:
@@ -73,8 +50,7 @@ build:
     paths:
       - dist
   only:
-    - master
-    - next
+    - 0.x
 
 docker-image-next:
   stage: package
@@ -88,7 +64,7 @@ docker-image-next:
     - docker build --pull --tag $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_NAME .
     - docker push $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_NAME
   only:
-    - next
+    - 0.x
 
 release:
   stage: release
@@ -139,4 +115,4 @@ pages:
     paths:
       - public
   only:
-    - master
+    - 0.x
