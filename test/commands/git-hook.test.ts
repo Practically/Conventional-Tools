@@ -18,7 +18,7 @@ describe('git-hook:install', () => {
     })
         .stdout()
         .command(['git-hook:install'])
-        .it('installs the git hooks', ctx => {
+        .it('installs the git hooks', async () => {
             const file = fs.readFileSync(
                 process.cwd() + '/.git/hooks/applypatch-msg',
             );
@@ -79,7 +79,7 @@ hooks:
 describe('git-hook:uninstall', () => {
     test.stdout()
         .command(['git-hook:uninstall'])
-        .it('un installs the git hooks', () => {
+        .it('un installs the git hooks', async () => {
             const file = fs.readFileSync(
                 process.cwd() + '/.git/hooks/applypatch-msg',
             );
