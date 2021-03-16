@@ -33,7 +33,9 @@ export default class Changelog extends Command {
         try {
             await execa('git', ['fetch', '--tags']);
         } catch {
-            this.warn('Failed to pull latest tags from remove. The changelog may not have the latest changes');
+            this.warn(
+                'Failed to pull latest tags from remove. The changelog may not have the latest changes',
+            );
         }
 
         await changeLog({...props, newVersion: args.tag as string});
