@@ -1,16 +1,7 @@
 import * as fs from 'fs';
-import * as path from 'path';
-import * as os from 'os';
 import {expect, test} from '@oclif/test';
 
 import * as git from '../lib/git';
-
-beforeEach(async function() {
-    const a = fs.mkdtempSync(path.join(os.tmpdir(), 'ct-test-'));
-
-    process.chdir(a);
-    await git.init();
-});
 
 describe('git-hook:install', () => {
     test.do(async () => {

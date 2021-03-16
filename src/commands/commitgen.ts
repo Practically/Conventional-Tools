@@ -5,7 +5,7 @@ import * as execa from 'execa';
 
 const getCurrentBranch = async (): Promise<string> => {
     const {stdout} = await execa('git', ['rev-parse', '--abbrev-ref', 'HEAD']);
-    return process.env.CI_COMMIT_BRANCH || stdout || 'master';
+    return stdout || 'master';
 };
 
 const types = [
