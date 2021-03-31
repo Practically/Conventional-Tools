@@ -1,6 +1,6 @@
 import {Command, flags} from '@oclif/command';
 
-const lint = require('@commitlint/lint');
+import lint from '@commitlint/lint';
 const gitRawCommits = require('git-raw-commits');
 const chalk = require('chalk');
 import configGet from '../lib/config';
