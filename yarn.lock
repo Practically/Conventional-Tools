@@ -215,11 +215,11 @@
   integrity sha512-JzyweYfZlFLtXpgP+btzSY3YAkGPg61TqUSYQqBr4+5IaVf1FruMm5v4D5eLu9dAJuNKUfHbM3AEfuEPiZ79pg==
 
 "@commitlint/format@^12":
-  version "12.0.1"
-  resolved "https://registry.npmjs.org/@commitlint/format/-/format-12.0.1.tgz#5164e5a9e8592c1983482cbd71e7ea86a645ff1b"
-  integrity sha512-rF79ipAxR8yFzPzG5tRoEZ//MRkyxCXj4JhpEjtdaCMBAXMssI8uazn3e5D8z4UFgSDe9qOnL0OmQvql7HTMoA==
+  version "12.1.1"
+  resolved "https://registry.yarnpkg.com/@commitlint/format/-/format-12.1.1.tgz#a6b14f8605171374eecc2c463098d63c127ab7df"
+  integrity sha512-bTAoOryTFLqls17JTaRwk2WDVOP0NwuG4F/JPK8RaF6DMZNVQTfajkgTxFENNZRnESfau1BvivvEXfUAW2ZsvA==
   dependencies:
-    "@commitlint/types" "^12.0.1"
+    "@commitlint/types" "^12.1.1"
     chalk "^4.0.0"
 
 "@commitlint/is-ignored@^12.0.1":
@@ -292,10 +292,10 @@
   resolved "https://registry.npmjs.org/@commitlint/to-lines/-/to-lines-12.0.1.tgz#586d89b9f9ff99ef93b3c8aa3d77faffbe3ffedc"
   integrity sha512-XwcJ1jY7x2fhudzbGMpNQkTSMVrxWrI8bRMbVe3Abuu7RfYpFf7VXAlhtnLfxBoagaK7RxjC2+eRidp/3txQBg==
 
-"@commitlint/types@^12.0.1":
-  version "12.0.1"
-  resolved "https://registry.npmjs.org/@commitlint/types/-/types-12.0.1.tgz#04a0cbb8aa56b7c004f8939c2d1ef8892ec68327"
-  integrity sha512-FsNDMV0W7D19/ZbR412klpqAilXASx75Neqh7jPtK278IEwdukOg3vth1r5kTm+BjDScM7wMUEOwIW3NNfAtwg==
+"@commitlint/types@^12.0.1", "@commitlint/types@^12.1.1":
+  version "12.1.1"
+  resolved "https://registry.yarnpkg.com/@commitlint/types/-/types-12.1.1.tgz#8e651f6af0171cd4f8d464c6c37a7cf63ee071bd"
+  integrity sha512-+qGH+s2Lo6qwacV2X3/ZypZwaAI84ift+1HBjXdXtI/q0F5NtmXucV3lcQOTviMTNiJhq4qWON2fjci2NItASw==
   dependencies:
     chalk "^4.0.0"
 
