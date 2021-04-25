@@ -3,7 +3,7 @@
 Conventional tools can be configured with a yaml file in the root of your
 project. The yaml file must be called `.ctrc.yml`. All config options can be
 found in the
-[schema file](https://git.baln.co.uk/general/conventional-tools/blob/master/src/config.schema.json)
+[schema file](https://git.zportal.co.uk/practically-oss/conventional-tools/-/blob/0.x/src/config.schema.json)
 
 ## Example
 
@@ -31,6 +31,6 @@ coc settings that you can get to by running `:CocConfig`
 
 ```json
 "yaml.schemas": {
-    "https://git.baln.co.uk/general/conventional-tools/raw/master/src/config.schema.json": "/.ctrc.yml"
+    "https://git.zportal.co.uk/practically-oss/conventional-tools/-/raw/0.x/src/config.schema.json": "/.ctrc.yml"
 }
 ```

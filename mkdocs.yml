@@ -1,0 +1,56 @@
+site_name: Conventional Tools
+site_description: CLI tool for a conventional workflow
+
+repo_name: practically-oss/conventional-tools
+repo_url: https://git.zportal.co.uk/practically-oss/conventional-tools
+edit_uri: -/tree/0.x/docs
+
+nav:
+  - Getting Started: getting-started.md
+  - Configuration: configuration.md
+  - Git Hooks: git-hooks.md
+  - Changelog: changelog.md
+  - Commitgen: commitgen.md
+  - Commitlint: commitlint.md
+  - Release Semver: release-semver.md
+  - Release Calver: release-calver.md
+
+theme:
+  name: material
+
+  palette:
+    primary: cyan
+    accent: yellow
+
+  logo: https://practically.io/apple-touch-icon.png
+
+  icon:
+    repo: fontawesome/brands/gitlab
+
+  font:
+    text: Lato
+
+  features:
+    # - navigation.expand
+    # - navigation.tabs
+    - search.highlight
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - pymdownx.tabbed
+  - pymdownx.inlinehilite
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      extend_pygments_lang:
+        - name: php
+          lang: php
+          options:
+            startinline: true
+
+extra_javascript:
+  - https://unpkg.com/prismjs@1.23.0/components/prism-core.min.js
+  - https://unpkg.com/prismjs@1.23.0/plugins/autoloader/prism-autoloader.min.js
+  - /assets/mkdocs.js
+extra_css:
+  - /assets/mkdocs.css

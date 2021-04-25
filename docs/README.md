@@ -1,12 +1,24 @@
-# Table of contents
+---
+hide:
+  - toc # Hide table of contents
+---
 
-- [Conventional Tools](/README.md)
+<div align="center">
 
-- [Getting Started](/docs/getting-started.md)
-- [Configuration](/docs/configuration.md)
-- [Git Hooks](/docs/git-hooks.md)
-- [Changelog](/docs/changelog.md)
-- [Commitgen](/docs/commitgen.md)
-- [Commitlint](/docs/commitlint.md)
-- [Release Semver](/docs/release-semver.md)
-- [Release Calver](/docs/release-calver.md)
+<h1>Conventional Tools</h1>
+
+<p>CLI tool for a conventional workflow</p>
+
+<p>
+    <a href="https://oclif.io">
+        <img alt="oclif" src="https://img.shields.io/badge/cli-oclif-brightgreen.svg">
+    </a>
+    <a href="https://www.npmjs.com/package/@baln/conventional-tools">
+        <img alt="npm (scoped)" src="https://img.shields.io/npm/v/@baln/conventional-tools">
+    </a>
+    <a href="https://git.zportal.co.uk/practically-oss/conventional-tools">
+        <img alt="source code" src="/assets/source-practically.svg">
+    </a>
+</p>
+
+</div>
