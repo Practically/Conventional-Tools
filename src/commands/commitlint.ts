@@ -1,11 +1,12 @@
 import {Command, flags} from '@oclif/command';
 
-import lint from '@commitlint/lint';
 const gitRawCommits = require('git-raw-commits');
 const chalk = require('chalk');
 import configGet from '../lib/config';
 import * as fs from 'fs';
 import * as execa from 'execa';
+
+const lint = require('@commitlint/lint').default;
 
 /**
  * Type constants
