@@ -9,14 +9,13 @@ const commits: string[] = [
     'feat(thing): add ting 1',
     'feat(thing): add ting 2',
     'feat(thing): add ting 3',
-    'feat(thing): add ting 4',
-    'feat(thing): add ting 5',
-    'feat(thing): add ting 6',
-    'feat(thing): add ting 7',
-    'feat(thing): add ting 8',
-    'feat(thing): add ting 9',
-]
+    `fix(thing): thins is a braking change
 
+BREAKING CHANGE: This is the description of the braking change`,
+    `refactor(thing): this has a security notice
+
+SECURITY: This is the description of the security notice`,
+];
 
 beforeEach(async function() {
     const a = fs.mkdtempSync(path.join(os.tmpdir(), 'ct-test-'));
@@ -38,8 +37,35 @@ describe('changelog', () => {
         .command(['changelog', '0.0.1'])
         .it('creates a changelog', async () => {
             const changelog = fs.readFileSync('CHANGELOG.md').toString();
+
+            /**
+             * Assert the section headers
+             */
             expect(changelog).to.match(/^## v0.0.1/);
-            expect(changelog).to.match(/add ting 3/);
+            expect(changelog).to.match(/### Bug Fixes/);
+            expect(changelog).to.match(/### Code Refactoring/);
+            expect(changelog).to.match(/### Features/);
+            expect(changelog).to.match(/### BREAKING CHANGES/);
+            expect(changelog).to.match(/### SECURITY NOTICES/);
+
+            /**
+             * Assert a commit
+             */
+            expect(changelog).to.match(/\* \*\*thing:\*\* add ting 3/);
+
+            /**
+             * Assert the breaking change description gets added to the change log
+             */
+            expect(changelog).to.match(
+                /\* \*\*thing:\*\* This is the description of the braking change/,
+            );
+
+            /**
+             * Assert the security notice gets added to the change log
+             */
+            expect(changelog).to.match(
+                /\* \*\*thing:\*\* This is the description of the security notice/,
+            );
         });
 
     test.do(async () => {

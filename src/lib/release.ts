@@ -1,6 +1,7 @@
 import * as gitSemverTags from 'git-semver-tags';
 import * as fs from 'fs';
 import * as conventionalChangelog from 'conventional-changelog';
+import preset from './conventional-config';
 const tempfile = require('tempfile');
 
 export interface changeLogProps {
@@ -30,14 +31,15 @@ export const changeLog = ({
     newVersion,
     packageName,
 }: changeLogProps) =>
-    new Promise<void>(res => {
+    new Promise<void>(async res => {
+        const config = await preset();
         const tmp = tempfile();
         fs.createReadStream('CHANGELOG.md')
             .pipe(fs.createWriteStream(tmp))
             .on('finish', () => {
                 conventionalChangelog(
                     {
-                        preset: 'angular',
+                        config,
                         lernaPackage: packageName,
                     },
                     {version: tagPrefix + newVersion},
@@ -61,11 +63,12 @@ export const releaseNotes = ({
     newVersion,
     packageName,
 }: changeLogProps): Promise<string> =>
-    new Promise(resolve => {
+    new Promise(async resolve => {
+        const config = await preset();
         let notes = '';
         conventionalChangelog(
             {
-                preset: 'angular',
+                config,
                 lernaPackage: packageName,
             },
             {version: tagPrefix + newVersion},

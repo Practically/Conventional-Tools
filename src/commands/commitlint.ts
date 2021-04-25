@@ -5,6 +5,7 @@ const chalk = require('chalk');
 import configGet from '../lib/config';
 import * as fs from 'fs';
 import * as execa from 'execa';
+import {parserOpts} from '../lib/conventional-config';
 
 const lint = require('@commitlint/lint').default;
 
@@ -74,17 +75,7 @@ const CONFIG: any = {
             ],
         ],
     },
-    parserPreset: {
-        parserOpts: {
-            headerPattern: {},
-            breakingHeaderPattern: {},
-            headerCorrespondence: ['type', 'scope', 'subject'],
-            noteKeywords: ['BREAKING CHANGE'],
-            revertPattern: {},
-            revertCorrespondence: ['header', 'hash'],
-            issuePrefixes: ['#'],
-        },
-    },
+    parserPreset: {parserOpts},
 };
 
 function lintCommits(params: any): Promise<Promise<CommitReport>[]> {
