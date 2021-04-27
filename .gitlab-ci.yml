@@ -106,13 +106,44 @@ publish:npm:
   only:
     - master
 
-pages:
+deploy:docs:
   stage: deploy
+  image: python:latest
+  cache: {}
+  variables:
+    RSYNC_HOST: $DOCS_SSH_DEPLOYMENT_HOST
+    RSYNC_PORT: $DOCS_SSH_DEPLOYMENT_PORT
+    RSYNC_USER: $DOCS_SSH_DEPLOYMENT_USER
+    RSYNC_KEY: $DOCS_SSH_DEPLOYMENT_KEY
+    RSYNC_DEST: $DOCS_SSH_DEPLOYMENT_DEST
+    RSYNC_SRC: public/
   script:
-    - npm install -g docpress
-    - docpress build
-  artifacts:
-    paths:
-      - public
+    #
+    # Check the environment
+    #
+    - if [[ -z "$RSYNC_DEST" ]]; then echo "ERROR No destination was specified" && exit 1; fi
+    #
+    # Install dependencies
+    #
+    - pip install mkdocs-material
+    - apt-get update && apt-get install -y rsync
+    #
+    # Build site
+    #
+    - mkdocs build --site-dir public
+    #
+    # Set up ssh
+    #
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+    - eval $(ssh-agent -s)
+    - ssh-keyscan -p "$RSYNC_PORT" "$RSYNC_HOST" >> ~/.ssh/known_hosts
+    - chmod 644 ~/.ssh/known_hosts
+    - echo "$RSYNC_KEY" | tr -d '\r' | ssh-add -
+    #
+    # Run the rsync deployment
+    #
+    - rsync -arvph $RSYNC_SRC -e "ssh -p $RSYNC_PORT" $RSYNC_USER@$RSYNC_HOST:$RSYNC_DEST
   only:
-    - 0.x
+    refs:
+      - 0.x
