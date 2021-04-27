@@ -40,7 +40,7 @@
         "@types/git-semver-tags": "^4.0.0",
         "@types/listr": "^0.14.2",
         "@types/mocha": "^8",
-        "@types/node": "^14",
+        "@types/node": "^15",
         "@types/semver": "^7.1.0",
         "chai": "^4",
         "globby": "^11",
