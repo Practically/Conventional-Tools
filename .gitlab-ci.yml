@@ -110,6 +110,7 @@ deploy:docs:
   stage: deploy
   image: python:latest
   cache: {}
+  before_script: []
   variables:
     RSYNC_HOST: $DOCS_SSH_DEPLOYMENT_HOST
     RSYNC_PORT: $DOCS_SSH_DEPLOYMENT_PORT
