@@ -10,7 +10,6 @@
     "bin": {
         "conventional-tools": "./bin/run"
     },
-    "bugs": "https://git.baln.co.uk/general/conventional-tools/issues",
     "dependencies": {
         "@commitlint/config-conventional": "^12",
         "@commitlint/format": "^12",
@@ -59,7 +58,7 @@
         "/npm-shrinkwrap.json",
         "/oclif.manifest.json"
     ],
-    "homepage": "http://general.pages.baln.co.uk/conventional-tools/",
+    "homepage": "https://conventional-tools.practically.io/",
     "keywords": [
         "oclif"
     ],
@@ -73,7 +72,7 @@
             "@oclif/plugin-autocomplete"
         ]
     },
-    "repository": "https://git.baln.co.uk/general/conventional-tools",
+    "repository": "https://git.zportal.co.uk/practically-oss/conventional-tools",
     "scripts": {
         "build": "oclif-dev pack",
         "postpack": "rm -f oclif.manifest.json",
