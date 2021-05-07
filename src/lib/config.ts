@@ -9,18 +9,14 @@ const getObjectItem = (obj: any, item: any, defaultValue: any = undefined) => {
     return obj || defaultValue;
 };
 
-let config: any;
 export const configGet = async (
     item: string,
     defaultValue: any,
 ): Promise<any> => {
-    if (!config) {
-        const explorerSync = cosmiconfigSync('ct');
-        const searchedFor = explorerSync.search();
-        config = searchedFor || {};
-    }
+    const explorerSync = cosmiconfigSync('ct');
+    const searchedFor = explorerSync.search();
 
-    return getObjectItem(config.config, item, defaultValue);
+    return getObjectItem(searchedFor?.config || {}, item, defaultValue);
 };
 
 export default configGet;
