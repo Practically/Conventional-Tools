@@ -74,7 +74,7 @@ export default class ReleaseCalver extends Command {
                     )) as Array<string>;
 
                     if (flags.scope && !releaseScopes.includes(flags.scope)) {
-                        return (`"${flags.scope}" is not a release scope` as any) as boolean;
+                        return `"${flags.scope}" is not a release scope` as any as boolean;
                     }
 
                     return false;
@@ -124,7 +124,7 @@ export default class ReleaseCalver extends Command {
                     )) as Array<string>;
 
                     if (flags.scope && !releaseScopes.includes(flags.scope)) {
-                        return (`"${flags.scope}" is not a release scope` as any) as boolean;
+                        return `"${flags.scope}" is not a release scope` as any as boolean;
                     }
 
                     return false;
