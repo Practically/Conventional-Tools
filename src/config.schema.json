@@ -5,6 +5,20 @@
         "git": {
             "type": "object",
             "properties": {
+                "provider": {
+                    "type": "string",
+                    "enum": ["gitlab"],
+                    "default": "gitlab",
+                    "description": "The git provider where your source code is stored"
+                },
+                "host": {
+                    "type": "string",
+                    "description": "The host of the provider. This will be set to default on the relevant host and can be overridden if you are using a self hosted gitlab or github enterprise"
+                },
+                "project": {
+                    "type": "string",
+                    "description": "The project of the repository on the code host. For example 'practically-oss/conventional-tools'"
+                },
                 "tagPrefix": {
                     "type": "string",
                     "default": "v",

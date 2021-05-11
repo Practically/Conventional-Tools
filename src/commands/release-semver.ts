@@ -2,12 +2,13 @@ import {Command} from '@oclif/command';
 
 import * as conventionalRecommendedBump from 'conventional-recommended-bump';
 import * as semver from 'semver';
-import * as execa from 'execa';
+import {execa} from '../lib/execa';
 import * as Listr from 'listr';
 import * as fs from 'fs';
 import configGet from '../lib/config';
 import {getTag, changeLog, releaseNotes} from '../lib/release';
 import {gitlabRelease} from '../lib/gitlab-release';
+import * as secrets from '../lib/secret';
 import * as glob from 'glob';
 
 const getRecommendedBump = ({tagPrefix}: {tagPrefix: string}) =>
@@ -62,6 +63,14 @@ export default class ReleaseSemver extends Command {
         if (notes.length === 0) {
             this.log('Sipping no commits since last release');
             return;
+        }
+
+        const provider = await configGet('git.provider', 'gitlab');
+        const host = await configGet('git.host', 'gitlab.com');
+        const project = await configGet('git.project', '');
+        const secret = (await secrets.getSecret(host)) || process.env.CT_TOKEN;
+        if (!secret) {
+            this.error('Invalid secret TODO link to the docs');
         }
 
         const tasks = new Listr([
@@ -155,11 +164,19 @@ export default class ReleaseSemver extends Command {
                         tag: tagPrefix + nextTag,
                         assets: assets,
                         notes: notes,
+                        provider: provider,
+                        host: host,
+                        project: project,
+                        secret: secret,
                     });
                 },
             },
         ]);
 
-        tasks.run().catch((err: any) => this.error(err.message));
+        try {
+            await tasks.run();
+        } catch (err) {
+            this.error(err.message);
+        }
     }
 }

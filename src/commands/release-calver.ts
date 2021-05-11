@@ -1,16 +1,12 @@
 import {Command, flags} from '@oclif/command';
 
-import * as execa from 'execa';
 import * as Listr from 'listr';
 import configGet from '../lib/config';
 import {getTag, changeLog, releaseNotes} from '../lib/release';
 import {gitlabRelease} from '../lib/gitlab-release';
 import * as glob from 'glob';
-
-const getCurrentBranch = async (): Promise<string> => {
-    const {stdout} = await execa('git', ['rev-parse', '--abbrev-ref', 'HEAD']);
-    return process.env.CI_COMMIT_BRANCH || stdout || 'master';
-};
+import * as secrets from '../lib/secret';
+import {execa} from '../lib/execa';
 
 export default class ReleaseCalver extends Command {
     static description =
@@ -57,6 +53,14 @@ export default class ReleaseCalver extends Command {
         if (notes.length === 0) {
             this.log('Sipping no commits since last release');
             return;
+        }
+
+        const provider = await configGet('git.provider', 'gitlab');
+        const host = await configGet('git.host', 'gitlab.com');
+        const project = await configGet('git.project', '');
+        const secret = (await secrets.getSecret(host)) || process.env.CT_TOKEN;
+        if (!secret) {
+            this.error('Invalid secret TODO link to the docs');
         }
 
         const tagPrefix = props.tagPrefix;
@@ -136,11 +140,19 @@ export default class ReleaseCalver extends Command {
                         tag: tagPrefix + nextTag,
                         assets: assets,
                         notes: notes,
+                        provider: provider,
+                        host: host,
+                        project: project,
+                        secret: secret,
                     });
                 },
             },
         ]);
 
-        tasks.run().catch((err: any) => this.error(err.message));
+        try {
+            await tasks.run();
+        } catch (err) {
+            this.error(err.message);
+        }
     }
 }

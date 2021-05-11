@@ -15,6 +15,13 @@ export function commit(message: string) {
 }
 
 /**
+ * Creates and empty commit so you can populate your tree
+ */
+ export function tag(version: string) {
+    return execa('git', ['tag', version]);
+}
+
+/**
  * Adds all of the files in the current working directory
  */
 export function add() {

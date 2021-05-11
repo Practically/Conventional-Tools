@@ -12,6 +12,7 @@ nav:
   - Changelog: changelog.md
   - Commitgen: commitgen.md
   - Commitlint: commitlint.md
+  - Release Config: release-config.md
   - Release Semver: release-semver.md
   - Release Calver: release-calver.md
 

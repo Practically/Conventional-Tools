@@ -7,15 +7,18 @@ export interface gitlabReleaseProps {
     tag: string;
     assets: string[];
     notes: string;
+    provider: string;
+    host: string;
+    project: string;
+    secret: string;
 }
 
 export const gitlabRelease = async (props: gitlabReleaseProps) => {
     const assetsList: any = [];
-    const apiBaseUrl = process.env.CI_API_V4_URL;
-    const apiProjectId = process.env.CI_PROJECT_ID;
-    const projectUrl = process.env.CI_PROJECT_URL;
-    const gitlabToken = process.env.CT_TOKEN;
-    const apiOptions = {headers: {'PRIVATE-TOKEN': gitlabToken}};
+    const apiBaseUrl = `https://${props.host}/api/v4`;
+    const apiProjectId = encodeURIComponent(props.project);
+    const projectUrl = `https://${props.host}/${props.project}`;
+    const apiOptions = {headers: {'PRIVATE-TOKEN': props.secret}};
     const encodedTag = encodeURIComponent(props.tag);
 
     // Remote a release. Handy for testing

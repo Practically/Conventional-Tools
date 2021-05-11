@@ -16,9 +16,9 @@ The release process is:
 
 ## Configuration
 
-To configure your ci you will need to put a deployment token in to your
-variables with the key of `CT_TOKEN`. The token will need write privileges to
-the repository and access to the api to create your release.
+You will need to configure the secrets and git provided before creating your
+release. You can find more about that on the
+[Release Config Page](./release-config.md)
 
 Below is a example job you can put into your `.gitlab-ci.yaml`. It will create a
 new release with every push to the master branch
