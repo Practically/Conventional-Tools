@@ -46,7 +46,7 @@
         "mocha": "^8",
         "nyc": "^15",
         "prettier": "^2.0.5",
-        "sinon": "^10.0.0",
+        "sinon": "^11.1.0",
         "ts-node": "^10",
         "typescript": "^4"
     },
