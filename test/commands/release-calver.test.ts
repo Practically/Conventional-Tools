@@ -117,38 +117,64 @@ describe('release-semver', () => {
             },
         );
 
-        let gotCalled2 = false;
-        test.do(async () => {
-            fs.writeFileSync(
-                process.cwd() + '/.ctrc.json',
-                JSON.stringify({
-                    git: {
-                        project: 'test/project',
-                    },
-                }),
-            );
-
-            const encodedTag = encodeURIComponent(`v1.0.1-alpha.0`);
-            const apiProjectId = encodeURIComponent('test/project');
-
-            mocks.got
-                .withArgs(
-                    `https://gitlab.com/api/v4/projects/${apiProjectId}/repository/tags/${encodedTag}/release`,
-                )
-                .callsFake((_: string, options: any) => {
-                    expect(options.headers['PRIVATE-TOKEN']).to.eq('pass');
-                    expect(options.json.name).to.eq(`Release: v1.0.1-alpha.0`);
-                    expect(options.json.tag_name).to.eq(`v1.0.1-alpha.0`);
-                    gotCalled2 = true;
-                });
-        })
-            .stdout()
-            .command(['release-semver', 'alpha'])
-            .it(
-                'Creates a alpha release',
-                async ({error}) => {
-                    expect(error).to.eq(undefined);
-                    expect(gotCalled2).to.eq(true);
+    let gotCalled2 = false;
+    test.do(async () => {
+        fs.writeFileSync(
+            process.cwd() + '/.ctrc.json',
+            JSON.stringify({
+                git: {
+                    project: 'test/project',
                 },
-            );
+            }),
+        );
+
+        const encodedTag = encodeURIComponent(`v1.0.1-alpha.0`);
+        const apiProjectId = encodeURIComponent('test/project');
+
+        mocks.got
+            .withArgs(
+                `https://gitlab.com/api/v4/projects/${apiProjectId}/repository/tags/${encodedTag}/release`,
+            )
+            .callsFake((_: string, options: any) => {
+                expect(options.headers['PRIVATE-TOKEN']).to.eq('pass');
+                expect(options.json.name).to.eq(`Release: v1.0.1-alpha.0`);
+                expect(options.json.tag_name).to.eq(`v1.0.1-alpha.0`);
+                gotCalled2 = true;
+            });
+    })
+        .stdout()
+        .command(['release-semver', 'alpha'])
+        .it('Creates a alpha release', async ({error}) => {
+            expect(error).to.eq(undefined);
+            expect(gotCalled2).to.eq(true);
+        });
+
+    let gotCalled3 = false;
+    test.do(async () => {
+        fs.writeFileSync(
+            process.cwd() + '/.ctrc.json',
+            JSON.stringify({
+                git: {
+                    provider: 'github',
+                    project: 'test/project',
+                },
+            }),
+        );
+
+        const apiProjectId = 'test/project';
+        mocks.got
+            .withArgs(`https://api.github.com/repos/${apiProjectId}/releases`)
+            .callsFake((_: string, options: any) => {
+                expect(options.headers['Authorization']).to.eq('token pass');
+                expect(options.json.name).to.eq(`Release: v1.0.1`);
+                expect(options.json.tag_name).to.eq(`v1.0.1`);
+                gotCalled3 = true;
+            });
+    })
+        .stdout()
+        .command(['release-semver', '1.0.1'])
+        .it('Creates a github release', async ({error}) => {
+            expect(error).to.eq(undefined);
+            expect(gotCalled3).to.eq(true);
+        });
 });

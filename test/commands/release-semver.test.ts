@@ -138,8 +138,45 @@ describe('release-calver', () => {
     })
         .stdout()
         .command(['release-calver', '-s', 'live'])
-        .it('Creates a release and calls a self hosted gitlab instance', async ({error}) => {
+        .it(
+            'Creates a release and calls a self hosted gitlab instance',
+            async ({error}) => {
+                expect(error).to.eq(undefined);
+                expect(gotCalled1).to.eq(true);
+            },
+        );
+
+    let gotCalled3 = false;
+    test.do(async () => {
+        fs.writeFileSync(
+            process.cwd() + '/.ctrc.json',
+            JSON.stringify({
+                git: {
+                    project: 'test/project',
+                    provider: 'github',
+                    releaseScopes: ['live'],
+                },
+            }),
+        );
+
+        const date = new Date()
+            .toISOString()
+            .replace(/T.*/, '')
+            .replace(/-/g, '.');
+
+        mocks.got
+            .withArgs(`https://api.github.com/repos/test/project/releases`)
+            .callsFake((_: string, options: any) => {
+                expect(options.headers['Authorization']).to.eq('token pass');
+                expect(options.json.name).to.eq(`Release: live@${date}`);
+                expect(options.json.tag_name).to.eq(`live@${date}`);
+                gotCalled3 = true;
+            });
+    })
+        .stdout()
+        .command(['release-calver', '-s', 'live'])
+        .it('Creates a release on github', async ({error}) => {
             expect(error).to.eq(undefined);
-            expect(gotCalled1).to.eq(true);
+            expect(gotCalled3).to.eq(true);
         });
 });

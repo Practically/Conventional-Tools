@@ -8,6 +8,7 @@ import * as fs from 'fs';
 import configGet from '../lib/config';
 import {getTag, changeLog, releaseNotes} from '../lib/release';
 import {gitlabRelease} from '../lib/gitlab-release';
+import {githubRelease} from '../lib/github-release';
 import * as secrets from '../lib/secret';
 import * as glob from 'glob';
 
@@ -66,7 +67,10 @@ export default class ReleaseSemver extends Command {
         }
 
         const provider = await configGet('git.provider', 'gitlab');
-        const host = await configGet('git.host', 'gitlab.com');
+        const host = await configGet(
+            'git.host',
+            provider === 'gitlab' ? 'gitlab.com' : 'api.github.com',
+        );
         const project = await configGet('git.project', '');
         const secret = (await secrets.getSecret(host)) || process.env.CT_TOKEN;
         if (!secret) {
@@ -152,7 +156,7 @@ export default class ReleaseSemver extends Command {
                 },
             },
             {
-                title: 'Create Gitlab release',
+                title: 'Create release',
                 task: async () => {
                     let assets: string[] = [];
                     for (const expresion of await configGet('assets', [])) {
@@ -160,15 +164,25 @@ export default class ReleaseSemver extends Command {
                         assets = assets.concat(files);
                     }
 
-                    await gitlabRelease({
-                        tag: tagPrefix + nextTag,
-                        assets: assets,
-                        notes: notes,
-                        provider: provider,
-                        host: host,
-                        project: project,
-                        secret: secret,
-                    });
+                    if (provider === 'gitlab') {
+                        await gitlabRelease({
+                            tag: tagPrefix + nextTag,
+                            assets: assets,
+                            notes: notes,
+                            provider: provider,
+                            host: host,
+                            project: project,
+                            secret: secret,
+                        });
+                    } else {
+                        await githubRelease({
+                            tag: tagPrefix + nextTag,
+                            notes: notes,
+                            host: host,
+                            project: project,
+                            secret: secret,
+                        });
+                    }
                 },
             },
         ]);

@@ -7,7 +7,7 @@
             "properties": {
                 "provider": {
                     "type": "string",
-                    "enum": ["gitlab"],
+                    "enum": ["gitlab", "github"],
                     "default": "gitlab",
                     "description": "The git provider where your source code is stored"
                 },
