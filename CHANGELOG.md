@@ -1,3 +1,23 @@
+# [v0.5.0](https://git.zportal.co.uk/practically-oss/conventional-tools/compare/v0.4.0...v0.5.0) (2021-05-29)
+
+
+### Bug Fixes
+
+* **changelog:** dont fail if there is an error ([82a3ec5](https://git.zportal.co.uk/practically-oss/conventional-tools/commits/82a3ec5f9891bdde8a89eeb131ef4bef55e1746c))
+* **core:** change build to master not tags now its skipped ([f2c6f91](https://git.zportal.co.uk/practically-oss/conventional-tools/commits/f2c6f9132e0d5d04df4e68a62bbff39ae0b5239a))
+* **core:** remove cache from config so we dont get old results ([c978c19](https://git.zportal.co.uk/practically-oss/conventional-tools/commits/c978c1968026ba044fd2d6ccb58ca33fd840f9a1))
+
+
+### Features
+
+* **changelog:** add changelog command ([57b7aa3](https://git.zportal.co.uk/practically-oss/conventional-tools/commits/57b7aa3ab782380c91ed573e141fcfbc43ef8eef))
+* **core:** add security notices to the convention ([da0b3e3](https://git.zportal.co.uk/practically-oss/conventional-tools/commits/da0b3e3c007fd6fd19cd5649c60b7f08c86f0180))
+* **core:** upgrade to typescript 4 ([379ad91](https://git.zportal.co.uk/practically-oss/conventional-tools/commits/379ad912664e8cbe82966dd53764ddc548721b4d))
+* **release:** add secret management and host config ([44fe287](https://git.zportal.co.uk/practically-oss/conventional-tools/commits/44fe28768907c1be00d4ccca14193afdc57173e6))
+* **release:** limit changelogs and release notes to the cwd ([b6f8a6f](https://git.zportal.co.uk/practically-oss/conventional-tools/commits/b6f8a6f31513a4119d9208ccb43fd38ddf822b6f))
+
+
+
 # [v0.4.0](https://git.baln.co.uk/general/conventional-tools/compare/v0.3.2...v0.4.0) (2020-09-01)
 
 

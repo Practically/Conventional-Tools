@@ -1,3 +1,7 @@
+git:
+  provider: gitlab
+  host: git.zportal.co.uk
+  project: practically-oss/conventional-tools
 hooks:
   commit-msg:
     - ./bin/run commitlint -f HEAD~2
