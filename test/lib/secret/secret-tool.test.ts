@@ -34,21 +34,24 @@ describe('secret/secret-tool', () => {
         mock.restore();
     });
 
-    test.it('Should call create a secret and fail on no 0 exit code', async () => {
-        const mock = sinon.stub(execa, 'execa').returns({
-            exitCode: 1,
-            stdin: {
-                write: () => true,
-                destroy: () => true,
-            },
-        });
+    test.it(
+        'Should call create a secret and fail on no 0 exit code',
+        async () => {
+            const mock = sinon.stub(execa, 'execa').returns({
+                exitCode: 1,
+                stdin: {
+                    write: () => true,
+                    destroy: () => true,
+                },
+            });
 
-        const secret = await secretTool.storeSecret('testing', 'Testing');
-        expect(secret).to.eq(false);
+            const secret = await secretTool.storeSecret('testing', 'Testing');
+            expect(secret).to.eq(false);
 
-        const calledWith = mock.calledWith('secret-tool');
-        expect(calledWith).to.be.eq(true);
+            const calledWith = mock.calledWith('secret-tool');
+            expect(calledWith).to.be.eq(true);
 
-        mock.restore();
-    });
+            mock.restore();
+        },
+    );
 });

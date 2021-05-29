@@ -38,7 +38,7 @@ lint:code:
   rules:
     - if: '$CRON != "true"'
   script:
-    - ./node_modules/.bin/prettier -c "./src/**/*.{js,jsx,ts,tsx,json,md,css}" "./docs/**/*.{js,jsx,ts,tsx,json,md,css}"
+    - ./node_modules/.bin/prettier -c "./src/**/*.{js,jsx,ts,tsx,json,md,css}" "./test/**/*.{js,jsx,ts,tsx,json,md,css}" "./docs/**/*.{js,jsx,ts,tsx,json,md,css}"
 
 build:
   stage: build

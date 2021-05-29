@@ -9,7 +9,7 @@ describe('commitgen', () => {
         .stdout()
         .command(['commitgen'])
         .it('runs commitgen', async ctx => {
-            expect((await git.getBranch())).to.eq('master');
+            expect(await git.getBranch()).to.eq('master');
             expect(ctx.stdout.trim()).to.match(/^#/);
         });
 
@@ -20,7 +20,7 @@ describe('commitgen', () => {
         .stdout()
         .command(['commitgen'])
         .it('runs commitgen on a feature branch', async ctx => {
-            expect((await git.getBranch())).to.eq('feat/222');
+            expect(await git.getBranch()).to.eq('feat/222');
             expect(ctx.stdout).to.contain('feat(edit): edit');
             expect(ctx.stdout).to.contain('Ref: #222');
         });
@@ -32,7 +32,7 @@ describe('commitgen', () => {
         .stdout()
         .command(['commitgen'])
         .it('runs commitgen on a bug fix branch', async ctx => {
-            expect((await git.getBranch())).to.eq('fix/222');
+            expect(await git.getBranch()).to.eq('fix/222');
             expect(ctx.stdout).to.contain('fix(edit): edit');
             expect(ctx.stdout).to.contain('Fixes Issue: #222');
         });
@@ -44,7 +44,7 @@ describe('commitgen', () => {
         .stdout()
         .command(['commitgen'])
         .it('runs commitgen on a bug fix branch', async ctx => {
-            expect((await git.getBranch())).to.eq('fix/222');
+            expect(await git.getBranch()).to.eq('fix/222');
             expect(ctx.stdout).to.contain('fix(edit): edit');
             expect(ctx.stdout).to.contain('Fixes Issue: #222');
         });

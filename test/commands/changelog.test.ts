@@ -17,7 +17,7 @@ BREAKING CHANGE: This is the description of the braking change`,
 SECURITY: This is the description of the security notice`,
 ];
 
-beforeEach(async function() {
+beforeEach(async function () {
     const a = fs.mkdtempSync(path.join(os.tmpdir(), 'ct-test-'));
     process.chdir(a);
     await git.init();

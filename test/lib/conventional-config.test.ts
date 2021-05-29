@@ -68,26 +68,22 @@ describe('conventional-config', () => {
     test.it('Adds link to the repo', () => {
         const commit = 'fix: this is a ting #123';
         const transformed = config.transform(
-            conventionalCommitsParser.sync(
-                commit,
-                config.parserOpts,
-            ),
+            conventionalCommitsParser.sync(commit, config.parserOpts),
             {repoUrl: 'https://test.com'},
         );
 
-        expect(transformed?.subject).to.contain('[#123](https://test.com/issues/123)');
-    })
+        expect(transformed?.subject).to.contain(
+            '[#123](https://test.com/issues/123)',
+        );
+    });
 
     test.it('Star scope get replaced', () => {
         const commit = 'fix(*): message';
         const transformed = config.transform(
-            conventionalCommitsParser.sync(
-                commit,
-                config.parserOpts,
-            ),
+            conventionalCommitsParser.sync(commit, config.parserOpts),
             {},
         );
 
         expect(transformed?.scope).to.eq('');
-    })
+    });
 });
