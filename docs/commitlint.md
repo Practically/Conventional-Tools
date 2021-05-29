@@ -86,16 +86,34 @@ feat(web): add something cool
 This add that cool thing that all of our user wanted
 ```
 
-## Gitlab CI
+## GitLab CI
 
 You can run commitlint in your CI pipelines with the bellow example config.
 
 ```yaml
 lint:commits:
   stage: lint
-  image: registry.baln.co.uk/general/conventional-tools:latest
+  image: registry.k1.zportal.co.uk/practically-oss/conventional-tools:0.x
   script:
-    - conventional-tools commitlint
+    - conventional-tools commitlint -l1
+```
+
+## GitHub Actions
+
+```yaml
+commits:
+  name: Commitlint
+  runs-on: ubuntu-latest
+  steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 1000
+
+    - name: Lint commits
+      uses: docker://registry.k1.zportal.co.uk/practically-oss/conventional-tools:0.x
+      with:
+        args: conventional-tools commitlint -l1
 ```
 
 ## Git Hooks
