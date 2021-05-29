@@ -4,9 +4,13 @@ A commit generator in the conventional format customised by your `.ctrc.yml` and
 your current branch. The branch naming convention is `type/issue-number`. For
 example if you are working on a new feature with the ticket number of `222` your
 branch would be `feat/222` and for a bug fix with the issue number `223` you
-branch would be `fix/223`. This command will generate you a boilerplate commit
-message that can be used in the `prepare-commit-msg` git hook to automatically
-populate your commit message
+branch would be `fix/223`. You can also add a description suffix to the branch
+name like
+[GitLabs create a branch from issue naming](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-new-branch-from-an-issue)
+`feat/2-make-static-site-auto-deploy-and-serve`, and the type and issue number
+will be picked up. This command will generate you a boilerplate commit message
+that can be used in the `prepare-commit-msg` git hook to automatically populate
+your commit message
 
 ## Usage
 

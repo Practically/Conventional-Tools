@@ -48,4 +48,22 @@ describe('commitgen', () => {
             expect(ctx.stdout).to.contain('fix(edit): edit');
             expect(ctx.stdout).to.contain('Fixes Issue: #222');
         });
+
+    test.do(async () => {
+        await git.commit('Initial commit');
+        await git.branch('fix/222-this-is-a-fix');
+    })
+        .stdout()
+        .command(['commitgen'])
+        .it(
+            'runs commitgen on branch with a description in the name',
+            async ctx => {
+                expect(await git.getBranch()).to.eq('fix/222-this-is-a-fix');
+                expect(ctx.stdout).to.contain('fix(edit): edit');
+                expect(ctx.stdout).to.contain('Fixes Issue: #222');
+                expect(ctx.stdout).to.not.contain(
+                    'Fixes Issue: #222-this-is-a-fix',
+                );
+            },
+        );
 });

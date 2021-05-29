@@ -34,7 +34,7 @@ export default class Commitgen extends Command {
         const {args} = this.parse(Commitgen);
 
         const branch = await getCurrentBranch();
-        const m = branch.match(/(\w+)\/([a-z0-9-]+)/);
+        const m = branch.match(/(\w+)\/([a-z0-9]+)-?/);
         const scopes = await configGet('commit.scopes', []);
 
         const message = `# Generated commit message by conventional tools. If you do not want this
