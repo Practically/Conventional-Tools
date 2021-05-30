@@ -1,49 +1,60 @@
-image: node:12
+stages: ["test", "build", "package", "deploy"]
 
-stages:
-  - lint
-  - test
-  - build
-  - package
-  - release
-  - deploy
-
-cache:
-  paths:
-    - node_moduels/
-
-before_script:
-  - yarn install
-
-lint:commits:
-  stage: lint
-  rules:
-    - if: '$CRON != "true"'
+commits:
+  stage: test
+  image: node:12
+  cache:
+    paths:
+      - node_modules
   script:
+    - yarn install
     - ./bin/run commitlint
 
-test:
+prettier:
   stage: test
-  rules:
-    - if: '$CRON != "true"'
+  image: node:12
+  cache:
+    paths:
+      - node_modules
   script:
+    - yarn install
+    - ./node_modules/.bin/prettier -c "./src/**/*.{js,jsx,ts,tsx,json,md,css}" "./test/**/*.{js,jsx,ts,tsx,json,md,css}" "./docs/**/*.{js,jsx,ts,tsx,json,md,css}"
+
+
+.test_template: &test_configuration
+  stage: test
+  cache:
+    paths:
+      - node_modules
+  script:
+    - yarn install
     - ln -s $(pwd)/bin/run /usr/local/bin/conventional-tools
     - git config --global user.email "test@test.com"
     - git config --global user.name "Tester"
     - yarn prepack
     - TEST_OUTPUT=1 yarn test
 
-lint:code:
-  stage: lint
-  rules:
-    - if: '$CRON != "true"'
-  script:
-    - ./node_modules/.bin/prettier -c "./src/**/*.{js,jsx,ts,tsx,json,md,css}" "./test/**/*.{js,jsx,ts,tsx,json,md,css}" "./docs/**/*.{js,jsx,ts,tsx,json,md,css}"
+test:node:12:
+  <<: *test_configuration
+  image: node:12
+
+test:node:14:
+  <<: *test_configuration
+  image: node:14
+
+test:node:16:
+  <<: *test_configuration
+  image: node:16
 
 build:
   stage: build
+  image: node:12
+  cache:
+    paths:
+      - node_modules
   script:
     - apt update && apt install -y p7zip-full
+    - yarn install
     - yarn build -t linux-x64
     - rm dist/**/*linux-x64.tar.gz
   artifacts:
@@ -57,60 +68,17 @@ docker-image-next:
   image: docker
   dependencies:
     - build
-  before_script:
-    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
   script:
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
     - docker pull $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_NAME || true
     - docker build --pull --tag $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_NAME .
     - docker push $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_NAME
   only:
     - 0.x
 
-release:
-  stage: release
-  dependencies:
-    - build
-  variables:
-    GIT_EMAIL: gitbot@baln.co.uk
-    GIT_USER: Gitbot
-    GIT_STRATEGY: clone
-  script:
-    - git config --global user.email "$GIT_EMAIL"
-    - git config --global user.name "$GIT_USER"
-    - git checkout $CI_COMMIT_BRANCH
-    - ./bin/run release-semver
-  only:
-    - master
-
-docker-image:
-  stage: package
-  image: docker
-  dependencies:
-    - build
-  before_script:
-    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
-  script:
-    - docker pull $CI_REGISTRY_IMAGE:latest || true
-    - docker build --pull --tag $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_NAME --tag $CI_REGISTRY_IMAGE:latest .
-    - docker push $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_NAME
-    - docker push $CI_REGISTRY_IMAGE:latest
-  only:
-    - master
-
-publish:npm:
-  stage: package
-  script:
-    - cp "$NPM_RC" ~/.npmrc
-    - yarn prepack
-    - npm publish --access=public
-  only:
-    - master
-
 deploy:docs:
   stage: deploy
   image: python:latest
-  cache: {}
-  before_script: []
   variables:
     RSYNC_HOST: $DOCS_SSH_DEPLOYMENT_HOST
     RSYNC_PORT: $DOCS_SSH_DEPLOYMENT_PORT
