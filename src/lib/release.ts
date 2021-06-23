@@ -1,8 +1,10 @@
 import * as gitSemverTags from 'git-semver-tags';
 import * as fs from 'fs';
+import * as path from 'path';
+import * as crypto from 'crypto';
+import * as os from 'os';
 import * as conventionalChangelog from 'conventional-changelog';
 import preset from './conventional-config';
-const tempfile = require('tempfile');
 
 export interface changeLogProps {
     tagPrefix: string;
@@ -33,7 +35,10 @@ export const changeLog = ({
 }: changeLogProps) =>
     new Promise<void>(async res => {
         const config = await preset();
-        const tmp = tempfile();
+        const tmp = path.join(
+            os.tmpdir(),
+            crypto.randomBytes(8).readUInt32LE(0).toString(),
+        );
         fs.createReadStream('CHANGELOG.md')
             .pipe(fs.createWriteStream(tmp))
             .on('finish', () => {
