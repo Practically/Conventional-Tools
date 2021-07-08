@@ -565,9 +565,9 @@
     "@types/node" "*"
 
 "@types/conventional-recommended-bump@*", "@types/conventional-recommended-bump@^6.0.0":
-  version "6.0.0"
-  resolved "https://registry.npmjs.org/@types/conventional-recommended-bump/-/conventional-recommended-bump-6.0.0.tgz#c80b5a46c6dbbe106120bf7df6f7000701ddfbe4"
-  integrity sha512-jvkG0mN9RVzp4jID6tzM47YPOyP5r0NS0DfamT5I0rOUE3L1DJdGPfhX5138bKXIOwqB1+f4wLee3lyamdFdCg==
+  version "6.0.1"
+  resolved "https://registry.yarnpkg.com/@types/conventional-recommended-bump/-/conventional-recommended-bump-6.0.1.tgz#d63811c4d512e6b7d8f3193e7c5e2599af0cd6af"
+  integrity sha512-DRFjxe7zx781Qcf7wJhe0Fz28wilXfqex+ynYtMJ9QyS39DqbW2ykGpkRGc0FO/axyVhxUMK5yWZiGY022m9MA==
   dependencies:
     "@types/conventional-changelog-core" "*"
     "@types/conventional-changelog-writer" "*"
