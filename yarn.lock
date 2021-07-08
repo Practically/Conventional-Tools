@@ -548,9 +548,9 @@
     "@types/node" "*"
 
 "@types/conventional-changelog@^3.1.0":
-  version "3.1.0"
-  resolved "https://registry.npmjs.org/@types/conventional-changelog/-/conventional-changelog-3.1.0.tgz#d730c1c1cfbcb49ac1eed6b202bb14bc70237372"
-  integrity sha512-PUg1zBJRhetojI0H/dbu2gLLZVnZSu6vPzo6tfTBrA53Ebvp+F65NN61y6XSMLPfOGr1kHTqxRCetwzAOgphaQ==
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/@types/conventional-changelog/-/conventional-changelog-3.1.1.tgz#a126b9d264a834f2267f0822717a28c12aa352e1"
+  integrity sha512-+Ei7ZUTHnWseUthn22+MVLQjcQZ0AitqOk/UMl3/3aX5FMPofGeKVn/0HZYabsLN+kCioP3FpBrucrWdcCoMJw==
   dependencies:
     "@types/conventional-changelog-core" "*"
     "@types/conventional-changelog-writer" "*"
