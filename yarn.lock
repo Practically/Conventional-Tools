@@ -581,9 +581,9 @@
     "@types/node" "*"
 
 "@types/git-semver-tags@^4.0.0":
-  version "4.1.0"
-  resolved "https://registry.npmjs.org/@types/git-semver-tags/-/git-semver-tags-4.1.0.tgz#5c067450886a72c1babb12b016742fbd97ab892d"
-  integrity sha512-kqaS6Tk/PN7BftNZ846G1lt6GAzyj8ytG4R3nZysmHpwWq6Zqw9MT/FhUDhGovcuZzZLQn+UGuVQHBdApJuYFQ==
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/@types/git-semver-tags/-/git-semver-tags-4.1.1.tgz#8bc8e506e7fa14028f9d5a8b9bb53ac7298eb5d4"
+  integrity sha512-6RrosMDOX0rU233ldLAuF4WbF61S44GeQV56D+sV7SG4ZGEXd43LjIgr87NFsD9cE1Kr+n5NMHFRTFpk4MeNxw==
 
 "@types/glob@^7.1.1":
   version "7.1.3"
