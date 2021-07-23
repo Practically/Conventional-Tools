@@ -37,7 +37,7 @@
         "@types/conventional-recommended-bump": "^6.0.0",
         "@types/git-semver-tags": "^4.0.0",
         "@types/listr": "^0.14.2",
-        "@types/mocha": "^8",
+        "@types/mocha": "^9",
         "@types/node": "^16",
         "@types/semver": "^7.1.0",
         "chai": "^4",
