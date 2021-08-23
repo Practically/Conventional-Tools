@@ -578,9 +578,9 @@
     "@types/node" "*"
 
 "@types/conventional-recommended-bump@*", "@types/conventional-recommended-bump@^6.0.0":
-  version "6.0.1"
-  resolved "https://registry.yarnpkg.com/@types/conventional-recommended-bump/-/conventional-recommended-bump-6.0.1.tgz#d63811c4d512e6b7d8f3193e7c5e2599af0cd6af"
-  integrity sha512-DRFjxe7zx781Qcf7wJhe0Fz28wilXfqex+ynYtMJ9QyS39DqbW2ykGpkRGc0FO/axyVhxUMK5yWZiGY022m9MA==
+  version "6.1.0"
+  resolved "https://registry.yarnpkg.com/@types/conventional-recommended-bump/-/conventional-recommended-bump-6.1.0.tgz#b0386c0cc830aac0f88d9018226f77641d1b9bf9"
+  integrity sha512-AlhJsbzY2W+9xkn44qvEgeJGY6FbQIluPRZawwU2JgJw+o7PYB/yjeuRsJhNZRKto3j71hDj+hQik10w/7bI4Q==
   dependencies:
     "@types/conventional-changelog-core" "*"
     "@types/conventional-changelog-writer" "*"
