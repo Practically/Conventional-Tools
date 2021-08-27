@@ -59,7 +59,7 @@ hooks:
                 expect(null).to.contain(
                     'This should always thrown an exception',
                 );
-            } catch (err) {
+            } catch (err: any) {
                 expect(err.exitCode).to.eq(1);
                 expect(err.stderr).to.contain('echo "This is a hook"');
                 expect(err.stderr).to.contain('Hooks failed with the message');

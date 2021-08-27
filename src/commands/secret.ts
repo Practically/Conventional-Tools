@@ -18,15 +18,19 @@ export default class Secret extends Command {
         try {
             await secrets.storeSecret(args.host, password);
             this.log(chalk.green('Secret has been successfully stored'));
-        } catch (e) {
+        } catch (e: any) {
             if (e.message.includes('unsupported OS')) {
                 this.error(
                     chalk.red(
                         'Can not store secret your OS is not supported. Please use the environment variable "CT_TOKEN"',
                     ),
                 );
-            } else {
+            } else if (typeof e.message === 'string') {
                 this.error(chalk.red(e.message));
+            } else {
+                this.error(
+                    `An unknown error occured getting the secret for '${args.host}'`,
+                );
             }
         }
     }

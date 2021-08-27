@@ -189,8 +189,12 @@ export default class ReleaseSemver extends Command {
 
         try {
             await tasks.run();
-        } catch (err) {
-            this.error(err.message);
+        } catch (err: any) {
+            if (typeof err.message === 'string') {
+                this.error(err.message);
+            } else {
+                this.error('Unable to release your package');
+            }
         }
     }
 }
