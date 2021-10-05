@@ -1,3 +1,13 @@
+# [v0.6.0](https://git.zportal.co.uk/practically-oss/conventional-tools/compare/v0.5.0...v0.6.0) (2021-10-05)
+
+
+### Features
+
+* **commitgen:** add support for branch description ([83f5f65](https://git.zportal.co.uk/practically-oss/conventional-tools/commits/83f5f654fc40ec668908d579cd54638385315500)), closes [#222](https://git.zportal.co.uk/practically-oss/conventional-tools/issues/222) [#222](https://git.zportal.co.uk/practically-oss/conventional-tools/issues/222)
+* **release:** add GitHub support ([8b6d520](https://git.zportal.co.uk/practically-oss/conventional-tools/commits/8b6d520b88a77151bdb37d0be2a751abfb99113e))
+
+
+
 # [v0.5.0](https://git.zportal.co.uk/practically-oss/conventional-tools/compare/v0.4.0...v0.5.0) (2021-05-29)
 
 
