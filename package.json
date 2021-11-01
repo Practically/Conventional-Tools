@@ -12,7 +12,7 @@
     },
     "dependencies": {
         "@commitlint/config-conventional": "^13",
-        "@commitlint/format": "^13",
+        "@commitlint/format": "^14",
         "@commitlint/lint": "^14",
         "@commitlint/load": "^14",
         "@oclif/command": "^1",
