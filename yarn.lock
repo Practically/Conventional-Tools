@@ -294,13 +294,6 @@
   resolved "https://registry.yarnpkg.com/@commitlint/to-lines/-/to-lines-14.0.0.tgz#d90c7453bc678e7e2d8a4cae125783b1d4df7aa4"
   integrity sha512-uIXk54oJDuYyLpI208s3+cGmJ323yvSJ9LB7yUDMWUeJi2LgRxE2EBZL995kLQdnoAsBBXcLq+VDyppg5bV/cg==
 
-"@commitlint/types@^13.2.0":
-  version "13.2.0"
-  resolved "https://registry.yarnpkg.com/@commitlint/types/-/types-13.2.0.tgz#ed8128f9e41383f8f0ee1b0370c724826821e581"
-  integrity sha512-RRVHEqmk1qn/dIaSQhvuca6k/6Z54G+r/KyimZ8gnAFielGiGUpsFRhIY3qhd5rXClVxDaa3nlcyTWckSccotQ==
-  dependencies:
-    chalk "^4.0.0"
-
 "@commitlint/types@^14.0.0":
   version "14.0.0"
   resolved "https://registry.yarnpkg.com/@commitlint/types/-/types-14.0.0.tgz#17bf4d1ab1178c67990ce01b36017d6e6792b751"
@@ -450,16 +443,16 @@
     moment "^2.22.1"
 
 "@oclif/plugin-help@^3", "@oclif/plugin-help@^3.2.0":
-  version "3.2.3"
-  resolved "https://registry.yarnpkg.com/@oclif/plugin-help/-/plugin-help-3.2.3.tgz#cd24010e7eb326782843d3aa6d6b5a4affebb2c3"
-  integrity sha512-l2Pd0lbOMq4u/7xsl9hqISFqyR9gWEz/8+05xmrXFr67jXyS6EUCQB+mFBa0wepltrmJu0sAFg9AvA2mLaMMqQ==
+  version "3.2.4"
+  resolved "https://registry.yarnpkg.com/@oclif/plugin-help/-/plugin-help-3.2.4.tgz#100e0e09d806e20595096609f2220d009ee096e2"
+  integrity sha512-kMSfFbv11S7CKFlbWTKDdAe/gC7P2zCFZEDq6BAHjJdA0htHT8FvBhnyoppR0O2jOTjX80wHjU+ItPpjanfuag==
   dependencies:
     "@oclif/command" "^1.5.20"
     "@oclif/config" "^1.15.1"
     "@oclif/errors" "^1.2.2"
     chalk "^4.1.0"
     indent-string "^4.0.0"
-    lodash.template "^4.4.0"
+    lodash "^4.17.21"
     string-width "^4.2.0"
     strip-ansi "^6.0.0"
     widest-line "^3.1.0"
@@ -2608,11 +2601,6 @@ locate-path@^6.0.0:
   dependencies:
     p-locate "^5.0.0"
 
-lodash._reinterpolate@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.npmjs.org/lodash._reinterpolate/-/lodash._reinterpolate-3.0.0.tgz#0ccf2d89166af03b3663c796538b75ac6e114d9d"
-  integrity sha1-DM8tiRZq8Ds2Y8eWU4t1rG4RTZ0=
-
 lodash.flattendeep@^4.4.0:
   version "4.4.0"
   resolved "https://registry.npmjs.org/lodash.flattendeep/-/lodash.flattendeep-4.4.0.tgz#fb030917f86a3134e5bc9bec0d69e0013ddfedb2"
@@ -2633,22 +2621,7 @@ lodash.set@^4.3.2:
   resolved "https://registry.npmjs.org/lodash.set/-/lodash.set-4.3.2.tgz#d8757b1da807dde24816b0d6a84bea1a76230b23"
   integrity sha1-2HV7HagH3eJIFrDWqEvqGnYjCyM=
 
-lodash.template@^4.4.0:
-  version "4.5.0"
-  resolved "https://registry.npmjs.org/lodash.template/-/lodash.template-4.5.0.tgz#f976195cf3f347d0d5f52483569fe8031ccce8ab"
-  integrity sha512-84vYFxIkmidUiFxidA/KjjH9pAycqW+h980j7Fuz5qxRtO9pgB7MDFTdys1N7A5mcucRiDyEq4fusljItR1T/A==
-  dependencies:
-    lodash._reinterpolate "^3.0.0"
-    lodash.templatesettings "^4.0.0"
-
-lodash.templatesettings@^4.0.0:
-  version "4.2.0"
-  resolved "https://registry.npmjs.org/lodash.templatesettings/-/lodash.templatesettings-4.2.0.tgz#e481310f049d3cf6d47e912ad09313b154f0fb33"
-  integrity sha512-stgLz+i3Aa9mZgnjr/O+v9ruKZsPsndy7qPZOchbqk2cnTU1ZaldKK+v7m54WoKIyxiuMZTKT2H81F8BeAc3ZQ==
-  dependencies:
-    lodash._reinterpolate "^3.0.0"
-
-lodash@^4.17.11, lodash@^4.17.13, lodash@^4.17.15, lodash@^4.17.19:
+lodash@^4.17.11, lodash@^4.17.13, lodash@^4.17.15, lodash@^4.17.19, lodash@^4.17.21:
   version "4.17.21"
   resolved "https://registry.npmjs.org/lodash/-/lodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
   integrity sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==
