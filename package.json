@@ -14,7 +14,7 @@
         "@commitlint/config-conventional": "^14",
         "@commitlint/format": "^14",
         "@commitlint/lint": "^14",
-        "@commitlint/load": "^14",
+        "@commitlint/load": "^15",
         "@oclif/command": "^1",
         "@oclif/config": "^1",
         "@oclif/plugin-autocomplete": "^0.3.0",
