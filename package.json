@@ -11,7 +11,7 @@
         "conventional-tools": "./bin/run"
     },
     "dependencies": {
-        "@commitlint/config-conventional": "^14",
+        "@commitlint/config-conventional": "^15",
         "@commitlint/format": "^15",
         "@commitlint/lint": "^15",
         "@commitlint/load": "^15",
