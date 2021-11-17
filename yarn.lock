@@ -213,12 +213,12 @@
   resolved "https://registry.yarnpkg.com/@commitlint/execute-rule/-/execute-rule-15.0.0.tgz#6bff7962df38e89ff9fdbc00abd79b8849c7e9f9"
   integrity sha512-pyE4ApxjbWhb1TXz5vRiGwI2ssdMMgZbaaheZq1/7WC0xRnqnIhE1yUC1D2q20qPtvkZPstTYvMiRVtF+DvjUg==
 
-"@commitlint/format@^14":
-  version "14.1.0"
-  resolved "https://registry.yarnpkg.com/@commitlint/format/-/format-14.1.0.tgz#09b4081bdcb02163496bfcece98f9d4606238bc5"
-  integrity sha512-sF6engqqHjvxGctWRKjFs/HQeNowlpbVmmoP481b2UMQnVQnjjfXJvQsoLpaqFUvgc2sHM4L85F8BmAw+iHG1w==
+"@commitlint/format@^15":
+  version "15.0.0"
+  resolved "https://registry.yarnpkg.com/@commitlint/format/-/format-15.0.0.tgz#10935180913de9384bea4c9217f4c6c5ee100ab3"
+  integrity sha512-bPhAfqwRhPk92WiuY0ktEJNpRRHSCd+Eg1MdhGyL9Bl3U25E5zvuInA+dNctnzZiOBSH/37ZaD0eOKCpQE6acg==
   dependencies:
-    "@commitlint/types" "^14.0.0"
+    "@commitlint/types" "^15.0.0"
     chalk "^4.0.0"
 
 "@commitlint/is-ignored@^15.0.0":
