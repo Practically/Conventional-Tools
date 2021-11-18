@@ -31,8 +31,6 @@ describe('changelog', () => {
             await git.add();
             await git.commit(commit);
         }
-
-        fs.writeFileSync('CHANGELOG.md', '');
     })
         .command(['changelog', '0.0.1'])
         .it('creates a changelog', async () => {
@@ -82,8 +80,6 @@ describe('changelog', () => {
         fs.appendFileSync('myfile.txt', 'some text');
         await git.add();
         await git.commit('feat: add some text');
-
-        fs.writeFileSync('CHANGELOG.md', '');
     })
         .command(['changelog', '0.0.1'])
         .it('creates a changelog of a directory', async () => {

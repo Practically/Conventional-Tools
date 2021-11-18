@@ -39,6 +39,9 @@ export const changeLog = ({
             os.tmpdir(),
             crypto.randomBytes(8).readUInt32LE(0).toString(),
         );
+        if (!fs.existsSync('CHANGELOG.md')) {
+            fs.writeFileSync('CHANGELOG.md', '');
+        }
         fs.createReadStream('CHANGELOG.md')
             .pipe(fs.createWriteStream(tmp))
             .on('finish', () => {
