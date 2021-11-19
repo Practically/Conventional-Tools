@@ -1,3 +1,12 @@
+## [v0.6.1](https://git.zportal.co.uk/practically-oss/conventional-tools/compare/v0.6.0...v0.6.1) (2021-11-19)
+
+
+### Bug Fixes
+
+* **core:** create changelog file when creating release ([b230883](https://git.zportal.co.uk/practically-oss/conventional-tools/commits/b230883e4ace4d80b9ba8b6ca6d3ddf983fa6838)), closes [#16](https://git.zportal.co.uk/practically-oss/conventional-tools/issues/16)
+
+
+
 # [v0.6.0](https://git.zportal.co.uk/practically-oss/conventional-tools/compare/v0.5.0...v0.6.0) (2021-10-05)
 
 
