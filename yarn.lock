@@ -229,12 +229,12 @@
   resolved "https://registry.yarnpkg.com/@commitlint/execute-rule/-/execute-rule-16.0.0.tgz#824e11ba5b208c214a474ae52a51780d32d31ebc"
   integrity sha512-8edcCibmBb386x5JTHSPHINwA5L0xPkHQFY8TAuDEt5QyRZY/o5DF8OPHSa5Hx2xJvGaxxuIz4UtAT6IiRDYkw==
 
-"@commitlint/format@^15":
-  version "15.0.0"
-  resolved "https://registry.npmjs.org/@commitlint/format/-/format-15.0.0.tgz#10935180913de9384bea4c9217f4c6c5ee100ab3"
-  integrity sha512-bPhAfqwRhPk92WiuY0ktEJNpRRHSCd+Eg1MdhGyL9Bl3U25E5zvuInA+dNctnzZiOBSH/37ZaD0eOKCpQE6acg==
+"@commitlint/format@^16":
+  version "16.0.0"
+  resolved "https://registry.yarnpkg.com/@commitlint/format/-/format-16.0.0.tgz#6a6fb2c1e6460aff63cc6eca30a7807a96b0ce73"
+  integrity sha512-9yp5NCquXL1jVMKL0ZkRwJf/UHdebvCcMvICuZV00NQGYSAL89O398nhqrqxlbjBhM5EZVq0VGcV5+7r3D4zAA==
   dependencies:
-    "@commitlint/types" "^15.0.0"
+    "@commitlint/types" "^16.0.0"
     chalk "^4.0.0"
 
 "@commitlint/is-ignored@^16.0.0":
