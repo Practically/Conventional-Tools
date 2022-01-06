@@ -15,12 +15,12 @@
         "@commitlint/format": "^16",
         "@commitlint/lint": "^16",
         "@commitlint/load": "^16",
-        "@oclif/command": "^1",
+        "@oclif/command": "^1.8.16",
         "@oclif/config": "^1",
-        "@oclif/plugin-autocomplete": "^1.0.0",
-        "@oclif/plugin-help": "^3",
+        "@oclif/plugin-autocomplete": "^1.1.1",
+        "@oclif/plugin-help": "^5.1.10",
         "chalk": "^4.0.0",
-        "conventional-changelog": "^3.1.18",
+        "conventional-changelog": "^3.1.25",
         "conventional-recommended-bump": "^6.0.5",
         "cosmiconfig": "^7.0.0",
         "execa": "^5.0.0",
@@ -30,15 +30,15 @@
         "tslib": "^2"
     },
     "devDependencies": {
-        "@oclif/dev-cli": "^1",
+        "@oclif/dev-cli": "^1.26.10",
         "@oclif/test": "^1",
-        "@types/chai": "^4",
+        "@types/chai": "^4.3.0",
         "@types/conventional-changelog": "^3.1.0",
         "@types/conventional-recommended-bump": "^6.0.0",
         "@types/git-semver-tags": "^4.0.0",
         "@types/listr": "^0.14.2",
         "@types/mocha": "^9",
-        "@types/node": "^16",
+        "@types/node": "^17.0.8",
         "@types/semver": "^7.1.0",
         "chai": "^4",
         "globby": "^11",
@@ -47,7 +47,7 @@
         "prettier": "^2.0.5",
         "sinon": "^12.0.1",
         "ts-node": "^10",
-        "typescript": "^4"
+        "typescript": "^4.5.4"
     },
     "engines": {
         "node": ">=8.0.0"
