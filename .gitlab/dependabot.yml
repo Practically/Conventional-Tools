@@ -6,6 +6,11 @@ updates:
     interval: daily
   commit-message:
     prefix: "chore:"
+  ignore:
+    - dependency-name: 'got'
+      versions: ['12.x']
+    - dependency-name: 'execa'
+      versions: ['6.x']
   assignees:
     - "ade"
   labels:
