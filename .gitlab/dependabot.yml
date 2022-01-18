@@ -11,6 +11,8 @@ updates:
       versions: ['12.x']
     - dependency-name: 'execa'
       versions: ['6.x']
+    - dependency-name: 'globby'
+      versions: ['12.x']
   assignees:
     - "ade"
   labels:
