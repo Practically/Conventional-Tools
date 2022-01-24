@@ -88,4 +88,19 @@ describe('changelog', () => {
             expect(changelog).not.to.match(/add ting 3/);
             expect(changelog).to.match(/add some text/);
         });
+
+    test.do(async () => {
+        fs.writeFileSync('myfile.txt', '');
+        fs.appendFileSync('myfile.txt', 'chore: some thing');
+        await git.add();
+        await git.commit('chore: add some thing');
+    })
+        .command(['changelog', '0.0.1'])
+        .it('creates a change log of a patch release', async () => {
+            const changelog = fs.readFileSync('CHANGELOG.md').toString();
+            expect(changelog).to.match(/^## v0.0.1/);
+            expect(changelog).to.match(
+                /\*\*NOTE:\*\* This is a patch release only/,
+            );
+        });
 });

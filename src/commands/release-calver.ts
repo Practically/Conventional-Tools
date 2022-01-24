@@ -51,7 +51,7 @@ export default class ReleaseCalver extends Command {
 
         props.newVersion = nextTag;
         const notes = await releaseNotes(props);
-        if (notes.length === 0) {
+        if (notes.body.length === 0) {
             this.log('Sipping no commits since last release');
             return;
         }
@@ -144,7 +144,7 @@ export default class ReleaseCalver extends Command {
                         await gitlabRelease({
                             tag: tagPrefix + nextTag,
                             assets: assets,
-                            notes: notes,
+                            notes: notes.body,
                             provider: provider,
                             host: host,
                             project: project,
@@ -153,7 +153,7 @@ export default class ReleaseCalver extends Command {
                     } else {
                         await githubRelease({
                             tag: tagPrefix + nextTag,
-                            notes: notes,
+                            notes: notes.body,
                             host: host,
                             project: project,
                             secret: secret,

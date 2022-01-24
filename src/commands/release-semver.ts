@@ -61,7 +61,7 @@ export default class ReleaseSemver extends Command {
         }
 
         const notes = await releaseNotes({tagPrefix, newVersion: nextTag});
-        if (notes.length === 0) {
+        if (notes.body.length === 0) {
             this.log('Sipping no commits since last release');
             return;
         }
@@ -168,7 +168,7 @@ export default class ReleaseSemver extends Command {
                         await gitlabRelease({
                             tag: tagPrefix + nextTag,
                             assets: assets,
-                            notes: notes,
+                            notes: notes.body,
                             provider: provider,
                             host: host,
                             project: project,
@@ -177,7 +177,7 @@ export default class ReleaseSemver extends Command {
                     } else {
                         await githubRelease({
                             tag: tagPrefix + nextTag,
-                            notes: notes,
+                            notes: notes.body,
                             host: host,
                             project: project,
                             secret: secret,
