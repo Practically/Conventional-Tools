@@ -1,3 +1,4 @@
+# Copyright 2022 Practically.io All rights reserved
 git:
   provider: gitlab
   host: git.zportal.co.uk
@@ -13,6 +14,11 @@ hooks:
       if [ -z "${2}" ]; then
         echo "$(conventional-tools commitgen)$(cat ${1})" > ${1};
       fi
+  pre-commit:
+    - $(git rev-parse --show-toplevel)/.gitlab/hooks/check-email.sh
+    - $(git rev-parse --show-toplevel)/.gitlab/hooks/check-copyright.sh
+    - $(git rev-parse --show-toplevel)/.gitlab/hooks/no-yaml-files.sh
+    - $(git rev-parse --show-toplevel)/.gitlab/hooks/prettier.sh
 commit:
   scopes:
     - core
