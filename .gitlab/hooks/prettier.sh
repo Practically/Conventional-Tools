@@ -17,6 +17,8 @@ fi
 files="$@"
 if [[ -z "$files" ]]; then
     files=$(git diff --cached --name-only --diff-filter=ACMR \
+                ":!package.json"  \
+                ":!CHANGELOG.md"  \
                 "*.css"  \
                 "*.js"   \
                 "*.json" \
