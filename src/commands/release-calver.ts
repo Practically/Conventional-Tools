@@ -64,7 +64,9 @@ export default class ReleaseCalver extends Command {
         const project = await configGet('git.project', '');
         const secret = (await secrets.getSecret(host)) || process.env.CT_TOKEN;
         if (!secret) {
-            this.error('Invalid secret TODO link to the docs');
+            this.error(
+                'Invalid secret. See https://conventional-tools.practically.io/release-config/',
+            );
         }
 
         const tagPrefix = props.tagPrefix;

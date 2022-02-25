@@ -16,9 +16,6 @@ export const getSecret = async (key: string) => {
     switch (os) {
         case 'linux':
             return SecretTool.getSecret(key);
-
-        default:
-            throw new Error(`Cannot get secret unsupported OS '${os}'`);
     }
 };
 
