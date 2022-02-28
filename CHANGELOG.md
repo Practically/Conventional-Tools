@@ -1,3 +1,9 @@
+## [v0.7.1](https://git.zportal.co.uk/practically-oss/conventional-tools/compare/v0.7.0...v0.7.1) (2022-02-28)
+
+### Bug Fixes
+
+* updates related to secrets on macOS ([bc61b29](https://git.zportal.co.uk/practically-oss/conventional-tools/commits/bc61b299170d996078d0282bdffd289917159162))
+
 # [v0.7.0](https://git.zportal.co.uk/practically-oss/conventional-tools/compare/v0.6.1...v0.7.0) (2022-02-09)
 
 ### Features
