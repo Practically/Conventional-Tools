@@ -62,7 +62,7 @@ The output from this hooks is.
 
   ✔ Run prettier on staged files
 
- ✔ All hooks have completed successfuly
+ ✔ All hooks have completed successfully
 ```
 
 ## Variable Substitution

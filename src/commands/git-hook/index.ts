@@ -77,7 +77,7 @@ export default class GitHook extends Command {
             .run()
             .then(() =>
                 console.log(
-                    chalk.green('\n ✔ All hooks have completed successfuly\n'),
+                    chalk.green('\n ✔ All hooks have completed successfully\n'),
                 ),
             )
             .catch((err: any) => {
