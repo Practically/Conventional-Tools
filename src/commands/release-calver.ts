@@ -159,6 +159,7 @@ export default class ReleaseCalver extends Command {
                             host: host,
                             project: project,
                             secret: secret,
+                            assets: assets,
                         });
                     }
                 },

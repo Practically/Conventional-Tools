@@ -183,6 +183,7 @@ export default class ReleaseSemver extends Command {
                             host: host,
                             project: project,
                             secret: secret,
+                            assets: assets,
                         });
                     }
                 },

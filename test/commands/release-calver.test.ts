@@ -169,6 +169,8 @@ describe('release-semver', () => {
                 expect(options.json.name).to.eq(`Release: v1.0.1`);
                 expect(options.json.tag_name).to.eq(`v1.0.1`);
                 gotCalled3 = true;
+
+                return {json: () => ({id: 100})};
             });
     })
         .stdout()

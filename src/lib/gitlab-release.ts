@@ -13,6 +13,14 @@ export interface gitlabReleaseProps {
     secret: string;
 }
 
+export const createFileForm = (file_path: string): FormData => {
+    const file = resolve(file_path);
+    const form_data = new FormData() as any;
+    form_data.append('file', createReadStream(file));
+
+    return form_data;
+};
+
 export const gitlabRelease = async (props: gitlabReleaseProps) => {
     const assetsList: any = [];
     const apiBaseUrl = `https://${props.host}/api/v4`;
@@ -28,13 +36,10 @@ export const gitlabRelease = async (props: gitlabReleaseProps) => {
     if (props.assets.length > 0) {
         await Promise.all(
             props.assets.map(async asset => {
-                const file = resolve(asset);
-                const form = new FormData() as any;
-                form.append('file', createReadStream(file));
                 const {alt, url} = await got
                     .post(`${apiBaseUrl}/projects/${apiProjectId}/uploads`, {
                         ...apiOptions,
-                        body: form,
+                        body: createFileForm(asset),
                     })
                     .json();
 

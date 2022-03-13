@@ -171,6 +171,8 @@ describe('release-calver', () => {
                 expect(options.json.name).to.eq(`Release: live@${date}`);
                 expect(options.json.tag_name).to.eq(`live@${date}`);
                 gotCalled3 = true;
+
+                return {json: () => ({id: 100})};
             });
     })
         .stdout()
