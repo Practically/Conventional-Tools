@@ -14,6 +14,8 @@ updates:
         versions: ['6.x']
       - dependency-name: 'globby'
         versions: ['12.x', '13.x']
+      - dependency-name: 'chalk'
+        versions: ['5.x']
     assignees:
       - 'ade'
     labels:
