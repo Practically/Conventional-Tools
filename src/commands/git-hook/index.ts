@@ -1,4 +1,4 @@
-import {Command} from '@oclif/command';
+import {Command} from '@oclif/core';
 
 import {cosmiconfigSync} from 'cosmiconfig';
 import * as execa from 'execa';
@@ -32,7 +32,7 @@ export default class GitHook extends Command {
     static strict = false;
     static args = [{name: 'hook'}];
     async run() {
-        const {args, argv} = this.parse(GitHook);
+        const {args, argv} = await this.parse(GitHook);
 
         const hooks = await configGet(`hooks.${args.hook}`, []);
         const taskList = [];

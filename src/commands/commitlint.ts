@@ -1,4 +1,4 @@
-import {Command, flags} from '@oclif/command';
+import {Command, Flags} from '@oclif/core';
 
 const gitRawCommits = require('git-raw-commits');
 const chalk = require('chalk');
@@ -99,12 +99,12 @@ export default class CommitLint extends Command {
     static description = 'Lint your commits against conventional commits';
 
     static flags = {
-        level: flags.integer({
+        level: Flags.integer({
             char: 'l',
             description: 'Error level to display',
             default: 2,
         }),
-        from: flags.string({
+        from: Flags.string({
             char: 'f',
             description: 'The commit ref you want to lint from',
             default: '',
@@ -112,7 +112,7 @@ export default class CommitLint extends Command {
     };
 
     async run() {
-        const {flags} = this.parse(CommitLint);
+        const {flags} = await this.parse(CommitLint);
 
         const scopes = await configGet('commit.scopes', []);
         if (scopes.length > 0) {

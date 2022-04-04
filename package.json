@@ -15,8 +15,7 @@
         "@commitlint/format": "^16",
         "@commitlint/lint": "^16",
         "@commitlint/load": "^16",
-        "@oclif/command": "^1.8.16",
-        "@oclif/config": "^1",
+        "@oclif/core": "^1.6.4",
         "@oclif/plugin-autocomplete": "^1.1.1",
         "@oclif/plugin-help": "^5.1.10",
         "chalk": "^4.0.0",
@@ -70,7 +69,9 @@
         "plugins": [
             "@oclif/plugin-help",
             "@oclif/plugin-autocomplete"
-        ]
+        ],
+        "additionalHelpFlags": ["-h"],
+        "additionalVersionFlags": ["-v"]
     },
     "repository": "https://git.zportal.co.uk/practically-oss/conventional-tools",
     "scripts": {

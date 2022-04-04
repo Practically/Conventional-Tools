@@ -1,4 +1,4 @@
-import {Command, flags} from '@oclif/command';
+import {Command, Flags} from '@oclif/core';
 
 import * as Listr from 'listr';
 import configGet from '../lib/config';
@@ -14,7 +14,7 @@ export default class ReleaseCalver extends Command {
         'Create change logs and Gitlab releases in calendar versioning format';
 
     static flags = {
-        scope: flags.string({
+        scope: Flags.string({
             char: 's',
             description: 'The tag scope this can be used to scope your release',
             default: '',
@@ -22,7 +22,7 @@ export default class ReleaseCalver extends Command {
     };
 
     async run() {
-        const {flags} = this.parse(ReleaseCalver);
+        const {flags} = await this.parse(ReleaseCalver);
 
         await execa('git', ['fetch', '--tags']);
         const props: any = {};

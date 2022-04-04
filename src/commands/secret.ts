@@ -1,6 +1,5 @@
-import {Command} from '@oclif/command';
+import {Command, CliUx} from '@oclif/core';
 import secrets from '../lib/secret';
-import cli from 'cli-ux';
 import chalk = require('chalk');
 
 export default class Secret extends Command {
@@ -8,9 +7,9 @@ export default class Secret extends Command {
     static args = [{name: 'host', required: true}];
 
     async run() {
-        const {args} = this.parse(Secret);
+        const {args} = await this.parse(Secret);
 
-        const password = await cli.prompt(
+        const password = await CliUx.ux.prompt(
             `Please enter the secret for '${args.host}'`,
             {type: 'hide'},
         );

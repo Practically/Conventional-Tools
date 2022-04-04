@@ -1,4 +1,4 @@
-import {Command} from '@oclif/command';
+import {Command} from '@oclif/core';
 
 import * as conventionalRecommendedBump from 'conventional-recommended-bump';
 import * as semver from 'semver';
@@ -35,7 +35,7 @@ export default class ReleaseSemver extends Command {
     static args = [{name: 'release'}];
 
     async run() {
-        const {args} = this.parse(ReleaseSemver);
+        const {args} = await this.parse(ReleaseSemver);
 
         await execa('git', ['fetch', '--tags']);
         const tagPrefix = await configGet('git.tagPrefix', 'v');

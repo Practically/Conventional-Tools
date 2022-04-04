@@ -1,4 +1,4 @@
-import {Command} from '@oclif/command';
+import {Command} from '@oclif/core';
 
 import configGet from '../lib/config';
 import * as execa from 'execa';
@@ -31,7 +31,7 @@ export default class Commitgen extends Command {
     static description = 'Commit message generator';
 
     async run() {
-        const {args} = this.parse(Commitgen);
+        const {args} = await this.parse(Commitgen);
 
         const branch = await getCurrentBranch();
         const m = branch.match(/(\w+)\/([a-z0-9]+)-?/);
