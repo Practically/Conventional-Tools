@@ -48,17 +48,14 @@ export const gitlabRelease = async (props: gitlabReleaseProps) => {
         );
     }
 
-    await got.post(
-        `${apiBaseUrl}/projects/${apiProjectId}/repository/tags/${encodedTag}/release`,
-        {
-            ...apiOptions,
-            json: {
-                name: `Release: ${props.tag}`,
-                tag_name: props.tag,
-                description: props.notes || 'No release notes.',
-            },
+    await got.post(`${apiBaseUrl}/projects/${apiProjectId}/releases`, {
+        ...apiOptions,
+        json: {
+            name: `Release: ${props.tag}`,
+            tag_name: props.tag,
+            description: props.notes || 'No release notes.',
         },
-    );
+    });
 
     if (assetsList.length > 0) {
         await Promise.all(

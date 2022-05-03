@@ -65,7 +65,7 @@ describe('release-semver', () => {
 
         mocks.got
             .withArgs(
-                `https://gitlab.com/api/v4/projects/${apiProjectId}/repository/tags/${encodedTag}/release`,
+                `https://gitlab.com/api/v4/projects/${apiProjectId}/releases`,
             )
             .callsFake((_: string, options: any) => {
                 expect(options.headers['PRIVATE-TOKEN']).to.eq('pass');
@@ -98,7 +98,7 @@ describe('release-semver', () => {
 
         mocks.got
             .withArgs(
-                `https://git.example.com/api/v4/projects/${apiProjectId}/repository/tags/${encodedTag}/release`,
+                `https://git.example.com/api/v4/projects/${apiProjectId}/releases`,
             )
             .callsFake((_: string, options: any) => {
                 expect(options.headers['PRIVATE-TOKEN']).to.eq('pass');
@@ -133,7 +133,7 @@ describe('release-semver', () => {
 
         mocks.got
             .withArgs(
-                `https://gitlab.com/api/v4/projects/${apiProjectId}/repository/tags/${encodedTag}/release`,
+                `https://gitlab.com/api/v4/projects/${apiProjectId}/releases`,
             )
             .callsFake((_: string, options: any) => {
                 expect(options.headers['PRIVATE-TOKEN']).to.eq('pass');
