@@ -123,17 +123,18 @@ export default class CommitLint extends Command {
             ];
         }
 
+        let exitCode = 0;
         const root = await execa.command('git rev-parse --show-toplevel');
         if (fs.existsSync(`${root.stdout}/.git/COMMIT_EDITMSG`)) {
             const b = fs
                 .readFileSync(`${root.stdout}/.git/COMMIT_EDITMSG`)
                 .toString();
 
-            const end =
-                b.indexOf(
-                    '------------------------ >8 ------------------------',
-                ) || b.length;
+            const scissors = b.indexOf(
+                '------------------------ >8 ------------------------',
+            );
 
+            const end = scissors > -1 ? scissors : b.length;
             const editMsg = b.substring(0, end).replace(/^#.*$/gm, '').trim();
 
             if (editMsg.length) {
@@ -144,9 +145,10 @@ export default class CommitLint extends Command {
                 );
 
                 if (report.errors.length) {
+                    exitCode = 1;
                     this.log(`\n` + report.input);
 
-                    this.error(
+                    this.log(
                         `Invalid commit message\n\n` +
                             report.errors
                                 .map(
@@ -159,7 +161,6 @@ export default class CommitLint extends Command {
             }
         }
 
-        let exitCode = 0;
         const commits = await lintCommits({from: flags.from, to: 'HEAD'});
         for await (const commit of commits) {
             if (commit.input === 'Initial commit') {
