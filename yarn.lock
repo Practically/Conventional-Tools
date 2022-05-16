@@ -229,13 +229,13 @@
   resolved "https://registry.yarnpkg.com/@commitlint/execute-rule/-/execute-rule-16.2.1.tgz#60be73be4b9af97a41546e7ce59fdd33787c65f8"
   integrity sha512-oSls82fmUTLM6cl5V3epdVo4gHhbmBFvCvQGHBRdQ50H/690Uq1Dyd7hXMuKITCIdcnr9umyDkr8r5C6HZDF3g==
 
-"@commitlint/format@^16":
-  version "16.2.1"
-  resolved "https://registry.yarnpkg.com/@commitlint/format/-/format-16.2.1.tgz#6e673f710c799be78e68b2682323e04f75080d07"
-  integrity sha512-Yyio9bdHWmNDRlEJrxHKglamIk3d6hC0NkEUW6Ti6ipEh2g0BAhy8Od6t4vLhdZRa1I2n+gY13foy+tUgk0i1Q==
+"@commitlint/format@^17":
+  version "17.0.0"
+  resolved "https://registry.yarnpkg.com/@commitlint/format/-/format-17.0.0.tgz#2c991ac0df3955fe5d7d4d733967bd17e6cfd9e0"
+  integrity sha512-MZzJv7rBp/r6ZQJDEodoZvdRM0vXu1PfQvMTNWFb8jFraxnISMTnPBWMMjr2G/puoMashwaNM//fl7j8gGV5lA==
   dependencies:
-    "@commitlint/types" "^16.2.1"
-    chalk "^4.0.0"
+    "@commitlint/types" "^17.0.0"
+    chalk "^4.1.0"
 
 "@commitlint/is-ignored@^16.2.4":
   version "16.2.4"
@@ -320,6 +320,13 @@
   integrity sha512-7/z7pA7BM0i8XvMSBynO7xsB3mVQPUZbVn6zMIlp/a091XJ3qAXRXc+HwLYhiIdzzS5fuxxNIHZMGHVD4HJxdA==
   dependencies:
     chalk "^4.0.0"
+
+"@commitlint/types@^17.0.0":
+  version "17.0.0"
+  resolved "https://registry.yarnpkg.com/@commitlint/types/-/types-17.0.0.tgz#3b4604c1a0f06c340ce976e6c6903d4f56e3e690"
+  integrity sha512-hBAw6U+SkAT5h47zDMeOu3HSiD0SODw4Aq7rRNh1ceUmL7GyLKYhPbUvlRWqZ65XjBLPHZhFyQlRaPNz8qvUyQ==
+  dependencies:
+    chalk "^4.1.0"
 
 "@cspotcode/source-map-consumer@0.8.0":
   version "0.8.0"
