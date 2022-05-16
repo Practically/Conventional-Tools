@@ -1,3 +1,15 @@
+# [v0.8.0](https://git.zportal.co.uk/practically-oss/conventional-tools/compare/v0.7.1...v0.8.0) (2022-05-16)
+
+### Bug Fixes
+
+* **commitlint:** lint COMMIT_EDITMSG with no scissors ([f561139](https://git.zportal.co.uk/practically-oss/conventional-tools/commits/f56113901f66c650352099f584340652137ad458)), closes [#18](https://git.zportal.co.uk/practically-oss/conventional-tools/issues/18)
+* update GitLab release urls ([d21d6d0](https://git.zportal.co.uk/practically-oss/conventional-tools/commits/d21d6d050b3a524883ed3d0e7e075df4e7482d49))
+
+
+### Features
+
+* **release:** support assets for Github releases ([f30642e](https://git.zportal.co.uk/practically-oss/conventional-tools/commits/f30642eacd1c839c088cc30923944c20391feda5))
+
 ## [v0.7.1](https://git.zportal.co.uk/practically-oss/conventional-tools/compare/v0.7.0...v0.7.1) (2022-02-28)
 
 ### Bug Fixes
