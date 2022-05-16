@@ -13,7 +13,7 @@
     "dependencies": {
         "@commitlint/config-conventional": "^17",
         "@commitlint/format": "^17",
-        "@commitlint/lint": "^16",
+        "@commitlint/lint": "^17",
         "@commitlint/load": "^16",
         "@oclif/core": "^1.6.4",
         "@oclif/plugin-autocomplete": "^1.1.1",
