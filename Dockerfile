@@ -1,7 +1,7 @@
 #
 # Conventional Tools Docker Build
 #
-FROM node:12
+FROM node:16
 
 #
 # Set the current working directory

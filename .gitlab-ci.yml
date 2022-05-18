@@ -3,7 +3,7 @@ stages: ['test', 'build', 'package', 'deploy']
 
 commits:
   stage: test
-  image: node:12
+  image: node:16
   cache:
     paths:
       - node_modules
@@ -15,7 +15,7 @@ commits:
 
 prettier:
   stage: test
-  image: node:12
+  image: node:16
   cache:
     paths:
       - node_modules
@@ -36,10 +36,6 @@ prettier:
     - yarn prepack
     - TEST_OUTPUT=1 yarn test
 
-test:node:12:
-  <<: *test_configuration
-  image: node:12
-
 test:node:14:
   <<: *test_configuration
   image: node:14
@@ -48,9 +44,13 @@ test:node:16:
   <<: *test_configuration
   image: node:16
 
+test:node:18:
+  <<: *test_configuration
+  image: node:18
+
 build:
   stage: build
-  image: node:12
+  image: node:16
   cache:
     paths:
       - node_modules
