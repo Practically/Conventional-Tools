@@ -64,6 +64,7 @@ build:
       - dist
   only:
     - 0.x
+    - 1.x
 
 docker-image-next:
   stage: package
@@ -77,6 +78,7 @@ docker-image-next:
     - docker push $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_NAME
   only:
     - 0.x
+    - 1.x
 
 deploy:docs:
   stage: deploy
@@ -117,4 +119,4 @@ deploy:docs:
     - rsync -arvph $RSYNC_SRC -e "ssh -p $RSYNC_PORT" $RSYNC_USER@$RSYNC_HOST:$RSYNC_DEST
   only:
     refs:
-      - 0.x
+      - 1.x
