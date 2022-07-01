@@ -26,9 +26,9 @@ new release with every push to the master branch
 ```yaml
 release:
   stage: release
-  image: registry.baln.co.uk/general/conventional-tools:latest
+  image: registry.k1.zportal.co.uk/practically-oss/conventional-tools:0.x
   variables:
-    GIT_EMAIL: gitbot@baln.co.uk
+    GIT_EMAIL: gitbot@practically.co.uk
     GIT_USER: Gitbot
     GIT_STRATEGY: clone
   script:
