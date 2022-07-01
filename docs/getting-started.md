@@ -4,12 +4,12 @@
 
 ### NPM
 
-A [npm package](https://www.npmjs.com/package/@baln/conventional-tools) is
-available of the latest stable. You can install it globally with the below
+A [npm package](https://www.npmjs.com/package/@practically/conventional-tools)
+is available of the latest stable. You can install it globally with the below
 command.
 
 ```sh
-npm i -g @baln/conventional-tools
+npm i -g @practically/conventional-tools
 ```
 
 ### Docker
@@ -19,8 +19,8 @@ meant to be used in CI however there is no reason you cant use it locally if you
 want to run it in a confined environment
 
 ```sh
-docker run --rm -it registry.baln.co.uk/general/conventional-tools:latest conventional-tools --help
-docker run --rm -it registry.baln.co.uk/general/conventional-tools:next conventional-tools --help
+docker run --rm -it registry.k1.zportal.co.uk/practically-oss/conventional-tools:latest conventional-tools --help
+docker run --rm -it registry.k1.zportal.co.uk/practically-oss/conventional-tools:next conventional-tools --help
 ```
 
 ### Source
@@ -32,7 +32,7 @@ The below example is installing with yarn on a linux biased environment.
 #
 # Clone the source
 #
-git clone https://git.baln.co.uk/general/conventional-tools.git ~/.local/share/conventional-tools
+git clone https://git.zportal.co.uk/practically-oss/conventional-tools.git ~/.local/share/conventional-tools
 #
 # Move to the source directory
 #
