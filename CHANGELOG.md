@@ -1,3 +1,14 @@
+# [v1.0.0](https://git.zportal.co.uk/practically-oss/conventional-tools/compare/v0.8.0...v1.0.0) (2022-07-02)
+
+### Features
+
+* remove node 12 support and add node 18 ([e5df05b](https://git.zportal.co.uk/practically-oss/conventional-tools/commits/e5df05b1aa7edd151c4cca162303619a3ecceb0d))
+
+
+### BREAKING CHANGES
+
+* The minimum supported node version is now node14
+
 # [v0.8.0](https://git.zportal.co.uk/practically-oss/conventional-tools/compare/v0.7.1...v0.8.0) (2022-05-16)
 
 ### Bug Fixes
