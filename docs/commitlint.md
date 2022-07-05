@@ -93,7 +93,7 @@ You can run commitlint in your CI pipelines with the bellow example config.
 ```yaml
 lint:commits:
   stage: lint
-  image: registry.k1.zportal.co.uk/practically-oss/conventional-tools:0.x
+  image: registry.k1.zportal.co.uk/practically-oss/conventional-tools:1.x
   script:
     - conventional-tools commitlint -l1
 ```
@@ -111,7 +111,7 @@ commits:
         fetch-depth: 1000
 
     - name: Lint commits
-      uses: docker://registry.k1.zportal.co.uk/practically-oss/conventional-tools:0.x
+      uses: docker://registry.k1.zportal.co.uk/practically-oss/conventional-tools:1.x
       with:
         args: conventional-tools commitlint -l1
 ```

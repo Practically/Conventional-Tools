@@ -26,7 +26,7 @@ new release with every push to the master branch
 ```yaml
 release:
   stage: release
-  image: registry.k1.zportal.co.uk/practically-oss/conventional-tools:0.x
+  image: registry.k1.zportal.co.uk/practically-oss/conventional-tools:1.x
   variables:
     GIT_EMAIL: gitbot@practically.co.uk
     GIT_USER: Gitbot
