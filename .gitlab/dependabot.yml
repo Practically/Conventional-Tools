@@ -17,7 +17,7 @@ updates:
       - dependency-name: 'chalk'
         versions: ['5.x']
     assignees:
-      - 'ade'
+      - 'george'
     labels:
       - 'priority: normal'
       - 'status: to do'
