@@ -1,3 +1,7 @@
+## [v1.0.1](https://git.zportal.co.uk/practically-oss/conventional-tools/compare/v1.0.0...v1.0.1) (2022-08-04)
+
+**NOTE:** This is a patch release only
+
 # [v1.0.0](https://git.zportal.co.uk/practically-oss/conventional-tools/compare/v0.8.0...v1.0.0) (2022-07-02)
 
 ### Features
