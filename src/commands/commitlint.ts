@@ -173,16 +173,22 @@ export default class CommitLint extends Command {
 
             let errors = '';
             let warnings = '';
-            if (flags.level > 0 && commit.errors.length) {
-                errors = commit.errors
-                    .map((item: any) => `${chalk.red('✖ ' + item.message)}`)
-                    .join('\n');
-            }
 
-            if (flags.level > 1 && commit.warnings.length) {
-                warnings = commit.warnings
-                    .map((item: any) => `${chalk.yellow('⚠ ' + item.message)}`)
-                    .join('\n');
+            if (typeof flags.level !== 'undefined') {
+                if (flags.level > 0 && commit.errors.length) {
+                    errors = commit.errors
+                        .map((item: any) => `${chalk.red('✖ ' + item.message)}`)
+                        .join('\n');
+                }
+
+                if (flags.level > 1 && commit.warnings.length) {
+                    warnings = commit.warnings
+                        .map(
+                            (item: any) =>
+                                `${chalk.yellow('⚠ ' + item.message)}`,
+                        )
+                        .join('\n');
+                }
             }
 
             if (errors.length || warnings.length) {
