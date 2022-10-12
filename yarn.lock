@@ -426,9 +426,9 @@
     tslib "^2.3.1"
 
 "@oclif/core@^1.16.5", "@oclif/core@^1.6.4":
-  version "1.16.5"
-  resolved "https://registry.yarnpkg.com/@oclif/core/-/core-1.16.5.tgz#248c3371b615462a6ee6826a3c316bdc54dc5193"
-  integrity sha512-Jb58K79AALkLmY0PNU1Jx4Z+/JIWtpgtRbei92PIIBx+TaAmYgVySNI1beInZFNOpGo2fhxVBp+yr3DZ38z3kQ==
+  version "1.16.6"
+  resolved "https://registry.yarnpkg.com/@oclif/core/-/core-1.16.6.tgz#b83704d03f9e420090f91e3c8708f2f74108a767"
+  integrity sha512-g6ILjfs9sbyZGEXV+CUBR22wfT2D7/SNW1QvUAR3K8l4Joe1Z/xD2e2Dk27EA8+mU+HcwiTZJKiTVq7BUtZe5g==
   dependencies:
     "@oclif/linewrap" "^1.0.0"
     "@oclif/screen" "^3.0.2"
