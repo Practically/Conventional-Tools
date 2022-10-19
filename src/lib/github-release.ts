@@ -50,7 +50,7 @@ export const githubRelease = async (props: GithubReleaseProps) => {
     };
 
     const {id} = await got
-        .post<{id: string}>(`${apiBaseUrl}/repos/${props.project}/releases`, {
+        .post(`${apiBaseUrl}/repos/${props.project}/releases`, {
             ...apiOptions,
             json: {
                 name: `Release: ${props.tag}`,
@@ -58,7 +58,7 @@ export const githubRelease = async (props: GithubReleaseProps) => {
                 body: props.notes || 'No release notes.',
             },
         })
-        .json();
+        .json<{id: string}>();
 
     if (props.assets.length > 0) {
         const assetUrl = apiBaseUrl.replace('api.', 'uploads.');
