@@ -62,7 +62,7 @@ export default class ReleaseCalver extends Command {
             provider === 'gitlab' ? 'gitlab.com' : 'api.github.com',
         );
         const project = await configGet('git.project', '');
-        const secret = (await secrets.getSecret(host)) || process.env.CT_TOKEN;
+        const secret = process.env.CT_TOKEN || (await secrets.getSecret(host));
         if (!secret) {
             this.error(
                 'Invalid secret. See https://conventional-tools.practically.io/release-config/',
