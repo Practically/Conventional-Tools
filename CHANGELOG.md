@@ -1,3 +1,15 @@
+# [v1.1.0](https://git.zportal.co.uk/practically-oss/conventional-tools/compare/v1.0.1...v1.1.0) (2022-10-21)
+
+### Bug Fixes
+
+* **release:** amend typing of request when creating release ([072400e](https://git.zportal.co.uk/practically-oss/conventional-tools/commits/072400e1a2b78084fa4c864939487b02a7529254)), closes [#20](https://git.zportal.co.uk/practically-oss/conventional-tools/issues/20)
+* **release:** prefer CT_TOKEN over secret store ([03aca17](https://git.zportal.co.uk/practically-oss/conventional-tools/commits/03aca17cb3b4bdd3fdf08379121c5325b72bcc46))
+
+
+### Features
+
+* **core:** add 'glob' package ([ba2803f](https://git.zportal.co.uk/practically-oss/conventional-tools/commits/ba2803f41961a2a1678d8affbb96b6a2b5d0955d))
+
 ## [v1.0.1](https://git.zportal.co.uk/practically-oss/conventional-tools/compare/v1.0.0...v1.0.1) (2022-08-04)
 
 **NOTE:** This is a patch release only
