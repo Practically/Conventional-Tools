@@ -431,10 +431,10 @@
     is-wsl "^2.1.1"
     tslib "^2.3.1"
 
-"@oclif/core@^1.21.0", "@oclif/core@^1.6.4":
-  version "1.21.0"
-  resolved "https://registry.yarnpkg.com/@oclif/core/-/core-1.21.0.tgz#d91b2f40a4f446279ab6335c619fc1716fc23ab6"
-  integrity sha512-B/AKYfHcNRAbb6Xz2kj0FlH9gWEi8aFS4iEr7EzguP3E2DpDk4wcf7eOMOfJYEmhuVd9sOpVWSnI2yP+FL/3Sg==
+"@oclif/core@^1.21.0", "@oclif/core@^1.22.0", "@oclif/core@^1.6.4":
+  version "1.22.0"
+  resolved "https://registry.yarnpkg.com/@oclif/core/-/core-1.22.0.tgz#dfdd76db6435cc1be2de7bbe25c23302332b9297"
+  integrity sha512-Bvyi6uFbmpkFl9XUATsGMlqEDGfqMKWL0Mu5VQTuPg7/NIyfygYkaburn11uGkOp0a8yG6fPpyVBfGmztjNPGA==
   dependencies:
     "@oclif/linewrap" "^1.0.0"
     "@oclif/screen" "^3.0.3"
@@ -569,12 +569,13 @@
   resolved "https://registry.yarnpkg.com/@oclif/screen/-/screen-3.0.3.tgz#e679ad10535e31d333f809f7a71335cc9aef1e55"
   integrity sha512-KX8gMYA9ujBPOd1HFsV9e0iEx7Uoj8AG/3YsW4TtWQTg4lJvr82qNm7o/cFQfYRIt+jw7Ew/4oL4A22zOT+IRA==
 
-"@oclif/test@^1":
-  version "1.2.8"
-  resolved "https://registry.npmjs.org/@oclif/test/-/test-1.2.8.tgz#a5b2ebd747832217d9af65ac30b58780c4c17c5e"
-  integrity sha512-HCh0qPge1JCqTEw4s2ScnicEZd4Ro4/0VvdjpsfCiX6fuDV53fRZ2uqLTgxKGHrVoqOZnVrRZHyhFyEsFGs+zQ==
+"@oclif/test@^2":
+  version "2.2.16"
+  resolved "https://registry.yarnpkg.com/@oclif/test/-/test-2.2.16.tgz#2241f79a8d779c3b6a28671f097fa903795fe001"
+  integrity sha512-N7w7NHn+klyHXAOWcA8Vgmy/eFfU9Niwp2P/rkvmNg9NfWDHB+RAgjqnVMYDYYdXIDu3/DXdS90NXrIIhvPcHA==
   dependencies:
-    fancy-test "^1.4.3"
+    "@oclif/core" "^1.22.0"
+    fancy-test "^2.0.9"
 
 "@samverschueren/stream-to-observable@^0.3.0":
   version "0.3.1"
@@ -1781,10 +1782,10 @@ extract-stack@^2.0.0:
   resolved "https://registry.npmjs.org/extract-stack/-/extract-stack-2.0.0.tgz#11367bc865bfcd9bc0db3123e5edb57786f11f9b"
   integrity sha512-AEo4zm+TenK7zQorGK1f9mJ8L14hnTDi2ZQPR+Mub1NX8zimka1mXpV5LpH8x9HoUmFSHZCfLHqWvp0Y4FxxzQ==
 
-fancy-test@^1.4.3:
-  version "1.4.10"
-  resolved "https://registry.npmjs.org/fancy-test/-/fancy-test-1.4.10.tgz#310be93d4aa45d788bce56a573ae4d1b92b2e1a0"
-  integrity sha512-AaUX6wKS7D5OP2YK2q5G7c8PGx2lgoyLUD7Bbg8z323sb9aebBqzb9UN6phzI73UgO/ViihmNfOxF3kdfZLhew==
+fancy-test@^2.0.9:
+  version "2.0.10"
+  resolved "https://registry.yarnpkg.com/fancy-test/-/fancy-test-2.0.10.tgz#4c96b34cb15ad49693634fd1df9a28bb2086253f"
+  integrity sha512-gt2C/1DrFLyXNEkPHpltol0osCFEj5c3TFs3gu4EhIbnKEU9AW+lK0pWf1wRXhKs/FtcijnfODaO90d1HlTulQ==
   dependencies:
     "@types/chai" "*"
     "@types/lodash" "*"
