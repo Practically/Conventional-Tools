@@ -260,9 +260,9 @@
     "@commitlint/types" "^17.4.0"
 
 "@commitlint/load@^17":
-  version "17.4.1"
-  resolved "https://registry.yarnpkg.com/@commitlint/load/-/load-17.4.1.tgz#e1073e0264c84b304f5ab22862217152daca5d27"
-  integrity sha512-6A7/LhIaQpL4ieciIDcVvK2d5z/UI1GBrtDaHm6sQSCL0265clB2/F7XKQNTJHXv9yG4LByT2r+QCpM4GugIfw==
+  version "17.4.2"
+  resolved "https://registry.yarnpkg.com/@commitlint/load/-/load-17.4.2.tgz#551875c3e1dce6dc0375dc9c8ad551de8ba35de4"
+  integrity sha512-Si++F85rJ9t4hw6JcOw1i2h0fdpdFQt0YKwjuK4bk9KhFjyFkRxvR3SB2dPaMs+EwWlDrDBGL+ygip1QD6gmPw==
   dependencies:
     "@commitlint/config-validator" "^17.4.0"
     "@commitlint/execute-rule" "^17.4.0"
