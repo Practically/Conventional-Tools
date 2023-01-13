@@ -1,5 +1,5 @@
 #!/bin/bash
-# Copyright 2021-2022 Practically.io All rights reserved
+# Copyright 2021-2023 Practically.io All rights reserved
 #
 # Lint the staged files with phpcs
 #

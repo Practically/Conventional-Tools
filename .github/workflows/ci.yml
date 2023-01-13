@@ -1,0 +1,57 @@
+# Copyright 2023 Practically.io All rights reserved
+
+name: CI
+on: [push]
+jobs:
+  commits:
+    name: Lint commits
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Set up Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - name: Install dependencies and Prepack
+        run: yarn install && yarn prepack && rm -rf node_modules && NODE_ENV=production yarn install
+
+      - name: Lint
+        run: ./bin/run commitlint
+
+  test:
+    runs-on: ubuntu-latest
+    name: Test Node ${{ matrix.node-versions }}
+    strategy:
+      fail-fast: false
+      matrix:
+        node-version: [14, 16, 18]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Set up Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Setup environment
+        run: |
+          ln -s $(pwd)/bin/run /usr/local/bin/conventional-tools
+          git config --global user.email "test@test.com"
+          git config --global user.name "Tester"
+          yarn prepack
+
+      - name: Lint
+        run: yarn lint
+
+      - name: Type Check
+        run: yarn type-check --noEmit
+
+      - name: Test
+        run: TEST_OUTPUT=1 yarn test

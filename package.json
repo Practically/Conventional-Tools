@@ -77,9 +77,10 @@
             "-v"
         ]
     },
-    "repository": "https://git.zportal.co.uk/practically-oss/conventional-tools",
+    "repository": "https://github.com/Practically/conventional-tools",
     "scripts": {
         "build": "oclif-dev pack",
+        "type-check": "tsc",
         "postpack": "rm -f oclif.manifest.json",
         "prepack": "rm -rf lib && tsc -b && oclif-dev manifest",
         "test": "TS_NODE_PROJECT=\"test/tsconfig.json\" nyc --extension .ts mocha --timeout 30000 --async-only --recursive --reporter spec --require ts-node/register --forbid-only \"test/**/*.test.ts\"",
