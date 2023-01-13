@@ -1,10 +1,10 @@
-# Copyright 2020-2022 Practically.io All rights reserved
+# Copyright 2020-2023 Practically.io All rights reserved
 version: 2
 updates:
   - package-ecosystem: npm
     directory: '/'
     schedule:
-      interval: daily
+      interval: weekly
     commit-message:
       prefix: 'chore:'
     ignore:

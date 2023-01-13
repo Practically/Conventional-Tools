@@ -1,9 +1,11 @@
+# Copyright 2021-2023 Practically.io All rights reserved
+
 site_name: Conventional Tools
 site_description: CLI tool for a conventional workflow
 
-repo_name: practically-oss/conventional-tools
-repo_url: https://git.zportal.co.uk/practically-oss/conventional-tools
-edit_uri: -/tree/0.x/docs
+repo_name: Practically/conventional-tools
+repo_url: https://github.com/Practically/conventional-tools
+edit_uri: -/tree/1.x/docs
 
 nav:
   - Getting Started: getting-started.md

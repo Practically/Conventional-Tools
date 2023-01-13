@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright 2021-2022 Practically.io All rights reserved
+# Copyright 2021-2023 Practically.io All rights reserved
 #
 # Use of this source is governed by a BSD-style
 # licence that can be found in the LICENCE file or at
