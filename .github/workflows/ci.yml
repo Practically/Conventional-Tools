@@ -1,7 +1,11 @@
 # Copyright 2023 Practically.io All rights reserved
 
 name: CI
-on: [push]
+
+on:
+  push: { branches: ["1.x"] }
+  pull_request: { branches: ["1.x"] }
+
 jobs:
   commits:
     name: Lint commits
