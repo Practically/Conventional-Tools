@@ -1,0 +1,37 @@
+# Copyright 2023 Practically.io All rights reserved
+
+name: Publish Release
+
+on:
+  workflow_run:
+    workflows: ["Conventional Tools Release"]
+    types: ["completed"]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: 18
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Install dependencies and build
+        run: yarn install && yarn build
+
+      - name: Publish package on NPM
+        run: npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+  fail:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'failure' }}
+    steps:
+      - name: Fail
+        run: echo "The release must pass for this to run" && exit 1
