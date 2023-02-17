@@ -15,7 +15,7 @@
         "@commitlint/format": "^17",
         "@commitlint/lint": "^17",
         "@commitlint/load": "^17",
-        "@oclif/core": "^1.6.4",
+        "@oclif/core": "^2.1.5",
         "@oclif/plugin-autocomplete": "^1.1.1",
         "@oclif/plugin-help": "^5.1.10",
         "chalk": "^4.0.0",
