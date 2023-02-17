@@ -14,7 +14,6 @@ hooks:
         echo "$(conventional-tools commitgen)$(cat ${1})" > ${1};
       fi
   pre-commit:
-    - $(git rev-parse --show-toplevel)/.github/hooks/check-email.sh
     - $(git rev-parse --show-toplevel)/.github/hooks/check-copyright.sh
     - $(git rev-parse --show-toplevel)/.github/hooks/no-yaml-files.sh
     - $(git rev-parse --show-toplevel)/.github/hooks/prettier.sh
