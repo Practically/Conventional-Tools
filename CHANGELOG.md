@@ -1,3 +1,7 @@
+## [v1.1.1](https://github.com/Practically/conventional-tools/compare/v1.1.0...v1.1.1) (2023-02-17)
+
+**NOTE:** This is a patch release only
+
 # [v1.1.0](https://git.zportal.co.uk/practically-oss/conventional-tools/compare/v1.0.1...v1.1.0) (2022-10-21)
 
 ### Bug Fixes
