@@ -12,10 +12,10 @@
 # It will test for two types of headers. The boilerplate BSD licence for
 # practically and php style below is examples of valid headers
 #
-# Copyright 2021-2023 Practically.io All rights reserved
-# Copyright 2020-2023 Practically.io All rights reserved
-# @copyright 2021-2023 Practically.io All rights reserved
-# @copyright 2020-2023 Practically.io All rights reserved
+# Copyright 2021 Practically.io All rights reserved
+# Copyright 2020-2021 Practically.io All rights reserved
+# @copyright 2021 Practically.io All rights reserved
+# @copyright 2020-2021 Practically.io All rights reserved
 #
 # Example hook via conventional-tools as a pre-commit hook
 # pre-commit:
