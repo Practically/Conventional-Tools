@@ -61,7 +61,7 @@
     "keywords": [
         "oclif"
     ],
-    "license": "MIT",
+    "license": "BSD-3-Clause",
     "main": "lib/index.js",
     "oclif": {
         "commands": "./lib/commands",
