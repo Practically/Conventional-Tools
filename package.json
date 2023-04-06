@@ -1,7 +1,7 @@
 {
     "name": "@practically/conventional-tools",
     "description": "CLI tool for a conventional workflow",
-    "version": "1.1.1",
+    "version": "1.1.2",
     "author": {
         "name": "Practically.io",
         "email": "support@practically.io",
