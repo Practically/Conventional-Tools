@@ -13,7 +13,7 @@ jobs:
   release:
     name: Release
     runs-on: ubuntu-latest
-    container: registry.k1.zportal.co.uk/practically-oss/conventional-tools:1.x
+    container: practically/conventional-tools:1.x@sha256:e0603c12e8b4b835c9fcceaa4ddad4077ccf223665c0180db91511e2ce168670
     env:
       CT_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
