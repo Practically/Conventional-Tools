@@ -79,7 +79,7 @@
     },
     "repository": "https://github.com/Practically/conventional-tools",
     "scripts": {
-        "build": "oclif-dev pack",
+        "build": "oclif-dev pack --targets linux-x64",
         "type-check": "tsc",
         "postpack": "rm -f oclif.manifest.json",
         "prepack": "rm -rf lib && tsc -b && oclif-dev manifest",
