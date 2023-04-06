@@ -14,13 +14,12 @@ npm i -g @practically/conventional-tools
 
 ### Docker
 
-There is a docker build of both the latest stable and the next branch. This is
-meant to be used in CI however there is no reason you cant use it locally if you
-want to run it in a confined environment
+There is a docker build of the `1.x` branch. This is meant to be used in CI
+however there is no reason you can't use it locally if you want to run it in a
+confined environment
 
 ```sh
-docker run --rm -it registry.k1.zportal.co.uk/practically-oss/conventional-tools:latest conventional-tools --help
-docker run --rm -it registry.k1.zportal.co.uk/practically-oss/conventional-tools:next conventional-tools --help
+docker run --rm -it practically/conventional-tools:1.x:latest conventional-tools --help
 ```
 
 ### Source
