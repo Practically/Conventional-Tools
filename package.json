@@ -22,7 +22,7 @@
         "conventional-changelog": "^3.1.25",
         "conventional-recommended-bump": "^6.0.5",
         "cosmiconfig": "^8.0.0",
-        "execa": "^5.0.0",
+        "execa": "^7.1.1",
         "form-data": "^4.0.0",
         "glob": "^8.0.3",
         "got": "^11.8.2",
