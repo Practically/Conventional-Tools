@@ -465,10 +465,10 @@
     widest-line "^3.1.0"
     wrap-ansi "^7.0.0"
 
-"@oclif/core@^2.7.1", "@oclif/core@^2.8.0":
-  version "2.8.0"
-  resolved "https://registry.yarnpkg.com/@oclif/core/-/core-2.8.0.tgz#4948de3168804169fa68895af8ec4853f332b307"
-  integrity sha512-A2wHItFrD/WOw5bJ6Mtv9MD7If0bsKNR0pwEY0me+fo4HSXlJOtgYGqmzb8t8akX3DUUT7XsjPajsoHLkIJyvg==
+"@oclif/core@^2.8.0", "@oclif/core@^2.8.2":
+  version "2.8.5"
+  resolved "https://registry.yarnpkg.com/@oclif/core/-/core-2.8.5.tgz#7964057bbee5e91dae8b35e030e767f38e50a19e"
+  integrity sha512-316DLfrHQDYmWDriI4Woxk9y1wVUrPN1sZdbQLHdOdlTA9v/twe7TdHpWOriEypfl6C85NWEJKc1870yuLtjrQ==
   dependencies:
     "@types/cli-progress" "^3.11.0"
     ansi-escapes "^4.3.2"
@@ -561,11 +561,11 @@
     tslib "^2.0.0"
 
 "@oclif/plugin-autocomplete@^2.1.7":
-  version "2.1.7"
-  resolved "https://registry.yarnpkg.com/@oclif/plugin-autocomplete/-/plugin-autocomplete-2.1.7.tgz#b48615177d9c7c767d052a24ebdad75878dcb709"
-  integrity sha512-qCC1WxDt6hH7iukK6IummVHhr0fPcHTkbE5hyIuZY/lxc8UxN3GtfJlq2QlnfOjweiFWRHxtDC3WPv5HS1eZnA==
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/@oclif/plugin-autocomplete/-/plugin-autocomplete-2.2.0.tgz#b1e07e2780f065e67a8e650998bd5a5eb03d8f6f"
+  integrity sha512-nG+j6UR2D0VCR/kEPdFRYnHGLJwFKp4UHESDmbMNjMtzdw5VDPdV1ziaWYD3wMUUeHNbxyKzmmR6wVwmVqxWkw==
   dependencies:
-    "@oclif/core" "^2.7.1"
+    "@oclif/core" "^2.8.2"
     chalk "^4.1.0"
     debug "^4.3.4"
     fs-extra "^9.0.1"
