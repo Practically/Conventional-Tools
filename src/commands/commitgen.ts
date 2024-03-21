@@ -1,43 +1,47 @@
-import {Command} from '@oclif/core';
-
-import configGet from '../lib/config';
-import * as execa from 'execa';
-
-const getCurrentBranch = async (): Promise<string> => {
-    const {stdout} = await execa('git', ['rev-parse', '--abbrev-ref', 'HEAD']);
-    return stdout || 'master';
-};
+import {log} from '../lib/logger';
+import {getSourceControlProvider} from '../lib/source-control';
 
 const types = [
-    'build',
-    'chore',
-    'ci',
-    'docs',
-    'feat',
-    'fix',
-    'improvement',
-    'perf',
-    'refactor',
-    'revert',
-    'style',
-    'test',
+  'build',
+  'chore',
+  'ci',
+  'docs',
+  'feat',
+  'fix',
+  'improvement',
+  'perf',
+  'refactor',
+  'revert',
+  'style',
+  'test',
 ];
 
-const footerMessages: {[key: string]: string} = {
-    fix: 'Fixes Issue',
+const footerMessages: Record<string, string> = {
+  fix: 'Fixes Issue',
 };
 
-export default class Commitgen extends Command {
-    static description = 'Commit message generator';
+export const builder = {} as const;
 
-    async run() {
-        const {args} = await this.parse(Commitgen);
+// export async function handler(
+//   _: InferredOptionTypes<typeof builder>,
+// ): Promise<void> {
 
-        const branch = await getCurrentBranch();
-        const m = branch.match(/(\w+)\/([a-z0-9]+)-?/);
-        const scopes = await configGet('commit.scopes', []);
+export async function handler(): Promise<number> {
+  const sourceControl = await getSourceControlProvider();
+  if (!sourceControl) {
+    throw new Error('No source control provider found');
+  }
 
-        const message = `# Generated commit message by conventional tools. If you do not want this
+  const branch = await sourceControl.getBranchName();
+  if (!branch) {
+    throw new Error('No branch found');
+  }
+
+  const m = branch.match(/(\w+)\/([a-z0-9]+)-?/);
+  // TODO(AdeAttwood): Sort out getting stuff from the config `.ctrc.yml`
+  const scopes: string[] = [];
+
+  const message = `# Generated commit message by conventional tools. If you do not want this
 # message please delete above the comments and save the file. This will then
 # abort due to an empty commit message.
 #
@@ -48,19 +52,29 @@ export default class Commitgen extends Command {
 #   ${scopes.join(', ').replace(/(.{62,72})(\s+\r?|\r)/g, '$1\n#   ')}
 #
 `;
-        if (!m || !m[1] || !m[2]) {
-            this.log(`\n\n${message}`);
-            return;
-        }
 
-        const t = types.includes(m[1]) ? m[1] : 'edit';
-        const footer = m[2].match(/\d+/)
-            ? `${footerMessages[t] || 'Ref'}: #${m[2]}`
-            : '';
-        this.log(`${t}(edit): edit
+  if (!m?.[1] || !m[2]) {
+    log(`\n\n${message}`);
+    return 0;
+  }
+
+  const t = types.includes(m[1]) ? m[1] : 'edit';
+  const footer = m[2].match(/\d+/)
+    ? `${footerMessages[t] || 'Ref'}: #${m[2]}`
+    : '';
+
+  log(`${t}(edit): edit
 
 ${footer}
 ${message}
 `);
-    }
+
+  return 0;
 }
+
+export default {
+  builder,
+  handler: async () => {
+    await handler();
+  },
+};

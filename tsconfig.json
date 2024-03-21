@@ -1,12 +1,13 @@
 {
-    "compilerOptions": {
-        "declaration": true,
-        "importHelpers": true,
-        "module": "commonjs",
-        "outDir": "lib",
-        "rootDir": "src",
-        "strict": true,
-        "target": "es2017"
-    },
-    "include": ["src/**/*"]
+  "compilerOptions": {
+    "target": "es2016",
+    "module": "CommonJS",
+    "declaration": true,
+    "outDir": "./lib",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "skipLibCheck": true
+  },
+  "include": ["src"]
 }

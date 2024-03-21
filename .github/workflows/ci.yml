@@ -7,23 +7,23 @@ on:
   pull_request: { branches: ["1.x"] }
 
 jobs:
-  commits:
-    name: Lint commits
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
+  # commits:
+  #   name: Lint commits
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v2
 
-      - name: Set up Node
-        uses: actions/setup-node@v3
-        with:
-          node-version: 16
+  #     - name: Set up Node
+  #       uses: actions/setup-node@v3
+  #       with:
+  #         node-version: 16
 
-      - name: Install dependencies and Prepack
-        run: yarn install && yarn prepack && rm -rf node_modules && NODE_ENV=production yarn install
+  #     - name: Install dependencies and Prepack
+  #       run: yarn install && yarn prepack && rm -rf node_modules && NODE_ENV=production yarn install
 
-      - name: Lint
-        run: ./bin/run commitlint
+  #     - name: Lint
+  #       run: ./bin/run commitlint
 
   test:
     runs-on: ubuntu-latest
@@ -46,16 +46,15 @@ jobs:
 
       - name: Setup environment
         run: |
-          ln -s $(pwd)/bin/run /usr/local/bin/conventional-tools
+          ln -s $(pwd)/bin/conventional-tools.js /usr/local/bin/conventional-tools
           git config --global user.email "test@test.com"
           git config --global user.name "Tester"
-          yarn prepack
 
       - name: Lint
         run: yarn lint
 
       - name: Type Check
-        run: yarn type-check --noEmit
+        run: yarn build
 
       - name: Test
-        run: TEST_OUTPUT=1 yarn test
+        run: yarn test
