@@ -3,41 +3,23 @@
 name: CI
 
 on:
-  push: { branches: ["1.x"] }
-  pull_request: { branches: ["1.x"] }
+  push: { branches: ["2.x"] }
+  pull_request: { branches: ["2.x"] }
 
 jobs:
-  # commits:
-  #   name: Lint commits
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Checkout
-  #       uses: actions/checkout@v2
-
-  #     - name: Set up Node
-  #       uses: actions/setup-node@v3
-  #       with:
-  #         node-version: 16
-
-  #     - name: Install dependencies and Prepack
-  #       run: yarn install && yarn prepack && rm -rf node_modules && NODE_ENV=production yarn install
-
-  #     - name: Lint
-  #       run: ./bin/run commitlint
-
   test:
     runs-on: ubuntu-latest
-    name: Test Node ${{ matrix.node-versions }}
+    name: Test Node ${{ matrix.node-version }}
     strategy:
       fail-fast: false
       matrix:
-        node-version: [14, 16, 18]
+        node-version: [18, 20]
     steps:
       - name: Checkout
         uses: actions/checkout@v2
 
       - name: Set up Node
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
 
