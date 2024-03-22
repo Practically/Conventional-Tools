@@ -1,3 +1,4 @@
+import {configGet} from '../lib/config';
 import {log} from '../lib/logger';
 import {getSourceControlProvider} from '../lib/source-control';
 
@@ -38,8 +39,7 @@ export async function handler(): Promise<number> {
   }
 
   const m = branch.match(/(\w+)\/([a-z0-9]+)-?/);
-  // TODO(AdeAttwood): Sort out getting stuff from the config `.ctrc.yml`
-  const scopes: string[] = [];
+  const scopes = configGet('commit.scopes', [] as string[]);
 
   const message = `# Generated commit message by conventional tools. If you do not want this
 # message please delete above the comments and save the file. This will then

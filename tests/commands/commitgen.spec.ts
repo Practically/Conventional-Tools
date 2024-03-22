@@ -1,6 +1,7 @@
 import {beforeEach, describe, expect, it, vi} from 'vitest';
 
 import {handler} from '../../src/commands/commitgen';
+import * as config from '../../src/lib/config';
 import * as logger from '../../src/lib/logger';
 import * as sourceControl from '../../src/lib/source-control';
 
@@ -68,5 +69,26 @@ describe('command/commitgen', () => {
         );
       });
     }
+  });
+
+  describe('with a scopes in the config file', () => {
+    beforeEach(async ctx => {
+      vi.spyOn(config, 'configGet').mockReturnValue(['scope1', 'scope2']);
+
+      vi.spyOn(sourceControl, 'getSourceControlProvider').mockImplementation(
+        async () => ({
+          isEnabled: async () => true,
+          getBranchName: async () => `feat/123`,
+        }),
+      );
+
+      ctx.commandResult = await handler();
+    });
+
+    it('has the scopes in the commit message', () => {
+      expect(logger.log).toHaveBeenCalledWith(
+        expect.stringContaining('#   scope1, scope2'),
+      );
+    });
   });
 });
