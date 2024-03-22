@@ -15,7 +15,7 @@
   ],
   "scripts": {
     "test": "vitest tests",
-    "lint": "eslint src tests",
+    "lint": "tsc --noEmit --project tsconfig.eslint.json && eslint src tests",
     "build": "tsc"
   },
   "dependencies": {

@@ -6,7 +6,7 @@ import * as sourceControl from '../../src/lib/source-control';
 
 declare module 'vitest' {
   export interface TestContext {
-    commandResult?: string;
+    commandResult?: number;
   }
 }
 
@@ -30,7 +30,7 @@ describe('command/commitgen', () => {
         }),
       );
 
-      ctx.commandResult = await handler({});
+      ctx.commandResult = await handler();
     });
 
     it('exits with a success status code', ctx => {
