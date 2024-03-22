@@ -19,6 +19,7 @@
     "build": "tsc"
   },
   "dependencies": {
+    "yaml": "^2.4.1",
     "yargs": "^17.7.2"
   },
   "devDependencies": {
