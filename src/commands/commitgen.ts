@@ -1,4 +1,5 @@
 import {configGet} from '../lib/config';
+import {handlerWrapper} from '../lib/handler-wrapper';
 import {log} from '../lib/logger';
 import {getSourceControlProvider} from '../lib/source-control';
 
@@ -72,9 +73,4 @@ ${message}
   return 0;
 }
 
-export default {
-  builder,
-  handler: async () => {
-    await handler();
-  },
-};
+export default {builder, handler: handlerWrapper(handler)};
