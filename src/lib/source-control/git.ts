@@ -12,6 +12,11 @@ const git: SourceControlProvider = {
 
     return stdout.trim();
   },
+
+  root: async () => {
+    const {stdout} = await run(`git rev-parse --show-toplevel`);
+    return stdout.trim();
+  },
 };
 
 export default git;
