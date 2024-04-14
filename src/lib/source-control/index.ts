@@ -1,4 +1,5 @@
 import git from './git';
+import sapling from './sapling';
 
 export interface SourceControlProvider {
   /**
@@ -11,9 +12,13 @@ export interface SourceControlProvider {
    * are not currently on one.
    */
   getBranchName(): Promise<string | null>;
+  /**
+   * Get the current root directory of for the repository.
+   */
+  root(): Promise<string>;
 }
 
-const PROVIDERS = [git];
+const PROVIDERS = [git, sapling];
 
 export async function getSourceControlProvider(): Promise<
   SourceControlProvider | undefined
