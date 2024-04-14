@@ -4,6 +4,7 @@ import {hideBin} from 'yargs/helpers';
 import commitgen from './commands/commitgen';
 import gitHook from './commands/git-hook';
 import gitHookInstall from './commands/git-hook:install';
+import root from './commands/root';
 
 export async function run(args: string[]) {
   await yargs(hideBin(args))
@@ -12,6 +13,12 @@ export async function run(args: string[]) {
       'Commit message generator',
       commitgen.builder,
       commitgen.handler,
+    )
+    .command(
+      'root',
+      'Gets the root directory of the current repository',
+      root.builder,
+      root.handler,
     )
     .command(
       'git-hook',
