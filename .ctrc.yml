@@ -14,9 +14,9 @@ hooks:
         echo "$(conventional-tools commitgen)$(cat ${1})" > ${1};
       fi
   pre-commit:
-    - $(git rev-parse --show-toplevel)/.github/hooks/check-copyright.sh
-    - $(git rev-parse --show-toplevel)/.github/hooks/no-yaml-files.sh
-    - $(git rev-parse --show-toplevel)/.github/hooks/prettier.sh
+    - $(conventional-tools root)/.github/hooks/check-copyright.sh
+    - $(conventional-tools root)/.github/hooks/no-yaml-files.sh
+    - $(conventional-tools root)/.github/hooks/prettier.sh
 commit:
   scopes:
     - core
