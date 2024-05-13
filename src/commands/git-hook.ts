@@ -24,12 +24,9 @@ export async function handler(args: Arguments<Options>): Promise<number> {
 
   runner.start();
 
-  writer.print(runner);
-  const ticker = setInterval(() => writer.update(runner), 80);
-  await runner.wait();
-
-  clearInterval(ticker);
-  writer.update(runner);
+  process.stdout.isTTY
+    ? await interactive(runner, writer)
+    : await nonInteractive(runner, writer);
 
   let exitCode = 0;
   for (const command of runner) {
@@ -47,6 +44,21 @@ export async function handler(args: Arguments<Options>): Promise<number> {
   }
 
   return exitCode;
+}
+
+async function interactive(runner: Runner, writer: Writer) {
+  writer.print(runner);
+  const ticker = setInterval(() => writer.update(runner), 80);
+
+  await runner.wait();
+
+  clearInterval(ticker);
+  writer.update(runner);
+}
+
+async function nonInteractive(runner: Runner, writer: Writer) {
+  writer.print(runner);
+  await runner.wait();
 }
 
 export default {builder, handler: handlerWrapper(handler)};
