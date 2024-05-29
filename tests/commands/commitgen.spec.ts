@@ -28,6 +28,7 @@ describe('command/commitgen', () => {
         async () => ({
           isEnabled: async () => true,
           getBranchName: async () => `${type}/123`,
+          root: async () => '/',
         }),
       );
 
@@ -79,6 +80,7 @@ describe('command/commitgen', () => {
         async () => ({
           isEnabled: async () => true,
           getBranchName: async () => `feat/123`,
+          root: async () => '/',
         }),
       );
 
