@@ -27,5 +27,6 @@ commit:
     - release-semver
     - release-calver
     - git-hooks
+    - deps
 assets:
   - dist/*
