@@ -1,3 +1,7 @@
+## [v1.1.6](https://github.com/Practically/conventional-tools/compare/v1.1.5...v1.1.6) (2024-09-27)
+
+**NOTE:** This is a patch release only
+
 ## [v1.1.5](https://github.com/Practically/conventional-tools/compare/v1.1.4...v1.1.5) (2023-05-12)
 
 **NOTE:** This is a patch release only
