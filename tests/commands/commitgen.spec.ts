@@ -29,6 +29,8 @@ describe('command/commitgen', () => {
           isEnabled: async () => true,
           getBranchName: async () => `${type}/123`,
           root: async () => '/',
+          getCurrentCommitMessage: async () => 'feat: create the thing',
+          getCommits: async () => ['feat: correct'],
         }),
       );
 
@@ -81,6 +83,8 @@ describe('command/commitgen', () => {
           isEnabled: async () => true,
           getBranchName: async () => `feat/123`,
           root: async () => '/',
+          getCurrentCommitMessage: async () => 'feat: create the thing',
+          getCommits: async () => ['feat: correct'],
         }),
       );
 
