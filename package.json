@@ -19,6 +19,9 @@
     "build": "tsc"
   },
   "dependencies": {
+    "@commitlint/lint": "^19.1.0",
+    "conventional-changelog-angular": "^7.0.0",
+    "conventional-commits-parser": "^5.0.0",
     "yaml": "^2.4.1",
     "yargs": "^17.7.2"
   },
