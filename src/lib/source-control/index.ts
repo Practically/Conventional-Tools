@@ -16,6 +16,19 @@ export interface SourceControlProvider {
    * Get the current root directory of for the repository.
    */
   root(): Promise<string>;
+  /**
+   * Get the current commit message from the source provider.
+   */
+  getCurrentCommitMessage(): Promise<string | null>;
+  /**
+   * Get a list of commits from the source provider to lint.
+   *
+   * @param from A string representing the starting commit hash or reference to
+   * begin retrieving commits from.
+   * @param to A string representing the ending commit hash or reference to
+   * stop retrieving commits from.
+   */
+  getCommits(from?: string, to?: string): Promise<string[]>;
 }
 
 const PROVIDERS = [git, sapling];
