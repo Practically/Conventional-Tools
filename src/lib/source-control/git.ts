@@ -1,5 +1,6 @@
-import {run} from '../exec';
 import * as fs from 'fs';
+
+import {run} from '../exec';
 import type {SourceControlProvider} from '.';
 
 const git: SourceControlProvider = {
@@ -24,20 +25,23 @@ const git: SourceControlProvider = {
     const commitEditMessagePath = `${root}/.git/COMMIT_EDITMSG`;
 
     if (fs.existsSync(commitEditMessagePath)) {
-        const commitEditMessage = fs
-            .readFileSync(commitEditMessagePath)
-            .toString();
+      const commitEditMessage = fs
+        .readFileSync(commitEditMessagePath)
+        .toString();
 
-        const scissors = commitEditMessage.indexOf(
-            '------------------------ >8 ------------------------',
-        );
+      const scissors = commitEditMessage.indexOf(
+        '------------------------ >8 ------------------------',
+      );
 
-        const end = scissors > -1 ? scissors : commitEditMessage.length;
-        const editMessage = commitEditMessage.substring(0, end).replace(/^#.*$/gm, '').trim();
+      const end = scissors > -1 ? scissors : commitEditMessage.length;
+      const editMessage = commitEditMessage
+        .substring(0, end)
+        .replace(/^#.*$/gm, '')
+        .trim();
 
-        if (editMessage.length) {
-            return editMessage;
-        }
+      if (editMessage.length) {
+        return editMessage;
+      }
     }
 
     return null;

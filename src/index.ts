@@ -2,10 +2,10 @@ import yargs from 'yargs';
 import {hideBin} from 'yargs/helpers';
 
 import commitgen from './commands/commitgen';
+import commitlint from './commands/commitlint';
 import gitHook from './commands/git-hook';
 import gitHookInstall from './commands/git-hook:install';
 import root from './commands/root';
-import commitlint from './commands/commitlint';
 
 export async function run(args: string[]) {
   await yargs(hideBin(args))
@@ -34,10 +34,10 @@ export async function run(args: string[]) {
       gitHookInstall.handler,
     )
     .command(
-        'commitlint',
-        'Lint your commits against Conventional Commits',
-        commitlint.builder,
-        commitlint.handler,
+      'commitlint',
+      'Lint your commits against Conventional Commits',
+      commitlint.builder,
+      commitlint.handler,
     )
     .showHelpOnFail(false)
     .strictOptions()
