@@ -1,8 +1,9 @@
-import {getSourceControlProvider} from '../lib/source-control';
-import {log} from '../lib/logger';
 import lint from '@commitlint/lint';
-import {Arguments, Argv} from 'yargs';
+import type {Arguments, Argv} from 'yargs';
+
 import {handlerWrapper} from '../lib/handler-wrapper';
+import {log} from '../lib/logger';
+import {getSourceControlProvider} from '../lib/source-control';
 
 /**
  * Type constants

@@ -1,9 +1,9 @@
 import {beforeEach, describe, expect, it, vi} from 'vitest';
+import type {Arguments} from 'yargs';
 
 import {handler} from '../../src/commands/commitlint';
 import * as logger from '../../src/lib/logger';
 import * as sourceControl from '../../src/lib/source-control';
-import {Arguments} from 'yargs';
 
 declare module 'vitest' {
   export interface TestContext {
@@ -61,7 +61,7 @@ describe('command/commitlint', () => {
       >);
     });
 
-    it('does not show warnings', ctx => {
+    it('does not show warnings', () => {
       expect(logger.log).not.toHaveBeenCalledWith(
         expect.stringContaining('references may not be empty'),
       );
