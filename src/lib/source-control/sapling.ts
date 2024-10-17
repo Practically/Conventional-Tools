@@ -20,6 +20,14 @@ const sapling: SourceControlProvider = {
     const {stdout} = await run(`sl root`);
     return stdout.trim();
   },
+
+  getCurrentCommitMessage: () => {
+    throw new Error('This method is not supported for sapling');
+  },
+
+  getCommits: () => {
+    throw new Error('This method is not supported for sapling');
+  },
 };
 
 export default sapling;
