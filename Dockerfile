@@ -5,7 +5,7 @@
 #
 # Install all the dependencies in its own step for better step cacheing
 #
-FROM node:16 as deps
+FROM node:20 as deps
 
 WORKDIR /build
 COPY package.json /build/package.json
@@ -16,7 +16,7 @@ RUN yarn install
 #
 # Build the conventional tools package
 #
-FROM node:16 as build
+FROM node:20 as build
 
 WORKDIR /build
 
@@ -35,7 +35,7 @@ RUN npm pack
 #
 # Step for the main step
 #
-FROM node:16 as app
+FROM node:20 as app
 
 WORKDIR /app
 
